@@ -31,7 +31,7 @@ const config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
     // Syncitt
-    provider: new FacebookLoginProvider("241632193622159"),
+    provider: new FacebookLoginProvider("1017305537170257"),
     // Ownly
     // provider: new FacebookLoginProvider('628195454704182')
   },
