@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20">
+  <g id="Group_3291" data-name="Group 3291" transform="translate(-973 -376)">
+    <g id="Rectangle_857" data-name="Rectangle 857" transform="translate(973 376)" fill="#fff" stroke="#039eb9" stroke-width="1">
+      <rect width="37" height="20" rx="10" stroke="none"/>
+      <rect x="0.5" y="0.5" width="36" height="19" rx="9.5" fill="none"/>
+    </g>
+    <text id="Send_message" data-name="Send message" transform="translate(992 390.5)" fill="#039eb9" font-size="11" font-family="OpenSans-Bold, Open Sans" font-weight="700" letter-spacing="0.05em"><tspan x="-9.829" y="0">EOI</tspan></text>
+  </g>
+</svg>

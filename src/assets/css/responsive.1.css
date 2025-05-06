@@ -1,0 +1,215 @@
+@media(max-width:1919px){
+	.properties-agents.home-section .homee-section-r {padding-left: 50px;}
+	.properties-agents {padding: 0 100px 76px;}
+	.property-listing {padding: 30px 164px 26px;}
+	.agents-exchange {padding: 0 100px 55px;}
+	.agents-exchange .homee-section-r {padding-left:90px;}
+	.home-tradehub { padding:38px 100px 100px;}
+	.home-tradehub .homee-section-r {padding-left: 100px;}
+	.footer {padding:40px 100px;}
+	.footer-get-app p br{ display:none;}
+}
+
+@media(max-width:1600px){
+	.home-tabs h2 {font-size: 50px; letter-spacing: 0;}
+	.properties-agents {padding:0 50px 50px; margin-bottom:0;}
+	.home-section h2{ margin:0 0 30px; }
+	.home-section h2 br{ display:none;}
+	.property-listing { padding:0 50px;}
+	.agents-exchange { padding:0 50px 40px;}
+	.agents-exchange .homee-section-l { padding-left:60px;}
+	.agents-exchange-img {margin: 0 15px 0 0; max-width: 80px;}
+	.agents-exchange-img img{ max-width:80px;}
+	.agents-exchange-info {width: calc(100% - 180px);}
+	.home-section .agents-exchange-ul {margin: 15px -8px 0; padding: 0;}
+	.home-tradehub { padding:50px;}
+	.trade-list a{ min-width:100px;}
+	.footer { padding:40px 50px;}
+	.product-listing { padding-left:50px; padding-right: 50px;}
+	.filter {padding: 10px 40px 11px 40px;}
+	.filter .filter-l {padding: 0; z-index:4;}
+	ul.listing-ul>li { width:calc(25% - 26px); margin: 0 13px 26px;}
+	.product-box-img { height:auto;}
+	.service-request {padding: 0 50px; margin: -45px 0 161px;}
+	
+}
+
+@media(max-width:1380px){
+	header nav.navbar.navbar-expand-lg {padding: 15px;}
+	header nav.navbar ul.navbar-nav li.nav-item a {padding: 0 10px;}
+	.tab-content,
+	.home-tabs ul.nav.nav-tabs {max-width:980px;}
+	.properties-agents.home-section .homee-section-r,
+	.properties-agents.home-section .homee-section-l {width: 50%;}
+	.properties-agents.home-section .homee-section-l img{ max-width:100%;}
+	.home-section h2 {margin:0 0 10px; line-height:normal; font-size:26px;}
+	.home-section p {font-size: 15px;}
+	.property-listing .homee-section-l {width:50%;}
+	.property-listing .homee-section-r {margin-right:auto; width:50%;}
+	.homee-section-l img,
+	.property-listing .homee-section-l img{ max-width:100%;}
+	.homee-section-l{ width:50%;} 
+	.agents-exchange-box {padding: 15px}
+	.agents-exchange-box{ flex-wrap:wrap;}
+	.agents-exchange-info {width:calc(100% - 100px);}
+	.agents-exchange-review{ width:calc(100% - 100px); max-width:100%; text-align: left; margin-top:8px; }
+	.agents-exchange-review .star-review {justify-content: left;}
+	.home-tradehub .homee-section-r {padding-left:50px;}
+	.perfect-trade-box h3 { margin:0 0 10px;}
+	.star-review {margin:0 0 10px;}
+	.perfect-trade-box {padding: 15px;}
+	.trade-list a { min-width:80px; margin:3px;}
+	.trade-list {margin: 0 0 15px;}
+	.trade-btm a {letter-spacing: 0; border-radius: 20px; font-size: 11px; padding:5px 20px; line-height:normal; }
+	.footer-logo p br{ display:none;}
+	.footer-link ul li {padding: 0 30px;}
+	.footer-top { padding:0 0 40px;}
+	.footer {padding: 40px 50px 20px;}
+	.filter .filter-l>ul>li>a {padding:0 15px; font-size:13px;}
+	.filter .filter-r ul li + li { margin-left:10px;}
+	.filter-r .showmap-view { margin-left:40px;}
+	.product-box-body { padding:20px;}
+	.product-box-body p { margin: 0 0 10px;}
+	.product-box-title h2{ width:100%; margin:0 0 5px; }
+	.product-box-title span{ position:relative; display:inline-block; vertical-align:top; margin-left:5px; }
+	.product-box-title i{position:relative; display:inline-block; left:auto; right:auto; vertical-align:top; margin-right:5px;}
+	ul.hotel-option {flex-wrap:wrap;}
+	ul.hotel-option li {text-align: center; justify-content: center; margin:5px 5px 0; }
+	ul.hotel-option li i {display: block;}
+	.product-box-body { padding:15px;}
+	.filter{ padding:10px 15px;}
+	.product-listing { padding-left:15px; padding-right: 15px;}
+	ul.listing-ul { margin:0 -13px;}
+	.service-request-r {padding: 126px 0 0 50px;}
+}
+
+
+@media(min-width:992px){
+	.navbar-toggler{ display:none;  }
+}
+@media(max-width:1024px){
+	.home-tabs {min-height: 730px;}
+	.properties-agents.home-section .homee-section-l { margin-top:0;}
+	.properties-agents {padding:25px;}
+	.home-section { margin-bottom:35px;}
+	.home-tradehub { padding:25px;}
+	.footer { padding:25px;}
+	.footer-logo p,
+	.footer-get-app p {line-height:normal;}
+	.home-serach-div {padding: 15px 160px 15px 20px;}
+
+}
+
+@media(max-width:991px){
+	.d-flex{ flex-wrap:wrap;}
+	.home-tabs h2 {font-size:40px; letter-spacing:0; line-height:100%; margin:0 0 20px;}
+	.tab-content, .home-tabs ul.nav.nav-tabs {padding: 0 20px;}
+	.home-serach-div {padding: 15px; width: 100%; margin:0 0 15px;}
+	.tab-content form button{ position:relative;}
+	.home-tabs { min-height:600px;}
+	.home-section .d-flex{ flex-wrap:wrap;}
+	.properties-agents.home-section .homee-section-l{ width:100%; margin:0 0 25px;}
+	.properties-agents.home-section .homee-section-r{ width:100%; padding:0;}
+	.home-section h2:before{ display:none;}
+	.home-section {margin-bottom:25px;}
+	.property-listing { padding:25px;}
+	.agents-exchange .homee-section-l { padding-left:0; width:50%;}
+	.agents-exchange .homee-section-r{ width:50%; padding-left:0;}
+	.home-section ul li {font-size: 15px; line-height: 26px;}
+	.agents-exchange-review,
+	.agents-exchange-info {width: 100%;}
+	.agents-exchange-img {margin: 0 0 10px 0; max-width: 80px;}
+	.agents-exchange { padding:0 25px 25px;}
+	.home-tradehub .homee-section-r {padding-left:10px; width: 50%;}
+	ul.perfect-trade{ flex-wrap:wrap; padding:10px 0 0 0; }
+	button.navbar-toggler{ border:0; padding:0; margin-left:auto; background:transparent;}
+	.home-page button.navbar-toggler svg{ fill:#fff; }
+	button.navbar-toggler svg {fill: #606382; width:30px; height:30px; background:transparent; }
+	.sticky button.navbar-toggler svg{ fill:#333; }
+	header .navbar-collapse {border:1px solid #eee; width:180px; position:absolute; top:50px; right:10px; background:#fff; z-index:100;}
+	header nav.navbar ul.navbar-nav {list-style:none; margin:0;}
+	header nav.navbar ul.navbar-nav li.nav-item a{ border-bottom:1px solid #eee; font-weight:500; text-align:left;  border-radius:0;}
+	header nav.navbar ul.navbar-nav.mr-auto {border-left: 0;margin: 0;padding: 0;}
+	header nav.navbar ul.navbar-nav.mr-auto li.get-app a { border:1px solid transparent;}
+	.header-search {max-width: 550px;}
+	.header-search form{ margin:0 10px 0 0;}
+	header nav.navbar.navbar-expand-lg a.navbar-brand {margin:0 20px 0 0;}
+	.filter {padding: 10px 15px; margin:0 0 20px;}
+	header nav.navbar.navbar-expand-lg {padding: 10px 15px;}
+	header nav.navbar.navbar-expand-lg a.navbar-brand svg{fill:#00CBEF; vertical-align:top; max-height:40px;}
+	.open #nav-icon2{ z-index:10; display:block; position:absolute; top:20px; left:220px;}
+	#nav-icon2{ display:block; }
+	.filter-r .showmap-view { margin-left:15px;}
+	.filter .filter-r ul li a {width: 50px;}
+	.filter .filter-r ul li + li {margin-left:5px;}
+
+	.filter .filter-l>ul{ display:none; left:-100%; transition:ease-in-out .5s;}
+	.filter-l.open:before{ background:rgba(0,0,0,.5); content:''; width:100%; height:100%; position:fixed; top:0; left:0;}
+	.filter-l.open ul.filter-l-ul{ background:#fff; width:260px; position:fixed; top:0; left:0; height:100%; display:block; padding:60px 0 0;    overflow: auto;}
+	.filter .filter-l>ul>li {margin:0;}
+	.filter .filter-l>ul>li>a { border:0; padding: 5px 15px; font-size: 13px; border-radius: 0; position:relative; border-top:1px solid #EDEEF6;}
+	.filter .filter-l>ul>li>a:before{content: ''; display:block; width:0; height:0; border-style:solid; border-width:5px 5px 0 5px; border-color:#333 transparent transparent transparent; position:absolute; top:50%; right:15px; transform:translateY(-50%);}
+	.filter .filter-l>ul li:hover .filter-l-dropdown { position:relative; padding-top:0; top:0; box-shadow:none; border:0; 
+		min-width:100%; border-top:1px solid #f5f5f5;}
+	.flat-slider {width: 100%; padding: 10px 0 20px 0; margin:10px 0 0;}
+	ul.listing-ul>li {width: calc(33.33% - 26px);}
+	.service-request-l {width:100%;}
+	.service-request-r {width:100%; padding:50px 40px;}
+	header nav.navbar ul.navbar-nav li.nav-item a:hover{ border:1px solid transparent; border-bottom:1px solid #eee; text-decoration:none; color:#fff; background:#00CBEF;}
+	header nav.navbar ul.navbar-nav.mr-auto li.get-app a:hover{    background: #00CBEF;}
+	header.home-page nav.navbar ul.navbar-nav li.nav-item a:hover {color:#fff;}
+	header.home-page nav.navbar ul.navbar-nav li.nav-item a { color:#606382;}
+	.home-page.fixed button.navbar-toggler svg{fill: #606382;}
+	.landsize-input {width: 100%; margin:0 0 10px;}
+	.landsize-input + .landsize-input { margin-left:0;}
+	.filter .filter-l>ul li .filter-l-dropdown ul ul li {width: 100%;} 
+	.landsize {margin: 0;}
+
+	.product-listing {padding-top: 125px;}
+
+}
+
+@media(max-width:767px){
+	header { padding:0;}
+	.home-tabs h2 {font-size: 30px;}
+	.home-tabs ul.nav.nav-tabs li { margin: 0 10px 0 0;}
+	.home-serach-div {padding: 0;width: 100%;margin: 0 0 15px;background: transparent;}
+	.home-serach-div input{ background:#fff; padding:10px; border-radius:4px; margin-bottom:15px; }
+	.home-serach-div a{ background-color:#fff; padding:10px 10px 10px 40px; border-radius: 4px; position:relative; top:0; transform:initial; background-repeat:no-repeat; background-position:10px 50%; line-height:30px;    width: 100%;}
+	.home-section { margin-bottom:0; padding:15px;}
+	.home-section h2 {font-size: 20px;}
+	.home-section.switch-section .d-flex {flex-direction:row;}
+	.property-listing .homee-section-r{ width:100%; padding:0 40px 30px; }
+	.property-listing .homee-section-l{ width:100%; margin-bottom:15px;}
+	.home-tradehub .homee-section-l,
+	.agents-exchange .homee-section-l{ width:100%; margin-bottom:15px;}
+	.home-tradehub .homee-section-r,
+	.agents-exchange .homee-section-r{ width:100%; padding:0 40px 30px;}
+	.home-section .agents-exchange-ul {margin: 0;padding:0; flex-wrap:wrap;}
+	.home-section .agents-exchange-ul li {margin:0 0 15px; width: 100%; padding:0;}
+	ul.perfect-trade{ margin:0;}
+	ul.perfect-trade li{ margin:0 0 20px; width:100%; }
+	.footer-link{ padding:25px 15px; }
+	.footer-link ul li {padding: 0 15px;}
+	.footer-btm {flex-wrap: wrap;}
+	.footer-btm-r a + a {margin-left: 15px;}
+	.footer {padding: 15px;}
+	.footer-btm-r {margin: 0;}
+	#tradehub .home-serach-div {padding:0}
+	#tradehub .home-serach-div input.suburb-postcode{ background-color: #fff; position: relative; top: 0; transform: initial; padding: 14px 14px 14px 39px; background-size: 16px auto; background-position: 12px 50%; width: 100%;}
+	ul.listing-ul>li {width: calc(50% - 26px);}
+	.service-request-l {width:100%;}
+	.service-request-r {width:100%; padding:50px 40px;}
+	.service-request-page .home-tabs h3 { margin:0; font-size: 30px; letter-spacing:0; line-height:normal; text-align:center;}
+	.service-request {padding: 0 15px;}
+	.service-request-l { width: 100%; padding:20px;}
+	.service-request-r {width: 100%; padding: 50px 25px 0;}
+	.step-box + .step-box { margin-top: 50px;}
+	.service-request {padding: 0 50px; margin: -45px 0 70px;}
+	ul.listing-ul { margin:0;}
+}
+
+@media(max-width:499px){
+	ul.listing-ul>li {width:100%; margin:0 0 25px;}
+	.no-data-wrapper{margin-top:67px;}
+}

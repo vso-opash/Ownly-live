@@ -1,0 +1,12 @@
+.prfl-toggle{
+width: 100%;align-content: flex-start;
+}
+.prfl-toggle:focus {
+    box-shadow: none;
+}
+
+.prfl-toggle-menu .dropdown-item {
+    font-size: 16px;
+    font-size: 14px;
+    color: #606382;
+}

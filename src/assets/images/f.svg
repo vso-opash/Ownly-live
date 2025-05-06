@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Group_3290" data-name="Group 3290" transform="translate(-948 -376)">
+    <g id="Ellipse_268" data-name="Ellipse 268" transform="translate(948 376)" fill="none" stroke="#e52674" stroke-width="1">
+      <circle cx="10" cy="10" r="10" stroke="none"/>
+      <circle cx="10" cy="10" r="9.5" fill="none"/>
+    </g>
+    <text id="Send_message" data-name="Send message" transform="translate(958 390.5)" fill="#e52674" font-size="11" font-family="OpenSans-Bold, Open Sans" font-weight="700" letter-spacing="0.1em"><tspan x="-3.019" y="0">F</tspan></text>
+  </g>
+</svg>

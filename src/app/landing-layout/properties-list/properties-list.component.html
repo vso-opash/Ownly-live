@@ -1,0 +1,68 @@
+<section class="product-listing">
+  <div class="container">
+    <ul *ngIf="propertiesList.length > 0" class="listing-ul property-listing-wrapper" infinite-scroll
+      scrollWindow="true" (scrolled)="onScrollDown()">
+      <li *ngFor="let property of propertiesList">
+        <div class="product-box">
+          <div class="product-box-img">
+            <owl-carousel-o [options]="customOptions">
+              <ng-container *ngIf="property.media">
+                <ng-container *ngFor="let slideImg of property.media">
+                  <ng-template carouselSlide>
+                    <!-- <img class="shimmer_effect" [src]="slideImg.url+'/800x600'" alt=""> -->
+                    <ng-container>
+                      <!-- <img class="shimmer_effect" [defaultImage]="slideImg.url+'/300x200'"
+                        onerror="this.onerror=null;this.src='assets/images/default_property.png'"
+                        [lazyLoad]="slideImg.url+'/800x600'" alt=""> -->
+                      <img class="shimmer_effect" [defaultImage]="slideImg.url+'/300x200'"
+                        onerror="this.onerror=null;this.src='assets/images/default_property.png'"
+                        [lazyLoad]="slideImg.url+'/800x600'" alt="" [routerLink]="['/property',property.id]">
+                    </ng-container>
+                  </ng-template>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="!property.media">
+                <ng-template carouselSlide>
+                  <img class="shimmer_effect" src="assets/images/default_property.png" alt=""
+                    [routerLink]="['/property',property.id]">
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+
+          </div>
+          <div class="product-box-body" [routerLink]="['/property',property.id]">
+            <div class="product-box-title">
+              <a [routerLink]="['/property',property.id]">
+                <h2>{{ property.priceDetails ? property.priceDetails.displayPrice : ''}}</h2>
+              </a>
+              <!-- <i class="f-icon"></i> -->
+              <!-- <i class="eoi-icon" ></i> -->
+              <!-- <span>26.01.19</span> -->
+            </div>
+            <p>{{ property.propertyDetails.displayableAddress ? property.propertyDetails.displayableAddress : ''  }}</p>
+            <ul class="hotel-option">
+              <li pTooltip="bedrooms" tooltipPosition="bottom">
+                <i class="bad-icon"></i> <span>{{ property.propertyDetails.bedrooms }}</span>
+              </li>
+              <li pTooltip="bathrooms" tooltipPosition="bottom">
+                <i class="room-icon"></i> <span>{{ property.propertyDetails.bathrooms }}</span>
+              </li>
+              <li pTooltip="carspaces" tooltipPosition="bottom">
+                <i class="car-icon"></i>
+                <span>{{ property.propertyDetails.carspaces? property.propertyDetails.carspaces: '0' }}</span>
+              </li>
+              <li pTooltip="property types" tooltipPosition="bottom">
+                <i class="house-icon"></i>
+                <span>{{ property.propertyDetails.propertyType === 'ApartmentUnitFlat' || property.propertyDetails.propertyType === 'NewApartments' ? 'Apartments' : property.propertyDetails.propertyType }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="no-data-wrapper" *ngIf="propertiesList.length === 0 && hasNoPropertyRecords">
+      <div class="no-data-text">No Data Found</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,515 @@
+<ng-container>
+  <div class="trade-layout">
+    <section class="trade-hub">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 trade-hub-l">
+            <h2><span>Ownly Trade</span> A Fair go for Trade Professionals</h2>
+            <p>Australia has a $130Bn tradie economy. What is <b>your</b> share of this market?</p>
+            <p>Stamp your fingerprint on the properties you work on indefinitely and secure your business future today.
+            </p>
+            <div class="trade-play">
+              <img src="assets/images/play-icon.png" alt="" style="cursor: pointer;"
+                (click)="open('../../../assets/images/NEWTradeAnimatedVideo.mp4')" />
+              <div id="id01" class="w3-modal video-hidden ownly-popup-video">
+                <div class="w3-container video-center">
+                  <button class="btn btn-link close video-close-btn" (click)="close()">x</button>
+                  <video id="vid" class="w-100" src="" autoplay controls></video>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 trade-hub-r">
+            <h3>Start Quoting Jobs</h3>
+            <div class="label-txt d-flex justify-content-between">
+              <h4>Claim your profile now</h4>
+              <span class="d-flex pl-2" (click)="open('../../../assets/images/trader_public_vdo.mp4')">
+                <span class="signup-txt pl-1 pr-2">
+                  How to signup
+                </span>
+                <a class="group" href="javascript:void(0)">
+                  <img width="25px" src="../../../assets/images/video-icon.png" alt="" />
+                </a>
+              </span>
+            </div>
+            <form class="trade-hub-form" [formGroup]="form">
+              <div class="password-div">
+                <div class="password-filled">
+                  <label>Firstname</label>
+                  <input type="text" name="" placeholder="Firstname" formControlName="firstname"
+                    [(ngModel)]="data.firstname">
+                  <div class="error" *ngIf="form_validation && !form.controls['firstname'].valid">
+                    <span *ngIf="form.controls['firstname'].errors['required']" class="text-danger">
+                      This field is required.</span>
+                  </div>
+                </div>
+                <div class="password-filled">
+                  <label>Lastname</label>
+                  <input type="text" name="" placeholder="Lastname" formControlName="lastname"
+                    [(ngModel)]="data.lastname">
+                  <div class="error" *ngIf="form_validation && !form.controls['lastname'].valid">
+                    <span *ngIf="form.controls['lastname'].errors['required']" class="text-danger">
+                      This field is required.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="password-div">
+                <label>Email Address</label>
+                <input type="text" name="" placeholder="Enter your email here" formControlName="email"
+                  [(ngModel)]="data.email">
+                <div class="error" *ngIf="form_validation && !form.controls['email'].valid">
+                  <span *ngIf="form.controls['email'].errors['required']" class="text-danger">
+                    This field is required.</span>
+                  <span *ngIf="!form.controls['email'].errors['required'] && form.controls['email'].errors['pattern']"
+                    class="text-danger">Please enter valid email.
+                  </span>
+                </div>
+              </div>
+              <div class="password-div">
+                <div class="password-filled">
+                  <label>Password</label>
+                  <input type="password" name="" formControlName="password" [(ngModel)]="data.password"
+                    placeholder="**********">
+                  <div class="error" *ngIf="form_validation && !form.controls['password'].valid">
+                    <span *ngIf="form.controls['password'].errors['required']" class="text-danger">
+                      This field is required.</span>
+                    <span *ngIf="form.controls['password'].errors['pattern']" class="text-danger">
+                      Password must have 8 characters and combination of numbers and letters.
+                      <!-- Password must contain:
+                      <ul class="password-rules">
+                        <li>At least 8 characters.</li>
+                        <li>At least one uppercase letter.</li>
+                        <li>At least one lowercase letter.</li>
+                        <li>At least one number.</li>
+                        <li>At least one symbol.</li>
+                      </ul> -->
+                    </span>
+                  </div>
+                </div>
+                <div class="password-filled">
+                  <label>Confirm Password</label>
+                  <input type="password" name="" formControlName="confirm_pass" placeholder="**********"
+                    [(ngModel)]="data.confirm_pass">
+                  <div class="error" *ngIf="form_validation && !form.controls['confirm_pass'].valid">
+                    <span *ngIf="form.controls['confirm_pass'].errors['required']" class="text-danger">
+                      This field is required.</span>
+                    <span
+                      *ngIf="!form.controls['confirm_pass'].errors['required'] && form.controls['confirm_pass'].errors['minlength']"
+                      class="text-danger">Confirm password must be 6 character long.</span>
+                    <span
+                      *ngIf="!form.controls['confirm_pass'].errors['required'] && form.controls['confirm_pass'].errors['mismatch']"
+                      class="text-danger">Password do not match.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="get-started-div">
+                <button type="submit" (click)="onSubmit(form.valid)" [disabled]="show_spinner">Get
+                  Started</button>
+              </div>
+              <div class="or-div">
+                <span>Or</span>
+              </div>
+              <div class="login-other-option">
+                <a (click)="socialLogin('google')" class="google-login"> <i><img src="./assets/images/icon-google.png"
+                      alt="" /></i>
+                  SIGN UP WITH GOOGLE
+                </a>
+                <a (click)="socialLogin('facebook')" class="facebook-login"> <i><img
+                      src="./assets/images/icon-facebook.png" alt="" /></i>
+                  SIGN UP WITH FACEBOOK
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trade-hub-content post-job">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="assets/images/004-home.png" alt="" />
+            <p>
+              Identify your work to a property indefinitely
+            </p>
+          </div>
+          <div class="col-md-4">
+            <img src="assets/images/001-virus.png" alt="" />
+            <p>
+              No matter if it is bought or sold, the occupant can look you up
+            </p>
+          </div>
+          <div class="col-md-4">
+            <img src="assets/images/003-lock.png" alt="" />
+            <p>
+              Secure your share of the market, secure your future
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trade-hub-content post-job">
+      <div class="container">
+        <div class="d-flex">
+          <div class="trade-hub-content-l">
+            <img src="assets/images/showTheWorld.jpg" alt="" />
+          </div>
+          <div class="trade-hub-content-r">
+            <h2>Show The World Who You Are</h2>
+            <p>The premium listing lets anyone search your business, see your portfolio, read your reviews and contact
+              you to request
+              your services. With $130Bn spent by households on trades every year, you deserve to be found and given
+              your fair share.
+            </p>
+            <button type="button" (click)="scrollToTop()">Start My Profile</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trade-hub-content recive-quotes">
+      <div class="container">
+        <div class="d-flex">
+          <div class="trade-hub-content-l">
+            <img src="assets/images/Group 3373.png" alt="" />
+          </div>
+          <div class="trade-hub-content-r">
+            <h2>Be The Best In Your Community</h2>
+            <p>When you complete a job, other job searchers in the area can see you’ve been doing a great job and can
+              hire you. The
+              neighbour, the house across the road. They can all reach out and request your services.
+            </p>
+            <button type="button" (click)="scrollToTop()"> Start My Profile </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trade-hub-content choose-trader">
+      <div class="container">
+        <div class="d-flex">
+          <div class="trade-hub-content-l">
+            <img src="assets/images/Group 3374.png" alt="" />
+          </div>
+          <div class="trade-hub-content-r">
+            <h2>Securing Australian Jobs, Securing Your Business.</h2>
+            <p>When you perform a job through Ownly Trade your work is logged through the Ownly Trade database of every
+              property in
+              Australia. Anyone that orders a trade through that property again will see your profile as the top pick
+              for a new work
+              request.
+            </p>
+            <button type="button" (click)="scrollToTop()"> Join now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="good-hands">
+      <div class="container">
+        <h2>You’re in Good Hands</h2>
+        <ul class="good-hands-ul">
+          <li>
+            <div class="good-hands-div">
+              <p>Wow.. I just want to say thank you so much to the Ownly team. Thanks to their incredible new trade
+                platform I can
+                finally secure my long term business. Now all the work that I do will be saved on the property file
+                indefinitely. Game
+                changer!
+              </p>
+              <div class="good-hands-profile">
+                <span><img src="assets/images/Mask Group 22.png" alt="" /></span>
+                <strong>Jeremy Palummo <small>(Setter and Plasterer)</small> </strong>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="good-hands-div">
+              <p>Last year I spent over $15,000 on letterbox drops and advertising to try to bring in more work, but non
+                of this secured
+                business’s long term future. Ownly trade platform will transform the trade industry.
+              </p>
+              <div class="good-hands-profile">
+                <span><img src="assets/images/Mask Group 22.png" alt="" /></span>
+                <strong>Richie Journo <small>(Pest Control)</small> </strong>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="good-hands-div">
+              <p>I was able to upload my client book into their database and be associated to all the addresses that I
+                have previously
+                done work on. I even feel excited again about my work knowing I can be associated to all the properties
+                that I do work
+                on.</p>
+              <div class="good-hands-profile">
+                <span><img src="assets/images/Mask Group 22.png" alt="" /></span>
+                <strong>Rod Bowerman <small>(Handyman)</small> </strong>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="what-you-get">
+      <div class="container">
+        <div class="what-get-div">
+          <h2>The Ownly Packages</h2>
+          <h6>All the basics to get your business heading in the right direction.</h6>
+          <ul>
+            <li>
+              <div class="what-get-li">
+                <h3>Quote On Jobs In Your Chosen Postcode</h3>
+                <p>Whenever a job is posted in your chosen postcode, you receive a notification there is a job to quote
+                  on.
+                  Just open the app and start chatting to the service seeker.</p>
+              </div>
+            </li>
+            <li>
+              <div class="what-get-li">
+                <h3>Completed Jobs Saved To Property Indefinitely</h3>
+                <p>When you complete a job, your work is saved to the property forever. If the property is bought and
+                  sold,
+                  you will still be attached and will pop up first for any new service request on that address.</p>
+              </div>
+            </li>
+            <li>
+              <div class="what-get-li">
+                <h3>Allow The Community To See Work You’ve Done Locally</h3>
+                <p>When you complete a job, other job searchers in the area can see you’ve been doing a great job and
+                  can
+                  hire you. The neighbour, the house across the road. They can all reach out and request your services.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="what-get-li">
+                <h3>Unlimited Quotes</h3>
+                <p>Don’t worry about not winning that job. You can quote as many times as you like. </p>
+              </div>
+            </li>
+            <li>
+              <div class="what-get-li">
+                <h3>Become A Verified Trade</h3>
+                <p>Give your customers the extra confidence to deal with you. Ownly Trade will verify your ABN,
+                  Insurance
+                  information, Licensing(where applicable)
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="what-get-li">
+                <h3>Chat direct to your customer</h3>
+                <p>We encourage service providers to stay on the platform to communicate on the first and subsequent
+                  jobs. Our subscription
+                  model means we are aligned with you.</p>
+              </div>
+            </li>
+            <li>
+              <div class="what-get-li">
+                <h3>Promote Your Business With Premium Listing</h3>
+                <p>Show the world your work and your reviews. The premium listing lets anyone search you, see your
+                  portfolio
+                  and contact you.</p>
+                <div class="free-months">
+                  <h4>FREE</h4>
+                  <!--  Removed required Subscription -->
+                  <!-- <h4>$45 p/m</h4> -->
+                  <!--  Removed required Subscription -->
+                  <!-- <h5>FREE for the first 3 months </h5> -->
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="subscription-btn">
+            <button (click)="scrollToTop()">SUBSCRIBE</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="client-book">
+      <div class="container">
+        <div>
+          <h2> Client Book Upload Packages</h2>
+          <p> Unique to Ownly Trade, upload your client book and immediately be linked to every property you have worked
+            on,
+            displaying your business for all property and trade requests linked to that property indefinitely.
+          </p>
+          <ul class="d-flex">
+            <li class="trades-li-div">
+              <h3>Trades</h3>
+              <p>Packages starting from $99 per annum</p>
+            </li>
+            <li class="architects-li-div">
+              <h3>Architects / Builders</h3>
+              <p>Starting from $10 per property per annum</p>
+            </li>
+          </ul>
+          <div class="enquire-now">
+            <a href="mailto:team@ownly.com.au?subject=Client Book Upload Package"> Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="join-community">
+      <div class="container">
+        <div class="join-community-div">
+          <h2>Join A Community Of Successful Tradies</h2>
+          <h5>When you perform a job through TradeHUB your work is logged through the PropertyCOM database of every
+            property
+            in Australia. Anyone that orders a trade through that property again will see your profile as the top pick.
+          </h5>
+          <!-- <ul class="perfect-trade">
+            <li>
+              <div class="perfect-trade-box">
+                <div class="perfect-trade-img"><img src="assets/images/profile-4.png" alt=""></div>
+                <h3>Michael Lauter</h3>
+                <div class="star-review">
+                  <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                    class="yellow-star-img"></i>
+                  <i class="half-star-img"></i>
+                </div>
+                <h6>(712) Reviews</h6>
+                <div class="trade-list">
+                  <a href="">PAINTER</a>
+                  <a href="">ELECTRICIST</a>
+                  <a href="">PAINTER</a>
+                  <a href="" class="counter">+ 3</a>
+                </div>
+                <div class="trade-btm">
+                  <a href="" class="bdr-btn">VIEW PROFILE</a>
+                  <a href="" class="bg-btn">GET A QUOTE</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="perfect-trade-box">
+                <div class="perfect-trade-img"><img src="assets/images/profile-5.png" alt=""></div>
+                <h3>Michael Lauter</h3>
+                <div class="star-review">
+                  <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                    class="yellow-star-img"></i>
+                  <i class="half-star-img"></i>
+                </div>
+                <h6>(712) Reviews</h6>
+                <div class="trade-list">
+                  <a href="">PAINTER</a>
+                  <a href="">ELECTRICIST</a>
+                  <a href="">PAINTER</a>
+                  <a href="" class="counter">+ 3</a>
+                </div>
+                <div class="trade-btm">
+                  <a href="" class="bdr-btn">VIEW PROFILE</a>
+                  <a href="" class="bg-btn">GET A QUOTE</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="perfect-trade-box">
+                <div class="perfect-trade-img"><img src="assets/images/profile-6.png" alt=""></div>
+                <h3>Michael Lauter</h3>
+                <div class="star-review">
+                  <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                    class="yellow-star-img"></i>
+                  <i class="half-star-img"></i>
+                </div>
+                <h6>(712) Reviews</h6>
+                <div class="trade-list">
+                  <a href="">PAINTER</a>
+                  <a href="">ELECTRICIST</a>
+                  <a href="">PAINTER</a>
+                  <a href="" class="counter">+ 3</a>
+                </div>
+                <div class="trade-btm">
+                  <a href="" class="bdr-btn">VIEW PROFILE</a>
+                  <a href="" class="bg-btn">GET A QUOTE</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="perfect-trade-box">
+                <div class="perfect-trade-img"><img src="assets/images/profile-7.png" alt=""></div>
+                <h3>Michael Lauter</h3>
+                <div class="star-review">
+                  <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                    class="yellow-star-img"></i>
+                  <i class="half-star-img"></i>
+                </div>
+                <h6>(712) Reviews</h6>
+                <div class="trade-list">
+                  <a href="">PAINTER</a>
+                  <a href="">ELECTRICIST</a>
+                  <a href="">PAINTER</a>
+                  <a href="" class="counter">+ 3</a>
+                </div>
+                <div class="trade-btm">
+                  <a href="" class="bdr-btn">VIEW PROFILE</a>
+                  <a href="" class="bg-btn">GET A QUOTE</a>
+                </div>
+              </div>
+            </li>
+          </ul> -->
+          <ul class="perfect-trade">
+            <li *ngFor="let trader of tradersList">
+              <div class="perfect-trade-box">
+                <div class="perfect-trade-img" *ngIf="trader.image"><img src="{{imageUrl}}user_image/{{trader.image}}"
+                    onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                </div>
+                <div class="perfect-trade-img" *ngIf="!trader.image"><img src="assets/images/default_user.png"
+                    onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" /></div>
+                <!-- <h3>{{trader.firstname}} {{trader.lastname}}</h3> -->
+                <h3>{{trader.business_name}}</h3>
+                <div class="star-review">
+                  <star-rating value="{{trader.averageRate}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                    readonly="true">
+                  </star-rating>
+                </div>
+
+                <h6 *ngIf="trader.totalReviewLength && trader.totalReviewLength === 1">({{ trader.totalReviewLength }})
+                  Review</h6>
+                <h6 *ngIf="trader.totalReviewLength && trader.totalReviewLength >1">({{ trader.totalReviewLength }})
+                  Reviews</h6>
+                <div class="trade-list" *ngIf="trader.categories_id.length < 4">
+                  <a *ngFor="let category of trader.categories_id" href="javascript:void(0)">{{ category.name }}</a>
+                </div>
+                <div class="trade-list" *ngIf="trader.categories_id.length > 3">
+                  <a *ngFor="let category of trader.categories_id; let i = index" href="javascript:void(0)">
+                    <ng-container *ngIf="i < 3">
+                      {{ category.name }}
+                    </ng-container>
+                  </a>
+                  <a href="javascript:void(0)" class="counter"> + {{trader.categories_id.length - 3}}</a>
+                </div>
+                <div class="trade-btm">
+                  <a [routerLink]="['/trader',trader._id]" class="bdr-btn">VIEW PROFILE</a>
+                  <a (click)="getQuoteClick(trader._id, trader.categories_id)" class="bg-btn">GET A QUOTE</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-container>
+
+<!-- Display Ownly Partners -->
+<ng-container>
+  <section class="property-listing home-section switch-section our-partner-section" style="background: none;">
+    <div class="container">
+      <div class="partner-logo">
+        <h2>Our Partners</h2>
+        <div class="partner-logo-col">
+          <!-- <img src="assets/images/partner-logo-1.png" alt="" /> -->
+          <!-- <img src="assets/images/partner-logo-2.png" alt="" /> -->
+          <img src="assets/images/partner-logo-3.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

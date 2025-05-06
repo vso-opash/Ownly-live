@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.068" height="15.449" viewBox="0 0 22.068 15.449">
+  <g id="tra-traction" transform="translate(0 -0.551)">
+    <path id="Fill_45" data-name="Fill 45" d="M14.5,4.414l-.97-3.234A1.645,1.645,0,0,0,11.948,0H2.556A1.645,1.645,0,0,0,.97,1.18L0,4.414Z" transform="translate(3.783 0.551)" fill="#dfdfdf"/>
+    <path id="Fill_46" data-name="Fill 46" d="M16.43,0H1.225A1.73,1.73,0,0,0,0,1.655v3.31A1.657,1.657,0,0,0,1.655,6.621H16a1.657,1.657,0,0,0,1.655-1.655V1.655A1.73,1.73,0,0,0,16.43,0" transform="translate(2.207 6.069)" fill="#dfdfdf"/>
+    <path id="Fill_47" data-name="Fill 47" d="M0,0V1.1a1.1,1.1,0,0,0,1.1,1.1H3.31a1.1,1.1,0,0,0,1.1-1.1V0Z" transform="translate(3.31 13.793)" fill="#dfdfdf"/>
+    <path id="Fill_48" data-name="Fill 48" d="M0,0V1.1a1.1,1.1,0,0,0,1.1,1.1H3.31a1.1,1.1,0,0,0,1.1-1.1V0Z" transform="translate(14.345 13.793)" fill="#dfdfdf"/>
+    <path id="Fill_49" data-name="Fill 49" d="M2.525,1.457,2.962,0H.552A.552.552,0,0,0,0,.552V2.759a.552.552,0,0,0,.552.552h.615A2.764,2.764,0,0,1,2.525,1.457" transform="translate(0 3.862)" fill="#dfdfdf"/>
+    <path id="Fill_50" data-name="Fill 50" d="M2.41,0H0L.437,1.457A2.759,2.759,0,0,1,1.8,3.31H2.41a.552.552,0,0,0,.552-.552V.552A.552.552,0,0,0,2.41,0" transform="translate(19.107 3.862)" fill="#dfdfdf"/>
+  </g>
+</svg>

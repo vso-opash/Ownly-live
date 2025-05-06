@@ -1,0 +1,391 @@
+<section class="profile-carousel-img" *ngIf="agentData">
+  <img src="{{imageUrl}}user_image/{{agentData.bannerImage}}"
+    onerror="this.onerror=null;this.src='assets/images/banner.png'" alt="" />
+</section>
+
+<section class="profile-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="d-flex">
+          <div class="profile-img" *ngIf="agentData">
+            <img src="{{imageUrl}}user_image/{{agentData.image}}"
+              onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+            <span [ngStyle]="{'background-color': agentData.is_online ? 'green' : 'red' }"></span>
+          </div>
+          <div class="profile-info">
+            <h3>
+              {{agentData && agentData.name ? agentData.name : 
+              agentData && (agentData.firstname || agentData.lastname) ? agentData.firstname + ' ' + agentData.lastname  : ''}}
+            </h3>
+            <small>{{agentData && agentData.business_name ? agentData.business_name : ''}}</small>
+            <div class="profile-review"
+              *ngIf="agentData && agentData['UserReview'] && agentData['UserReview'] != null && agentData['UserReview'] != ''">
+              <star-rating *ngIf="agentData && agentData['UserReview'] && agentData['UserReview'].data"
+                value=" {{agentData['UserReview'].data}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                readonly="true">
+              </star-rating>
+              <star-rating *ngIf="!agentData['UserReview'] || !agentData['UserReview'].data" value="0"
+                checkedcolor="gold" uncheckedcolor="gray" size="20px" readonly="true">
+              </star-rating>
+            </div>
+            <p *ngIf="agentData && agentData['UserReview']">{{agentData['UserReview'].data}} from
+              {{agentData['UserReview'].total_review}} reviews</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="d-flex ">
+          <div class="profile-head-info">
+            <p><strong>AGENT</strong></p>
+            <p><strong>MOBILE NUMBER</strong>
+              <span *ngIf="!showNumber && agentData">******{{(agentData.mobile_no | slice:6)}}</span>
+              <span
+                *ngIf="showNumber && agentData">{{agentData && agentData.mobile_no ? agentData.mobile_no : '-'}}</span>
+              <a href="javascript:void(0)" *ngIf="!showNumber && agentData && agentData.mobile_no"
+                (click)="clickOnShowNumber()">SHOW NUMBER</a></p>
+          </div>
+          <div class="profile-head-btn">
+            <!-- <a href="javascript:void(0)" class="bdr-btn">WRITE A REVIEW</a> -->
+            <a href="javascript:void(0)" (click)="showDialog()" class="send-message">CONTACT AGENT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="profile-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 profile-body-l">
+        <div class="white-box">
+          <h2>About
+            {{agentData && agentData.name ? agentData.name : ''}}</h2>
+          <p *ngIf="toggelText === 'SHOW MORE'">
+            {{agentData && agentData.groups && agentData.groups.about_user ? (agentData.groups.about_user | slice : 0:300) : ''}}
+          </p>
+          <p *ngIf="toggelText === 'SHOW LESS'">
+            {{agentData && agentData.groups && agentData.groups.about_user ? agentData.groups.about_user : ''}}
+          </p>
+          <a href="javascript:void(0)" (click)="toggle(toggelText,'about_user')">{{ toggelText }}</a>
+        </div>
+        <div class="white-box">
+          <h2>Agency</h2>
+          <div class="agents-exchange-box">
+            <div class="agency-logo">
+              <img *ngIf="agentData && agentData.agency_id && agentData.agency_id.logoImage"
+                src="{{imageUrl}}user_image/{{agentData.agency_id.logoImage}}"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" />
+              <img *ngIf="!agentData || !agentData.agency_id" src="assets/images/default_user.png"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+            </div>
+            <div class="agency-info">
+              <h4> {{agentData && agentData.agency_id  ? agentData.agency_id.name : ''}} </h4>
+              <div>
+                <star-rating *ngIf="agentData && agentData.agencyReview && agentData.agencyReview.data"
+                  value="{{agentData.agencyReview.data}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                  readonly="true">
+                </star-rating>
+                <star-rating *ngIf="!agentData || !agentData.agencyReview || !agentData.agencyReview.data" value="0"
+                  checkedcolor="gold" uncheckedcolor="gray" size="20px" readonly="true">
+                </star-rating>
+              </div>
+              <h6>
+                {{agentData && agentData.agencyReview &&agentData.agencyReview.data ? agentData.agencyReview.data : 0}}
+                from
+                {{agentData && agentData.agencyReview && agentData.agencyReview.total_review ? agentData.agencyReview.total_review : 0 }}
+                reviews</h6>
+            </div>
+          </div>
+          <p>
+            {{agentData && agentData.agency_id && agentData.agency_id.principle_id && agentData.agency_id.principle_id.groups && agentData.agency_id.principle_id.groups.about_user ? agentData.agency_id.principle_id.groups.about_user : ''}}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <!-- Gallery will be here -->
+        <div class="profile-portfolio">
+
+          <ul>
+            <ng-container *ngIf="agentData.images?.length > 0">
+              <li *ngFor="let image of portfolioImages;let i=index"><a href="javascript:void(0)"><img
+                    src="{{image.src}}" onerror="this.onerror=null;this.src='assets/images/default_user.png'"
+                    (click)="open(i)" alt="" /></a></li>
+            </ng-container>
+            <ng-container *ngIf="agentData.images?.length <= 0">
+              <li style="width: 100%;">No portfolio found to display!</li>
+            </ng-container>
+          </ul>
+
+          <!-- <owl-carousel-o [options]="customOptions">
+            <ng-container *ngIf="agentData && agentData.images">
+              <ng-container *ngFor="let slideImg of agentData.images">
+                <ng-template carouselSlide>
+                  <img class="shimmer_effect" src="{{imageUrl}}user_image/{{slideImg.url}}" alt="">
+                </ng-template>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="!agentData || !agentData.images">
+              <ng-template carouselSlide>
+                <img class="shimmer_effect" src="assets/images/default_property.png" alt="">
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o> -->
+        </div>
+
+
+        <div class="reviews-div">
+          <h2>Reviews</h2>
+          <div class="reviews-innr-div">
+            <div class="total-reviews profile-review" *ngIf="agentData && agentData['UserReview']">
+              <star-rating *ngIf="agentData &&agentData['UserReview'] && agentData['UserReview'].data"
+                value="{{agentData['UserReview'].data}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                readonly="true">
+              </star-rating>
+              <star-rating *ngIf="!agentData['UserReview'] || !agentData['UserReview'].data" value="0"
+                checkedcolor="gold" uncheckedcolor="gray" size="20px" readonly="true">
+              </star-rating>
+              <p *ngIf="agentData && agentData['UserReview']">{{agentData['UserReview'].data}} from
+                {{agentData['UserReview'].total_review}} reviews</p>
+              <div class="profile-head-btn">
+                <!-- <a href="javascript:void(0)" class="send-message">WRITE A REVIEW</a> -->
+              </div>
+              <!-- <div class="row review_overall">
+                          <div class="col-md-9">
+                            <star-rating value=" {{agentData['UserReview'].data}}" checkedcolor="gold" uncheckedcolor="gray"
+                              size="20px" readonly="true">
+                            </star-rating>
+                            <div *ngIf="agentData['UserReview']">{{agentData['UserReview'].data}} from
+                              {{agentData['UserReview'].total_review}} reviews</div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="profile-head-btn">
+                              <a href="javascript:void(0)" class="send-message">WRITE A REVIEW</a>
+                            </div>
+                          </div>
+                        </div> -->
+            </div>
+            <!-- 
+            <div class="all-reviews">
+              <a class="active" href="#All" data-toggle="tab">All</a>
+            </div> -->
+
+            <ul class="nav nav-tabs all-reviews">
+              <li><a class="active" data-toggle="tab" (click)="manageTab('All')" href="#All">All</a></li>
+              <!-- <li><a data-toggle="tab" (click)="manageTab('Tenant')" href="tenantReview">Tenant Review</a></li>
+              <li><a data-toggle="tab" (click)="manageTab('Owner')" href="ownerReview">Owner Review</a></li> -->
+            </ul>
+
+            <div class="tab-content">
+              <ul class="tab-pane fade show active reviews-comment" id="All"
+                *ngIf="isAll && agentData && agentData['AllReview'] && agentData['AllReview']?.length > 0">
+                <li *ngFor="let review of agentData['AllReview'] | slice : startReview : endReview">
+                  <div class="reviews-comment-div">
+                    <div class="reviews-comment-img">
+                      <img *ngIf="review && review.review_by && review.review_by.image"
+                        src="{{imageUrl}}user_image/{{review.review_by.image}}"
+                        onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                      <img *ngIf="!review || !review.review_by || !review.review_by.image"
+                        src="assets/images/default_user.png"
+                        onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                    </div>
+                    <div class="reviews-comment-info">
+                      <h3 *ngIf="review.review_by">{{review.review_by.firstname}}&nbsp;{{review.review_by.lastname}}
+                      </h3>
+                      <div class="profile-review">
+                        <star-rating value="{{review.avg_total}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                          readonly="true">
+                        </star-rating>
+                        <h6>{{review.createdAt | date}}</h6>
+                      </div>
+                      <p>{{review.comments}}</p>
+                    </div>
+                  </div>
+                  <ul class="reply-comments" *ngIf="review.response?.length > 0">
+                    <li *ngFor="let reply of review.response">
+                      <div class="reviews-comment-div" *ngIf="reply.response_by">
+                        <div class="reviews-comment-img">
+                          <img src="{{imageUrl}}user_image/{{reply.response_by.image}}"
+                            onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                        </div>
+                        <div class="reviews-comment-info">
+                          <h3>{{reply.response_by.firstname}}&nbsp;{{reply.response_by.lastname}}</h3>
+                          <div>
+                            <h6 class="pl-0">{{reply.createdDate | date}}</h6>
+                          </div>
+                          <p>{{reply.response}}</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li *ngIf=" agentData && agentData['AllReview']?.length > 5">
+                  <div class="load-more-reviews">
+                    <a href="javascript:void(0)" (click)="toggle(reviewtoggelText,'review')">{{reviewtoggelText}}</a>
+                  </div>
+                </li>
+              </ul>
+              <ul class="tab-pane fade show active reviews-comment" id="All"
+                *ngIf="isAll && (!agentData || !agentData['AllReview'] || agentData['AllReview']?.length <= 0)">
+                <li>
+                  <div class="reviews-comment-div">
+                    No review found to display!
+                  </div>
+                </li>
+              </ul>
+              <!-- <ul class="tab-pane fade show active reviews-comment" id="tenantReview"
+                *ngIf="isTenant && agentData && agentData['TenantReviews'] && agentData['TenantReviews']?.length > 0">
+                <li *ngFor="let review of agentData['TenantReviews'] | slice : startReview : endReview">
+                  <div class="reviews-comment-div">
+                    <div class="reviews-comment-img">
+                      <img *ngIf="review && review.review_by && review.review_by.image"
+                        src="{{imageUrl}}user_image/{{review.review_by.image}}"
+                        onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                      <img *ngIf="!review || !review.review_by || !review.review_by.image"
+                        src="assets/images/default_user.png"
+                        onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                    </div>
+                    <div class="reviews-comment-info">
+                      <h3 *ngIf="review.review_by">{{review.review_by.firstname}}&nbsp;{{review.review_by.lastname}}
+                      </h3>
+                      <div class="profile-review">
+                        <star-rating *ngIf="review.avg_total" value="{{review.avg_total}}" checkedcolor="gold"
+                          uncheckedcolor="gray" size="20px" readonly="true">
+                        </star-rating>
+                        <star-rating *ngIf="!review.avg_total" value="0" checkedcolor="gold" uncheckedcolor="gray"
+                          size="20px" readonly="true">
+                        </star-rating>
+                        <h6>{{review.createdAt | date}}</h6>
+                      </div>
+                      <p>{{review.comments}}</p>
+                    </div>
+                  </div>
+                  <ul class="reply-comments" *ngIf="review.response?.length > 0">
+                    <li *ngFor="let reply of review.response">
+                      <div class="reviews-comment-div" *ngIf="reply.response_by">
+                        <div class="reviews-comment-img">
+                          <img src="{{imageUrl}}user_image/{{reply.response_by.image}}"
+                            onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                        </div>
+                        <div class="reviews-comment-info">
+                          <h3>{{reply.response_by.firstname}}&nbsp;{{reply.response_by.lastname}}</h3>
+                          <div>
+                            <h6 class="pl-0">{{reply.createdDate | date}}</h6>
+                          </div>
+                          <p>{{reply.response}}</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li *ngIf="agentData && agentData['TenantReviews']?.length > 5">
+                  <div class="load-more-reviews">
+                    <a href="javascript:void(0)" (click)="toggle(reviewtoggelText,'review')">{{reviewtoggelText}}</a>
+                  </div>
+                </li>
+              </ul>
+              <ul class="tab-pane fade show active reviews-comment" id="tenantReview"
+                *ngIf="isTenant && (!agentData || !agentData['TenantReviews'] || agentData['TenantReviews']?.length <= 0)">
+                <li>
+                  <div class="reviews-comment-div">
+                    No review found to display!
+                  </div>
+                </li>
+              </ul>
+
+              <ul class="tab-pane fade show active reviews-comment" id="ownerReview"
+                *ngIf="isOwner && agentData && agentData['OwnerReviews'] && agentData['OwnerReviews']?.length > 0">
+                <li *ngFor="let review of agentData['OwnerReviews'] | slice : startReview : endReview">
+                  <div class="reviews-comment-div">
+                    <div class="reviews-comment-img">
+                      <img *ngIf="review && review.review_by && review.review_by.image"
+                        src="{{imageUrl}}user_image/{{review.review_by.image}}"
+                        onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                      <img *ngIf="!review || !review.review_by || !review.review_by.image"
+                        src="assets/images/default_user.png"
+                        onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                    </div>
+                    <div class="reviews-comment-info">
+                      <h3 *ngIf="review.review_by">{{review.review_by.firstname}}&nbsp;{{review.review_by.lastname}}
+                      </h3>
+                      <div class="profile-review">
+                        <star-rating *ngIf="review.avg_total" value="{{review.avg_total}}" checkedcolor="gold"
+                          uncheckedcolor="gray" size="20px" readonly="true">
+                        </star-rating>
+                        <star-rating *ngIf="!review.avg_total" value="0" checkedcolor="gold" uncheckedcolor="gray"
+                          size="20px" readonly="true">
+                        </star-rating>
+                        <h6>{{review.createdAt | date}}</h6>
+                      </div>
+                      <p>{{review.comments}}</p>
+                    </div>
+                  </div>
+                  <ul class="reply-comments" *ngIf="review.response?.length > 0">
+                    <li *ngFor="let reply of review.response">
+                      <div class="reviews-comment-div" *ngIf="reply.response_by">
+                        <div class="reviews-comment-img">
+                          <img src="{{imageUrl}}user_image/{{reply.response_by.image}}"
+                            onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                        </div>
+                        <div class="reviews-comment-info">
+                          <h3>{{reply.response_by.firstname}}&nbsp;{{reply.response_by.lastname}}</h3>
+                          <div>
+                            <h6 class="pl-0">{{reply.createdDate | date}}</h6>
+                          </div>
+                          <p>{{reply.response}}</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li *ngIf="agentData && ['OwnerReviews']?.length > 5">
+                  <div class="load-more-reviews">
+                    <a href="javascript:void(0)" (click)="toggle(reviewtoggelText,'review')">{{reviewtoggelText}}</a>
+                  </div>
+                </li>
+              </ul>
+              <ul class="tab-pane fade show active reviews-comment" id="ownerReview"
+                *ngIf="isOwner && (!agentData || !agentData['OwnerReviews'] || agentData['OwnerReviews']?.length <= 0)">
+                <li>
+                  <div class="reviews-comment-div">
+                    No review found to display!
+                  </div>
+                </li>
+              </ul> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<ng-container *ngIf="agentData" class="sendMessage">
+  <p-dialog header="Send {{ agentData.firstname}} a message" [(visible)]="display" [modal]="true" [responsive]="true"
+    [style]="{width: '500px', minWidth: '400px'}" [maximizable]="true" class="sendMessage">
+    <form [formGroup]="sendMessage">
+      <div class="form-group text-left">
+        <label class="control-label" for="message"> Your Message<font color="Red">*</font></label>
+        <textarea rows="8" cols="550" type="text" formControlName="message" id="message" [(ngModel)]="message"
+          class="form-control" placeholder="Message" required=""></textarea>
+      </div>
+      <div *ngIf="form_validation && !sendMessage.controls['message'].valid">
+        <span class="error-span" *ngIf="sendMessage.controls['message'].errors['required']">
+          <font color="Red">Message is required</font>
+        </span>
+        <span class="error-span"
+          *ngIf="!sendMessage.controls['message'].errors['required'] && sendMessage.controls['message'].errors['maxlength']">
+          <font color="Red">Max 500 characters allowed</font>
+        </span>
+      </div>
+      <p-footer>
+        <button type="button" class="btn btn-send-message" [disabled]="disableSubmit"
+          (click)="send_Message(sendMessage.valid)">
+          Send
+        </button>
+      </p-footer>
+    </form>
+  </p-dialog>
+</ng-container>

@@ -1,0 +1,1559 @@
+<header *ngIf="currentPage === '/home'" class="home-page">
+  <nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand" [routerLink]="['/trade']">
+      <!-- <a class="navbar-brand" [routerLink]="['/buy']"> -->
+      <img src="assets/images/logo-svg.svg" class="default-view">
+      <img src="assets/images/logo-svg-dark.svg" class="scroll-view">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 53 53" xml:space="preserve">
+          <path d="M2,13.5h49c1.104,0,2-0.896,2-2s-0.896-2-2-2H2c-1.104,0-2,0.896-2,2S0.896,13.5,2,13.5z" />
+          <path d="M2,28.5h49c1.104,0,2-0.896,2-2s-0.896-2-2-2H2c-1.104,0-2,0.896-2,2S0.896,28.5,2,28.5z" />
+          <path d="M2,43.5h49c1.104,0,2-0.896,2-2s-0.896-2-2-2H2c-1.104,0-2,0.896-2,2S0.896,43.5,2,43.5z" />
+        </svg></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/about_us']">About </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/feature']">Features</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/contact_us']">Contact</a></li>
+        <!-- <li class="nav-item"><a class="nav-link" [routerLink]="['/trader_signup']">Become a Tradie</a></li> -->
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            href={{portalLoginURL}}>Log
+            In</a></li>
+        <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            href={{portalSignUpURL}}>Sign
+            Up</a></li>
+        <!-- <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            (click)="loginRef.clickOnLogin(true)">Log
+            In</a></li>
+        <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            (click)="clickOnSignup(clickSignup)">Sign
+            Up</a></li> -->
+
+
+        <!-- <li class="nav-item" *ngIf="!displayLinks">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-profile"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-profile">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img *ngIf="isDisplayImage" [src]="env.imageUrl + 'user_image/' + user.data.image" width="40"
+                    height="40" class="rounded-circle">
+                  <img *ngIf="!isDisplayImage" src="assets/images/default_user.png" width="40" height="40"
+                    class="rounded-circle">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href={{dashboardURL}}>
+                    Dashboard
+                  </a>
+                  <a class="dropdown-item" href="javascript:void(0)" (click)="clickOnLogout()">Log Out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li> -->
+
+        <div class="dropdown profile-dropdown" *ngIf="!displayLinks">
+          <button class="btn btn-default dropdown-toggle prfl-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img [src]="env.imageUrl + 'user_image/' + user.data.image"
+              onerror="this.onerror=null;this.src='assets/images/default_user.png'" width="40" height="40" alt="A"
+              class="rounded-circle">
+          </button>
+          <div class="dropdown-menu prfl-toggle-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href={{dashboardURL}}>
+              Dashboard
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)" (click)="clickOnLogout()">Log Out</a>
+          </div>
+        </div>
+
+
+        <!-- <li class="nav-item get-app"><a class="nav-link" href="javascript:void(0)" (click)="getApp()">Get App</a></li> -->
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item get-app"><a class="nav-link" [routerLink]="['/trader_signup']">Register Trade</a></li>
+        <li class="nav-item get-app"><a class="nav-link" [routerLink]="['/agent_signup']">Register Agent</a></li>
+        <!-- <li class="nav-item get-app"><a class="nav-link" href={{portalLoginURL}}>Trade Login</a></li> -->
+        <!-- <li class="nav-item get-app"><a class="nav-link" href="javascript:void(0)" (click)="getApp()">Get App</a></li> -->
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<header *ngIf="currentPage !== '/home'" class="header" id="p-header">
+  <nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand" [routerLink]="['/trade']">
+      <img src="assets/images/logo-svg-dark.svg">
+    </a>
+    <div class="header-search"
+      *ngIf="currentPage !== '/trader' && currentPage !== '/agent_profile' && currentPage !== '/about_us' && currentPage !== '/contact_us' && currentPage !== '/feature' && currentPage !== '/agent_list'">
+      <button type="submit"></button>
+      <ng4geo-autocomplete class="google-search" (componentCallback)="autoCompleteCallback1($event)"
+        [userSettings]="userSettings">
+      </ng4geo-autocomplete>
+    </div>
+    <div class="header-search" *ngIf="currentPage === '/agent_list'">
+      <button type="submit"></button>
+      <ng4geo-autocomplete class="google-search" (componentCallback)="autoCompleteCallback($event)"
+        [userSettings]="userSettings">
+      </ng4geo-autocomplete>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 53 53" xml:space="preserve">
+          <path d="M2,13.5h49c1.104,0,2-0.896,2-2s-0.896-2-2-2H2c-1.104,0-2,0.896-2,2S0.896,13.5,2,13.5z" />
+          <path d="M2,28.5h49c1.104,0,2-0.896,2-2s-0.896-2-2-2H2c-1.104,0-2,0.896-2,2S0.896,28.5,2,28.5z" />
+          <path d="M2,43.5h49c1.104,0,2-0.896,2-2s-0.896-2-2-2H2c-1.104,0-2,0.896-2,2S0.896,43.5,2,43.5z" />
+        </svg>
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/about_us']">About</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/feature']">Features</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/contact_us']">Contact</a></li>
+        <!-- <li class="nav-item"><a class="nav-link" [routerLink]="['/trader_signup']">Become a Tradie</a></li> -->
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            href={{portalLoginURL}}>Log
+            In</a>
+        </li>
+        <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            href={{portalSignUpURL}}>Sign
+            Up</a></li>
+        <!-- <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            (click)="loginRef.clickOnLogin(true)">Log
+            In</a>
+        </li>
+        <li class="nav-item" *ngIf="displayLinks"><a class="nav-link" href="javascript:void(0)"
+            (click)="clickOnSignup(clickSignup)">Sign
+            Up</a></li> -->
+
+
+
+
+        <!-- <li class="nav-item" *ngIf="!displayLinks">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-profile"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar-profile">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img [src]="env.imageUrl + 'user_image/' + user.data.image" width="40" height="40" alt="A"
+                    class="rounded-circle">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href={{dashboardURL}}>
+                    Dashboard
+                  </a>
+                  <a class="dropdown-item" href="javascript:void(0)" (click)="clickOnLogout()">Log Out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li> -->
+
+
+
+
+        <div class="dropdown profile-dropdown" *ngIf="!displayLinks">
+          <button class="btn btn-default dropdown-toggle prfl-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img [src]="env.imageUrl + 'user_image/' + user.data.image"
+              onerror="this.onerror=null;this.src='assets/images/default_user.png'" width="40" height="40" alt="A"
+              class="rounded-circle">
+          </button>
+          <div class="dropdown-menu prfl-toggle-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href={{dashboardURL}}>
+              Dashboard
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)" (click)="clickOnLogout()">Log Out</a>
+          </div>
+        </div>
+
+
+
+        <!-- <li class="nav-item get-app"><a class="nav-link" href="#">Get App</a></li> -->
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item get-app"><a class="nav-link" [routerLink]="['/trader_signup']">Register Trade</a></li>
+        <li class="nav-item get-app"><a class="nav-link" [routerLink]="['/agent_signup']">Register Agent</a></li>
+        <!-- <li class="nav-item get-app"><a class="nav-link" href={{portalLoginURL}}>Trade Login</a></li> -->
+        <!-- <li class="nav-item get-app"><a class="nav-link" href="javascript:void(0)" (click)="getApp()">Get App</a></li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <section class="filter" *ngIf="currentPage === '/property_list'">
+    <div class="filter-l" id="filter-l">
+      <div id="nav-icon2" (click)="addClass()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="filter-l-ul">
+        <li>
+          <a href="javascript:void(0);">
+            <ng-container *ngFor="let op of labelswithvalue; let i=index">
+              <ng-container *ngIf="op.label == 'Price'">
+                <ng-container *ngIf="op.value && op.value?.length > 0">
+                  <!-- <span class="price-tab">{{rangeValues[0] |currency:'AUD':'symbol-narrow':'1.0'}} -
+                    {{ rangeValues[1] |currency:'AUD':'symbol-narrow':'1.0' }}</span> -->
+                  <span class="price-tab">{{rangeValues[0] |currency:'AUD':'symbol-narrow':'1.0'}} -
+                    {{ rangeValues[1] |currency:'AUD':'symbol-narrow':'1.0' }}
+                    {{activeType === 'rent' && rangeValues[1] === 5000 ? '+' : '' }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="op.value && op.value?.length <= 0">
+                  Price
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </a>
+          <div id="price-slider" class="filter-l-dropdown">
+            <ul>
+              <li>
+                <p-slider [(ngModel)]="rangeValues" (onChange)="searchPriceOnClick($event)" (onSlideEnd)="searchPrice()"
+                  [range]="true" [min]="activeType === 'sale' ? minPriceRange['sale'] : minPriceRange['rent']"
+                  [max]="activeType === 'sale' ? maxPriceRange['sale'] : maxPriceRange['rent']"></p-slider>
+                <div class="row">
+                  <h6 class="slider-min-value col-sm-6">{{rangeValues[0] |currency:'AUD':'symbol-narrow':'1.0'}}</h6>
+                  <!-- <h6 class="slider-max-value col-sm-6">{{rangeValues[1] |currency:'AUD':'symbol-narrow':'1.0'}}</h6> -->
+                  <h6 class="slider-max-value col-sm-6">{{rangeValues[1] |currency:'AUD':'symbol-narrow':'1.0'}}
+                    {{activeType === 'rent' && rangeValues[1] === 5000 ? '+' : '' }}
+                  </h6>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="javascript:void(0);">
+            <ng-container *ngFor="let op of labelswithvalue; let i=index">
+              <ng-container *ngIf="op.label == 'Property Type'">
+                <ng-container *ngIf="op.value && op.value?.length == '1'">
+                  <span class="price-tab">{{op.value}}</span>
+                </ng-container>
+                <ng-container *ngIf="op.value?.length > '1'">
+                  <span class="price-tab">Property Types - {{op.value?.length}}</span>
+                </ng-container>
+                <ng-container *ngIf="op.value?.length == '0'">
+                  Property Types
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </a>
+          <div class="filter-l-dropdown">
+            <ul>
+              <li>
+                <div>
+                  <input id="propertyType-0" class="checkbox-custom" value="Any" type="checkbox"
+                    (change)="selectPropertyType($event, 'Any')">
+                  <label for="propertyType-0" class="checkbox-custom-label">Any</label>
+                </div>
+              </li>
+              <li *ngFor="let op of propertyOptionsArray; let i=index">
+                <div>
+                  <input id="propertyType-{{i+1}}" class="checkbox-custom" value="{{op.value}}" type="checkbox"
+                    (change)="selectPropertyType($event, op.value)" [checked]="op.checked">
+                  <label for="propertyType-{{i+1}}" class="checkbox-custom-label">{{ op.label}}</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Bedrooms
+            <ng-container *ngFor="let op of labelswithvalue; let i=index">
+              <ng-container *ngIf="op.label == 'Bedrooms'">
+                <ng-container *ngIf="op.value">
+                  <span class="price-tab">- {{op.value}}+</span>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </a>
+          <div class="filter-l-dropdown">
+            <ul>
+              <li *ngFor="let obj of radioOptions">
+                <div *ngIf="obj.id === selectedBedrooms">
+                  <input id="bedroom-{{obj.id}}" class="radio-custom" name="bedrooms" value="{{obj.id}}" type="radio"
+                    (change)="selectBedrooms(obj.id)" checked>
+                  <label for="bedroom-{{obj.id}}" class="radio-custom-label">{{ obj.label }}</label>
+                </div>
+                <div *ngIf="obj.id !== selectedBedrooms">
+                  <input id="bedroom-{{obj.id}}" class="radio-custom" name="bedrooms" value="{{obj.id}}" type="radio"
+                    (change)="selectBedrooms(obj.id)">
+                  <label for="bedroom-{{obj.id}}" class="radio-custom-label">{{ obj.label }}</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Bathrooms
+            <ng-container *ngFor="let op of labelswithvalue; let i=index">
+              <ng-container *ngIf="op.label == 'Bathrooms'">
+                <ng-container *ngIf="op.value">
+                  <span class="price-tab">- {{op.value}}+</span>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </a>
+          <div class="filter-l-dropdown">
+            <ul>
+              <li *ngFor="let obj of radioOptions">
+                <div *ngIf="obj.id === selectedBathrooms">
+                  <input id="bathroom-{{obj.id}}" class="radio-custom" name="bathrooms" value="{{obj.id}}" type="radio"
+                    (change)="selectBathrooms(obj.id)" checked>
+                  <label for="bathroom-{{obj.id}}" class="radio-custom-label">{{ obj.label }}</label>
+                </div>
+                <div *ngIf="obj.id !== selectedBathrooms">
+                  <input id="bathroom-{{obj.id}}" class="radio-custom" name="bathrooms" value="{{obj.id}}" type="radio"
+                    (change)="selectBathrooms(obj.id)">
+                  <label for="bathroom-{{obj.id}}" class="radio-custom-label">{{ obj.label }}</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Parkings
+            <ng-container *ngFor="let op of labelswithvalue; let i=index">
+              <ng-container *ngIf="op.label == 'Parkings'">
+                <ng-container *ngIf="op.value">
+                  <span class="price-tab">- {{op.value}}+</span>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </a>
+          <div class="filter-l-dropdown">
+            <ul>
+              <li *ngFor="let obj of radioOptions">
+                <div *ngIf="obj.id === selectedParkings">
+                  <input id="parking-{{obj.id}}" name="parkings" class="radio-custom" value="{{obj.id}}" type="radio"
+                    (change)="selectParkings(obj.id)" checked>
+                  <label for="parking-{{obj.id}}" class="radio-custom-label">{{ obj.label }}</label>
+                </div>
+                <div *ngIf="obj.id !== selectedParkings">
+                  <input id="parking-{{obj.id}}" name="parkings" class="radio-custom" value="{{obj.id}}" type="radio"
+                    (change)="selectParkings(obj.id)">
+                  <label for="parking-{{obj.id}}" class="radio-custom-label">{{ obj.label }}</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="javascript:void(0);">More options
+            <ng-container *ngFor="let op of labelswithvalue; let i=index">
+              <ng-container *ngIf="op.label == 'More options'">
+                <ng-container *ngIf="op.value?.length >= '1'">
+                  <span class="price-tab">- {{op.value?.length}}</span>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </a>
+          <div class="filter-l-dropdown">
+            <ul>
+              <li>
+                <div class="new-established">
+                  <label>New/Established</label>
+                  <!-- <p-dropdown [options]="cities1" [(ngModel)]="selectedCity1"></p-dropdown> -->
+                  <select [(ngModel)]="selectedPropertyEstablishedType"
+                    (change)="searchNewEstablished($event.target.value)">
+                    <ng-container *ngFor="let obj of newEstablishedArray">
+                      <option value="{{obj.value}}">{{ obj.label }}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </li>
+              <li>
+                <div class="landsize">
+                  <label>Land Size</label>
+                  <div class="d-flex">
+                    <div class="landsize-input">
+                      <input type="text" name="minLandSize" [(ngModel)]="selectedMinLandArea" maxlength="10"
+                        placeholder="eg.100" (change)="selectminLandArea($event.target.value)"
+                        (keypress)="restrictAlphabets($event)">
+                      <i>m<sup>2</sup></i>
+                    </div>
+                    <div class="landsize-input">
+                      <input type="text" name="maxLandSize" [(ngModel)]="selectedMaxLandArea" maxlength="10"
+                        placeholder="eg.500" (change)="selectmaxLandArea($event.target.value)"
+                        (keypress)="restrictAlphabets($event)">
+                      <i>m<sup>2</sup></i>
+                    </div>
+                  </div>
+                  <div class="land-error" *ngIf="LandError">
+                    <h6>{{ LandAreaErrorMsg }}</h6>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3></h3>
+                  <ul>
+                    <li *ngFor="let o of locationOptionsArray; let i=index">
+                      <div>
+                        <input id="nearby-suburb" class="checkbox-custom" name="nearby-suburb" type="checkbox"
+                          (change)="selectOtherOptions($event, o.value)" [checked]="o.checked">
+                        <label for="nearby-suburb" class="checkbox-custom-label">{{o.label}}</label>
+                        <!-- { label: 'Search Nearby suburbs', checked: true, value: 'SearchNearbySuburbs' }, -->
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="features-checkbox">
+                  <h3>Features</h3>
+                  <ul>
+                    <li *ngFor="let feature of featureOptionsArray; let i=index">
+                      <div>
+                        <input id="feature-{{i}}" class="checkbox-custom" name="feature-{{i}}" type="checkbox"
+                          (change)="selectFeatureType($event, feature.value)" [checked]="feature.checked">
+                        <label for="feature-{{i}}" class="checkbox-custom-label">{{ feature.value }}</label>
+                      </div>
+                    </li>
+                    <!-- <li>
+                          <div>
+                            <input id="checkbox-12" class="checkbox-custom" name="checkbox-12" type="checkbox">
+                            <label for="checkbox-12" class="checkbox-custom-label">Built in wardrobes</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div>
+                            <input id="checkbox-13" class="checkbox-custom" name="checkbox-13" type="checkbox">
+                            <label for="checkbox-13" class="checkbox-custom-label">Gas</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div>
+                            <input id="checkbox-14" class="checkbox-custom" name="checkbox-14" type="checkbox">
+                            <label for="checkbox-14" class="checkbox-custom-label">Garden / courtyard</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div>
+                            <input id="checkbox-15" class="checkbox-custom" name="checkbox-15" type="checkbox">
+                            <label for="checkbox-15" class="checkbox-custom-label">Balcony / deck</label>
+                          </div>
+                        </li>
+                        <li>
+                          <div>
+                            <input id="checkbox-16" class="checkbox-custom" name="checkbox-16" type="checkbox">
+                            <label for="checkbox-16" class="checkbox-custom-label">Internal laundry</label>
+                          </div>
+                        </li> -->
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="keywords">
+                  <label>keywords</label>
+                  <input type="text" name="keyword" (change)="selectKeyword($event.target.value)"
+                    [(ngModel)]="selectedKeyword" placeholder="Enter any keyword">
+                </div>
+              </li>
+              <li>
+                <div class="more-option-div" *ngIf="isSubmit">
+                  <a class="more-option-button" (click)="confirmMoreOptions()">Submit</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="filter-r">
+      <ul class="property-type-wrapper">
+        <li [ngClass]="{'active': activeType == 'sale'}"><a (click)="searchType('sale')">Buy</a></li>
+        <li [ngClass]="{'active': activeType == 'rent'}"><a (click)="searchType('rent')">rent</a></li>
+      </ul>
+      <!-- <div class="showmap-view">
+          <small>SHOW MAP</small>
+          <div class="switch">
+            <input type="checkbox" checked>
+            <label>
+              <span class="fontawesome-ok"></span>
+              <span class="fontawesome-remove"></span>
+              <div></div>
+            </label>
+          </div>
+        </div>   -->
+    </div>
+  </section>
+</header>
+
+<!-- ,height:'85%',minHeight:'85%' -->
+<ng-container *ngIf="clickSignup">
+  <p-dialog header="Create Your Account" [(visible)]="clickSignup" [style]="{width:'685px',minWidth:'685px'}"
+    [draggable]="true" [modal]="true" [responsive]="true" [maximizable]="true" class="login-regiter-form signup-form">
+    <form class="row" [formGroup]="signupForm">
+      <!-- Firstname -->
+      <div class="col-md-6 form-group">
+        <label>Firstname<span class="text-danger">*</span></label>
+        <div class="input-wrap">
+          <input type="text" name="firstname" class="form-control" formControlName="firstname"
+            [(ngModel)]="signupData.firstname" placeholder="Enter Firstname">
+        </div>
+        <div *ngIf="form_validation && !signupForm.controls['firstname'].valid">
+          <span class="text-danger" *ngIf="signupForm.controls['firstname'].errors['required']">Firstname is required
+          </span>
+        </div>
+      </div>
+      <!-- Lastname -->
+      <div class="col-md-6 form-group">
+        <label>Lastname<span class="text-danger">*</span></label>
+        <div class="input-wrap">
+          <input type="text" name="lastname" class="form-control" placeholder="Enter Lastname"
+            formControlName="lastname" [(ngModel)]="signupData.lastname">
+        </div>
+        <div *ngIf="form_validation && !signupForm.controls['lastname'].valid">
+          <span class="text-danger" *ngIf="signupForm.controls['lastname'].errors['required']">Lastname is required
+          </span>
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="col-md-6 form-group">
+        <label>Email<span class="text-danger">*</span></label>
+        <div class="input-wrap">
+          <input type="text" name="email" class="form-control" placeholder="Enter Email" formControlName="email"
+            [(ngModel)]="signupData.email">
+        </div>
+        <div *ngIf="form_validation && !signupForm.controls['email'].valid">
+          <span class="text-danger" *ngIf="signupForm.controls['email'].errors['required']">Email is required
+          </span>
+          <span
+            *ngIf="!signupForm.controls['email'].errors['required'] && signupForm.controls['email'].errors['pattern']"
+            class="text-danger">Please enter valid email.
+          </span>
+        </div>
+      </div>
+      <!-- Phone Number -->
+      <div class="col-md-6 form-group">
+        <label>Mobile<span class="text-danger">*</span></label>
+        <div class="input-wrap">
+          <input type="text" maxlength="10" minlength="10" name='mobile_no' class="form-control"
+            placeholder="Enter Mobile" formControlName="mobile_no" [(ngModel)]="signupData.mobile_no">
+        </div>
+        <div *ngIf="form_validation && !signupForm.controls['mobile_no'].valid">
+          <span class="text-danger" *ngIf="signupForm.controls['mobile_no'].errors['required']">Mobile is required
+          </span>
+        </div>
+      </div>
+      <!-- Password Number -->
+      <div class="col-md-6 form-group">
+        <label>Password<span class="text-danger">*</span></label>
+        <div class="input-wrap">
+          <input type="password" name='password' class="form-control" placeholder="Enter Password"
+            formControlName="password" [(ngModel)]="signupData.password">
+        </div>
+        <div *ngIf="form_validation && !signupForm.controls['password'].valid">
+          <span class="text-danger" *ngIf="signupForm.controls['password'].errors['required']">Password is required
+          </span>
+          <span class="text-danger"
+            *ngIf="!signupForm.controls['password'].errors['required'] && signupForm.controls['password'].errors['pattern']">
+            Password must have 8 characters and combination of numbers and letters.
+            <!-- Password must contain:
+            <ul class="password-rules">
+              <li>Password must have 8 characters and combination of numbers and letters.</li>
+              <li>At least 8 characters.</li>
+              <li>At least one uppercase letter.</li>
+              <li>At least one lowercase letter.</li>
+              <li>At least one number.</li>
+              <li>At least one symbol.</li>
+            </ul> -->
+          </span>
+        </div>
+      </div>
+      <!-- Confirm Number -->
+      <div class="col-md-6 form-group">
+        <label>Confirm Password<span class="text-danger">*</span></label>
+        <div class="input-wrap">
+          <input type="password" name='conf' class="form-control" placeholder="Enter confirm password"
+            formControlName="conf" [(ngModel)]="signupData.conf">
+        </div>
+        <div *ngIf="form_validation && !signupForm.controls['conf'].valid">
+          <span *ngIf="signupForm.controls['conf'].errors['required']" class="text-danger">This field
+            is required.</span>
+          <span
+            *ngIf="!signupForm.controls['conf'].errors['required'] && signupForm.controls['conf'].errors['minlength']"
+            class="text-danger">Confirm password must be 6 character long.</span>
+          <span
+            *ngIf="!signupForm.controls['conf'].errors['required'] && signupForm.controls['conf'].errors['mismatch']"
+            class="text-danger">Password do not match.</span>
+        </div>
+      </div>
+      <!-- SUBMIT -->
+      <div class="keep-signed">
+        <div class="form-group">
+          <input type="checkbox" id="understand-agree" formControlName="agreement" (change)="onChange($event)"
+            [(ngModel)]="signupData.agreement">
+          <label for="understand-agree">Yes i understand and agree to
+            <a (click)="clickTerms = true">
+              Ownly Conditions</a> including
+            <a href="javascript:void(0)">User agreement</a>
+            and
+            <a (click)="clickPrivacy = true">
+              <!-- <a (click)="onClickPrivacy()"> -->
+              Privacy Policy.</a></label>
+        </div>
+        <div
+          *ngIf="form_validation && !signupForm.controls['agreement'].valid || signupForm.controls['agreement']?.touched">
+          <span class="text-danger" *ngIf="signupForm.controls['agreement']?.errors || !signupData.agreement">Are you
+            agree?
+          </span>
+        </div>
+      </div>
+      <div class="col-md-12 request-btm-btn">
+        <button type="submit" (click)="clickOnFormSubmit(signupForm.valid)" [disabled]="disableSubmit">SUBMIT</button>
+      </div>
+    </form>
+    <div style="text-align:center;margin-top:10px;cursor: pointer;">
+      <a class="group" href="javascript:void(0)" (click)="open('../../../assets/images/Consumer_Sign_up.mp4')">
+        ▶️ Watch <span style="color: white">How to Signup on Ownly</span>
+      </a>
+      <div id="id01" class="w3-modal video-hidden">
+        <div class="w3-container video-center">
+          <button class="btn btn-link close video-close-btn" (click)="close()">x</button>
+          <video id="vid" class="w-100" src="" controls></video>
+        </div>
+      </div>
+    </div>
+    <div class="or-div">
+      <span>Or</span>
+    </div>
+    <div class="login-other-option">
+      <a (click)="socialLogin('google')" class="google-login"> <i><img src="./assets/images/icon-google.png"
+            alt="" /></i>
+        SIGN UP WITH GOOGLE
+      </a>
+      <a (click)="socialLogin('facebook')" class="facebook-login"> <i><img src="./assets/images/icon-facebook.png"
+            alt="" /></i>
+        SIGN UP WITH FACEBOOK
+      </a>
+    </div>
+
+
+    <div class="dont-have">
+      Have an account? <a href="javascript:void(0)" (click)="clickOnlogin()">SIGN IN HERE</a>
+    </div>
+  </p-dialog>
+</ng-container>
+
+
+<ng-container>
+  <p-dialog class="term-condition" header="MARKETPLACE OPERATOR WEBSITE TERMS OF USE" [(visible)]="clickTerms"
+    [modal]="true" [responsive]="true" [maximizable]="true">
+
+    <div class="marketplace-boxs">
+      <h4>1. ABOUT THE WEBSITE</h4>
+      <p>Thank you for using our website located at <a href="https://www.ownly.com.au" target="_blank"
+          style="font-weight:normal;  text-decoration: none !important;">https://www.ownly.com.au</a> (“
+        <strong>Platform</strong>
+        ”). This
+        Platform is operated by Ownly Pty Ltd (ACN 613 813 219) (“<strong>Marketplace Operator</strong>”).</p>
+      <p>Ownly Pty Ltd an online marketplace that connects trades people (“<strong>Contractors</strong>”) with
+        customers (“<strong>Customers</strong>”) in their local area (our “<strong>Services</strong>”).
+      </p>
+      <p>These terms of use (“<strong>Terms</strong>”), along with our ‘<a (click)="clickPrivacy = true">Privacy
+          Policy</a>’ which form a
+        part of these
+        Terms, govern your use of the Platform.</p>
+      <p>Any reference herein to “Ownly”, “we”, “our”, or “us” means Marketplace Operator (ACN 613
+        813 219). Any reference to “you” or “your” or “Subscriber” means you, as a user of the
+        Platform either as a Contractor or a Customer.
+      </p>
+      <p>We may update these Terms from time to time. Any changes to these Terms will be effective
+        from the date published on our Platform.</p>
+      <p>
+        By using the Platform, you agree that you are bound by these Terms. If you do not agree to
+        these Terms you must not use the Platform or any part of our Services.
+      </p>
+    </div>
+
+
+    <div class="marketplace-boxs">
+      <h4>2. REGISTRATION AND ACCEPTANCE</h4>
+      <p>By registering for an account (‘<strong>Subscriber Account</strong>’) as a Contractor or Customer, you will
+        be required to accept our Terms and <a (click)="clickPrivacy = true">Privacy Policy</a> by clicking the
+        “register”
+        button in the
+        user interface as a condition of joining as a subscriber (‘<strong>Subscriber</strong>’). By clicking the
+        “register” button you agree to all the terms and conditions of our Terms and <a
+          (click)="clickPrivacy = true">Privacy Policy</a>
+        listed on this Platform by Marketplace Operator which gives notice to you through our user
+        interface as follows:
+      </p>
+      <p>By <strong>Registering</strong>, you agree that you've read and accepted our website Terms and
+        Conditions and you consent to our Privacy Policy.</p>
+      <p>As part of the registration process for our Services, you may create only one Subscriber
+        Account and must provide current, complete and accurate identification, and other
+        information required during the registration process, including but not limited to:</p>
+      <ul>
+        <li>name (name, business or company);</li>
+        <li>address;</li>
+        <li>phone number;</li>
+        <li>email;</li>
+        <li>password;</li>
+        <li>other information as applicable to set up and administer your Subscriber Account to
+          access the Services.</li>
+      </ul>
+      <p>(“<strong>Registration Data</strong>”).</p>
+      <p>By visiting, registering for, or using the Platform and Services, you agree that we may send
+        you SMS messages or direct communications to the email address you provide.</p>
+      <p>If your Registration Data changes, you must promptly update your Subscriber Account to reflect those changes.
+      </p>
+      <p>Marketplace Operator reserves the right to deny anyone access to a Subscriber Account at
+        any time for breach of these Terms.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>3. SUBSCRIBER OBLIGATIONS</h4>
+      <p>As a Subscriber, you agree that:</p>
+      <ol type="a">
+        <li>the Subscriber Account is personal to you or your business or company, depending
+          on the subscription purchased;</li>
+        <li>you are solely responsible for maintaining the confidentiality of your Subscriber
+          Account and the secrecy of your Subscriber ID and password (“<strong>Login Details</strong>”); </li>
+        <li>you must not authorize or permit a third party to access your Subscriber Account by
+          using your Login Details;
+        </li>
+        <li>you must not impersonate, misrepresent your identity or imitate any person when
+          registering for a Subscriber Account;
+        </li>
+        <li>if you think your Registration Data or Subscriber Account has been compromised in
+          any way including as to your Login Details, you should contact us immediately;</li>
+        <li>your access to and use of the Platform and Services is non-transferable;</li>
+        <li>you will use the Platform and Services only for purposes permitted by the Terms;</li>
+        <li>we may make changes to the Services from to time to time without prior notice; and</li>
+        <li>you will abide by any applicable law, regulation or generally accepted practices or
+          guidelines related to the Services in the relevant jurisdictions.</li>
+      </ol>
+      <p>We reserve the right in our sole discretion to deny anyone access to a Subscriber Account.</p>
+      <p>If the use of your Subscriber Account breaches these Terms or shows signs of fraud, abuse
+        or suspicious activity, Marketplace Operator may cancel any listings associated with your
+        Subscriber Account. In addition, we may:</p>
+      <ol type="a">
+        <li>suspend your Subscriber Account, or</li>
+        <li>cancel your Subscriber Account </li>
+      </ol>
+      <p>at any time in our sole discretion without notice or explanation.</p>
+    </div>
+
+
+    <div class="marketplace-boxs">
+      <h4>4. USE OF THE SITE AND SERVICES</h4>
+      <p>Contractors and Customers warrant as a condition of their use of and access to our
+        Platform and Services that:
+      </p>
+      <ol type="a">
+        <li>they are authorised to enter a legally binding contract if they are using the
+          Services on behalf of another person or entity;
+        </li>
+        <li>they are not a person prohibited from receiving the Services under any applicable
+          laws. </li>
+      </ol>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>5. SUBSCRIPTION FEES AND REFUNDS</h4>
+      <p>To validate your subscription to the Platform, you must have a registered Subscriber
+        Account.</p>
+      <p>If you are a Contractor you must pay the monthly subscription fee advertised on our Platform
+        (‘<strong>Monthly Subscription Fee</strong>’) payable on signing up to our Platform, but subject to any
+        discount you may of received and thereafter payable automatically on a recurring monthly
+        basis.</p>
+      <p>If you are a Customer, you may pay a service fee (‘<strong>Service Fee</strong>’) the amount of which is
+        advertised on our Platform.</p>
+      <p> Payment must be made through the gateway provider nominated on our Platform
+        (‘<strong>Payment Processing Service</strong>’). In using the Payment Processing Service, you warrant
+        that you have familiarised yourself with, and agree to be bound by, the applicable Terms
+        and Conditions of Use, Privacy Policy and other relevant legal documentation provided by
+        the Payment Processing Service, including the relevant fees and charges applied by the
+        Payment Processing Service for online payment gateway services. </p>
+      <p>Subscriptions for Contractor will be automatically renewed on a monthly basis for the
+        Subscription Period assigned to a Subscriber account. Subscriptions are charged to
+        Contractor on a recurring basis without further authorization from Contractor unless
+        Contractor’s Subscriber Account is terminated in accordance with these Terms.</p>
+      <p>Your order for a subscription will represent an offer to us from you to obtain a limited license
+        for the use of the Services that is accepted by us when we activate the Services available
+        in your Subscriber Account or debit your credit card or accept payment from you through
+        the Payment Processing Service.</p>
+      <p>All subscription purchases are final and not refundable, transferable or exchangeable,
+        except where otherwise required by law, or pursuant to these Terms.</p>
+      <p>If there are payment failures due to insufficient funds, incorrect or outdated payment
+        information, Platform Operator reserves the right to:
+      </p>
+      <ol type="a">
+        <li>recover payment and deny a Subscriber access to our Services;</li>
+        <li>cancel or suspend a Subscriber Account if we are unable to process the fees for our
+          Services;</li>
+      </ol>
+      <p>Subscribers agree that Platform Operator may electronically store Registration Data in
+        accordance with our <a (click)="clickPrivacy = true">Privacy Policy</a> and payment information to process
+        subscription
+        payments.</p>
+      <p>The Services delivered to the Subscriber Account are exclusive and personal to the
+        individual Subscriber or the business or company Subscriber is employed by. Subscribers
+        must only permit authorised persons to use any of the Services that Platform Operator
+        delivers to the Subscriber Account under these Terms.
+      </p>
+      <p>We may suspend or terminate a Subscriber Account if any misuse of fraudulent activity is
+        detected. </p>
+      <p>Subscriber Accounts are not transferrable and are not redeemable for cash. Access to the Services will be
+        disabled when Subscriber Account is suspended, terminated or Subscriber
+        subscription ends.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>6. INTELLECTUAL PROPERTY</h4>
+      <p>In these Terms:</p>
+      <p>“<strong>Intellectual Property (Rights)</strong>” means all intellectual property rights, including all
+        copyright, patents, trade marks, design rights, trade secrets, circuit layouts, domain names,
+        know-how and other rights of a similar nature worldwide, whether registered or not, and any
+        applications for registration or rights to make such an application.</p>
+      <p>“<strong>Works</strong>” means any material made available on the Platform and our Services, including
+        (without limitation) written texts, documents, articles, news, newsletters, posts,
+        commentaries, surveys, data, forms, questionnaires, photographs, pictures, graphic works,
+        video, or images.</p>
+      <p>You acknowledge that ownership of the Intellectual Property Rights relating to the Platform
+        or our Services is the property of, licensed by or vest on creation in Platform Operator.</p>
+      <p>The Works on the Platform or generated by or related to any of our Services (“<strong>Copyright
+          Material</strong>”) are subject to copyright and owned by the copyright owner. The Copyright
+        Material on the Platform is protected by copyright under the laws of Australia and through
+        international treaties. Unless otherwise indicated, all rights (including copyright) in the
+        Copyright Material and compilation of the Platform (including but not limited to text,
+        graphics, logos, button icons, video images, audio clips, code, scripts, design elements and
+        interactive features) are owned or controlled by us. Data procured from a third party may
+        be the subject of copyright owned by that third party.</p>
+      <p>The Platform or any part of it (including, without limitation, any content or images) may not
+        be copied, reproduced, adapted, publicly displayed, duplicated, translated or distributed in
+        any way (including mirroring) to any other device, server, site or other medium for
+        publication or distribution, without our express prior written consent. Subscribers must not
+        infringe the Intellectual Property Rights owned in or licensed via our Services from
+        unauthorised use, copying, reproduction, lending, reselling, manipulation, disassembly,
+        distribution or publication.</p>
+      <p>All Intellectual Property including any trade marks, service marks, trade names and any
+        other proprietary designations are owned, registered or licensed by us. Any other trade
+        marks, service marks, logos, trade names and any other proprietary designations are the
+        trade marks or property of the respective parties.</p>
+      <p>The obligations accepted by Subscribers under this clause survive termination or expiry of
+        these Terms.
+      </p>
+    </div>
+
+
+    <div class="marketplace-boxs">
+      <h4>7. WARRANTIES AND REPRESENTATIONS</h4>
+      <p>To the maximum extent permitted by law, we exclude all representations and warranties
+        relating to the subject matter of these Terms, our Platform and the use of our Services.
+        Nothing in the Terms limits or excludes any guarantees, warranties, representations or
+        conditions implied or imposed by law, including the Australian Consumer Law (or any
+        liability under them) which by law may not be limited or excluded.</p>
+      <p>We do not warrant or represent</p>
+      <ol type="a">
+        <li>the completeness or accuracy of the information published on our Platform;</li>
+        <li>that the material on the Platform is up to date; or</li>
+        <li>that the Platform or any Services on the Platform will remain available.</li>
+      </ol>
+      <p>The use of the Platform and Services is at your sole and exclusive risk. Everything on the
+        Platform and made part of the Services is provided to you without warranty or condition of
+        any kind. None of the affiliates, directors, officers, employees, agents, contributors and
+        licensors of Platform Operator make any express or implied representation or warranty
+        about the Services or any services advertised on the Platform.
+      </p>
+      <p>To the extent permissible at law, you agree that we, our affiliates or subsidiaries, or any of
+        our directors, officers, employees, partners, agents, contributors, and licensors shall not be
+        liable to you or any third party for any:</p>
+      <ol type="a">
+        <li>loss of profit or opportunity;</li>
+        <li>damage to goodwill or business reputation and any other intangible loss;</li>
+        <li>special, direct, indirect, incidental, punitive, exemplary or consequential damages
+          whatsoever or any other losses, costs or expenses of any kind, including loss of data,
+          legal fees, expert fees, cost of procuring substitute services, or any other
+          disbursements
+        </li>
+      </ol>
+      <p>whether arising, directly or indirectly, from your reliance on, access to, use of, or inability to
+        access or use, the Platform and Services provided therein, or through downloading of any
+        materials, data, text, images, video or audio from the Platform, whether in common law,
+        under contract, tort (including negligence), in equity, pursuant to statute or otherwise.</p>
+      <p>Platform Operator makes no warranty as to the truth, suitability, quality or accuracy of any
+        content or information provided to you, including, but not limited to, the ability of a Subscriber
+        to complete a supply of services, expertise or experience to qualify for joining as a
+        Subscriber.</p>
+      <p>Platform Operator does not make any representation or warranty with respect to or endorse
+        any Subscriber as to their identity, expertise or background. Any review, feedback or rating
+        of a Subscriber is not a guarantee of the outcome of the products or services offered by that
+        Subscriber and Platform Operator will have no responsibility or liability of any kind for the
+        performance of the Subscriber. Any use of or reliance on the services of a Subscriber is
+        solely at Customer’s risk.</p>
+      <p>We reserve the right to discontinue or alter any of the Services on the Platform, and to stop
+        publishing our Platform or any content contained therein, at any time in our sole discretion
+        without notice. Save to the extent expressly provided otherwise in these Terms, you will not
+        be entitled to any compensation or other payment upon the discontinuance or alteration of
+        any Services, or if we stop publishing the Platform.</p>
+      <p>Platform Operator services are provided “as is” and “as available”, without any
+        representation of warranty, whether express, implied, or statutory. The use of the Platform
+        Operator services is at your own risk. Platform Operator and its respective officers,
+        directors, agents, employees, and suppliers, specifically disclaim any implied warranties of
+        merchantability, fitness for a particular purpose, and non-infringement.</p>
+      <p>Platform Operator has no control of, or liability for, any services that are paid for using the
+        Platform Operator services and cannot ensure that any third party you transact with will
+        complete the transaction. Platform Operator does not represent or warrants that the
+        Platform Operator services will meet your requirements, be continuous, uninterrupted,
+        secure, timely, or error-free, or that defects will be corrected.</p>
+      <p>No advice or information, whether oral or written, obtained by you from Platform Operator
+        or through the Platform Operator services will create any warranty not expressly stated
+        herein. Platform Operator shall not be responsible for any service interruptions or system
+        failures that may affect the processing, completion, or settlement of Platform Operator
+        services transactions. The disclaimer of this warranties and representations section shall
+        apply to the fullest extent permitted by law in the applicable jurisdiction.
+      </p>
+      <p>As a Subscriber of the Platform or Services, you represent and warrant that you:</p>
+      <ol type="a">
+        <li>are legally permitted to use and access the Services;</li>
+        <li>take full responsibility for the selection and use of the Services;</li>
+        <li>are solely responsible for the accuracy of the Subscriber Data and Registration Data;</li>
+        <li>agree that Platform Operator does not control, verify, or endorse any Subscriber Data
+          uploaded or submitted to the Platform and the Services;</li>
+        <li>are solely responsible for creating backups of Subscriber Data and Registration Data;</li>
+        <li>in relation to Subscriber Data, that Subscriber owns it or is lawfully entitled to access
+          and store it on the Platform or is licensed to use the Intellectual Property Rights in it
+          and that the use of the Subscriber Data will not be contrary to any law or result in the
+          infringement of any of the proprietary rights of third parties.</li>
+        <li>Subscriber warrants that the Subscriber Data is not in contravention of any legislation or
+          any advertising or marketing laws or any other third-party rights.
+        </li>
+        <li>This clause survives the termination or expiry of these Terms for whatever reason</li>
+      </ol>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>8. LIMITATION OF LIABILILITY </h4>
+      <p>To the extent permissible at law, you agree that we, our affiliates or subsidiaries, or any of
+        our directors, officers, employees, partners, agents, contributors, and licensors shall not be
+        liable to you or any third party for any:</p>
+      <ol type="a">
+        <li>loss of profit or opportunity (whether incurred directly or indirectly);</li>
+        <li>damage to goodwill or business reputation and any other intangible loss;</li>
+        <li>special, direct, indirect, incidental, punitive, exemplary or consequential damages
+          whatsoever or any other losses, costs or expenses of any kind, including loss of data,
+          legal fees, expert fees, cost of procuring substitute services, or any other
+          disbursements arising, directly or indirectly, from your reliance on, access to, use of,
+          or inability to access or use, the Platform and any other content provided therein, or
+          through downloading of any materials, data, text, images, video or audio from the
+          Platform, whether in common law, under contract, tort (including negligence), in
+          equity, pursuant to statute or otherwise.
+        </li>
+      </ol>
+      <p>Platform Operator makes no warranties or representations regarding the content of the
+        Platform, or the content of any sites linked to the Platform, or that the Platform and our
+        Services will be uninterrupted or error-free. Platform Operator assumes no liability or
+        responsibility for any:</p>
+      <ol type="a">
+        <li>errors, defects, mistakes, or inaccuracies of content on the Platform;</li>
+        <li>unauthorised access to or use of the Platform’s servers, personal information or
+          financial information stored therein;</li>
+        <li>interruption or cessation of transmission to or from the Services;</li>
+        <li>bugs, viruses, harmful components, trojan horses, or the like which may be
+          transmitted to or through the Services by any third party;</li>
+        <li>errors or omissions in any content or for any loss or damage of any kind incurred
+          because of the use of any content posted, emailed, transmitted, or otherwise made
+          available via the Services;</li>
+        <li>human action or inaction of any computer system, phone line, hardware, software or
+          program malfunctions, or any other errors, failures or delays in computer
+          transmissions or network connections through your access to or use of the Services;</li>
+        <li>quality, accuracy, completeness and validity of any information or materials in
+          connection with the Services.</li>
+      </ol>
+      <p>Our Services are provided “as is” and specific results cannot be guaranteed. It is your sole
+        responsibility to determine that the Services or any part of these meet your needs or are
+        otherwise suitable for the purposes for which they are used.</p>
+      <p>These Terms are to be read subject to any legislation that prohibits or restricts the exclusion,
+        restriction or modification of any implied warranties, conditions, guarantees or obligations.
+        If such legislation applies, to the extent possible Platform Operator limits our liability as
+        follows, at our option:
+      </p>
+      <ol type="a">
+        <li>for any claims relating to these Terms, to the fees payable under this agreement (if
+          applicable) pro rata for the preceding one (1) month;</li>
+        <li>in the case of products including any digital products (a) the replacement of the
+          products or the supply of equivalent products; (b) the repair of the products; (c) the
+          payment of the cost of replacing the products or of acquiring equivalent products; or
+          (d) the payment of having the products repaired; or</li>
+        <li>in the case of services, the supply of the services again or the payment of the cost of
+          having the services supplied again.</li>
+      </ol>
+      <p>This limitation applies to any supply under or related to these Terms including the supply of
+        the Services and covers loss of Subscriber Data, any viruses or other disabling features
+        that affect your access to or use of our Services, incompatibility between our Services and
+        your hardware or software, delays or failures you may have in using the Services including
+        any connections or transmissions that fail or are not completed in an accurate or timely
+        manner.</p>
+      <p>Save to any extent expressly provided otherwise in these Terms or as otherwise required
+        by law, you agree that we will not:</p>
+      <ol type="a">
+        <li>pay you any compensation or other payment upon the discontinuance or alteration of
+          the Platform in any way; and</li>
+        <li>reimburse you for any costs whatsoever incurred because of you using the Platform,
+          or any other features provided in connection to the Platform, whether purchased or
+          distributed for free.</li>
+      </ol>
+      <p>Our total liability arising out of or in connection with the Platform or these Terms, however
+        arising, whether at common law, under contract, tort (including negligence), in equity, under
+        statute or otherwise, will not exceed at our option the resupply of the Platform to you. Our
+        aggregate liability to you in respect of any contract to provide the Platform to you under
+        these Terms shall not exceed the greater of the total amount paid by you and payable to us
+        for providing the Platform Services.</p>
+      <p>This clause survives the termination or expiry of this agreement for whatever reason.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>9. INDEMNITY </h4>
+      <p>You agree to indemnify and hold Platform Operator and its officers, directors, employees
+        and agents harmless from any and all claims, demands, losses, liabilities, and expenses
+        (including attorneys’ fees) arising out of or in connection with: (a) your use of the Services
+        or services obtained through your use of the Services; (b) your breach or violation of any of
+        these Terms; (c) Platform Operator use of your Registration Data or any other of your
+        content or information; or (d) your violation of the rights of any third party, including third
+        party providers.</p>
+      <p> You hereby indemnify us, and undertake to keep us indemnified, against any and all claims,
+        losses, damages, costs, liabilities and expenses (including without limitation legal expenses
+        and any amounts paid by us to a third party in settlement of a claim or dispute) incurred or
+        suffered by us and arising directly or indirectly out of your use of our Platform or any breach
+        by you of any provision of these Terms. </p>
+      <p>This clause survives the termination or expiry of these Terms for whatever reason.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>10. BREACH </h4>
+      <p>Without prejudice to our other rights under these terms and conditions, if you breach these
+        Terms in any way, or if we reasonably suspect that you have breached these Terms in any
+        way, we may:</p>
+      <ol type="a">
+        <li>suspend your access to our Platform and Services (including your Subscriber
+          Account) </li>
+        <li>permanently prohibit you from accessing our Platform and Services; or</li>
+        <li>delete your Subscriber Account on our Platform.</li>
+      </ol>
+      <p>Where we suspend or prohibit or block your access to our Platform and Services, you must
+        not take any action to circumvent such suspension or prohibition or blocking.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>11. TERMINATION </h4>
+      <p>The Terms will continue to apply until terminated by either you or by Marketplace Operator
+        as set out below.</p>
+      <p>Termination of these Terms does not affect any contract that has been formed between
+        Contractors and Customers. A Subscriber must comply with the terms of any contract
+        entered including providing any products or services.</p>
+      <p>If you wish to terminate the Terms, you may do so by:</p>
+      <ol type="a">
+        <li>providing Marketplace Operator with 30 days' calendar notice of your intention to
+          terminate; and </li>
+        <li>closing your Subscriber Account for all the Services which you use, where
+          Marketplace Operator has made this option available to you.</li>
+      </ol>
+      <p>Your notice should be sent, in writing, to Marketplace Operator via the '<a [routerLink]="['/contact_us']"
+          target="_blank">Contact Us</a>' link on
+        our homepage.</p>
+      <p>The early termination of your Subscriber Account is not a ground for a refund of your
+        Subscription. You will be billed for the full term of your Subscription and continue to have
+        access to the Services if you terminate your agreement prior to the end of your Subscription,unless your
+        Subscriber Account has been terminated unilaterally by Marketplace Operator
+        for breach of these Terms</p>
+      <p>Marketplace Operator may at any time, terminate the Terms with you if:</p>
+      <ol type="a">
+        <li>you have breached any provision of the Terms;</li>
+        <li>Marketplace Operator is required to do so by law; or</li>
+        <li>the provision of the Services to you by Marketplace Operator is, in the opinion of
+          Marketplace Operator, no longer commercially viable.</li>
+      </ol>
+      <p>Marketplace Operator reserves the right to discontinue or cancel your Subscriber Account
+        at any time and may suspend or deny, in its sole discretion, your access to the Platform or
+        the Services without notice if you breach any provision of the Terms or any applicable law
+        or if your conduct impacts Marketplace Operator' name, goodwill or reputation or violates
+        the rights of another party.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>12. DISPUTES </h4>
+      <p>Contractors and Customers are solely responsible for interactions and disputes with each
+        other. You agree that Platform Operator operates to connect Contractors and Customers to
+        facilitate the provision of the Services. Platform Operator is not a supplier of any products
+        or services that Contractors offer on this Platform nor is Platform Operator a party to any
+        contracts entered between Contractor and Customer.
+      </p>
+      <p>Marketplace Operator reserves the right, but has no obligation, to monitor disputes between
+        Contractors and Customers although may involve itself in such a dispute for the purpose of
+        improving the user experience of the Platform and Services.</p>
+      <p>If a dispute arises out of or relates to the Terms as between Marketplace Operator and a
+        Subscriber, either party may not commence any Tribunal or Court proceedings in relation
+        to the dispute, unless the following clauses have been complied with (except where urgent
+        interlocutory relief is sought).</p>
+      <p>A party claiming that a Dispute has arisen shall notify each other party to the Dispute giving
+        details of the Dispute. During the 30-day period after a notice is given (or longer period
+        agreed in writing by the Parties to the Dispute) (Initial Period) each party to the Dispute
+        (Disputant) covenants with the other to cooperate and take all reasonable steps necessary
+        to attempt to resolve the Dispute. If the Disputants are unable to resolve the Dispute within
+        the Initial Period, each Disputant agrees that the Dispute shall be referred for mediation, at
+        the request of any Disputant, to:</p>
+      <ol type="i">
+        <li>a mediator agreed on by the Disputants; or</li>
+        <li>if the Disputants are unable to agree on a mediator within seven days after the end of
+          the Initial Period, then the Parties must submit the dispute for mediation through the
+          Chair of Resolution Institute (ACN 008 651 232) or the Chair’s designated
+          representative and the Resolution Institute Mediation Rules shall apply to the
+          mediation.</li>
+      </ol>
+      <p>The role of any mediator is to assist in negotiating a resolution of the Dispute. A mediator
+        may not make a decision that is binding on a Disputant unless that Disputant has so agreed
+        in writing. Any information or documentation disclosed by a Disputant under this clause shall
+        be kept confidential and may not be used except to attempt to resolve the Dispute. Each
+        Disputant shall pay its own costs of complying with this clause. The Disputants shall pay equally the costs of
+        any mediator engaged. The mediation will be held in Sydney, Australia,
+        within 30 days after expiry of the Initial Period. Each Disputant agrees to attend the
+        mediation by a representative having full authority to resolve the dispute. At the mediation
+        each Disputant may be represented by one or more legal representative.</p>
+      <p>If the dispute fails to resolve at mediation or if one of the Disputants fails or refuses to attend
+        the mediation, the mediator will be requested to inform each Disputant in writing that the
+        mediation has been terminated without resolution (Mediation Termination Notice). Upon
+        receipt of Mediation Termination Notice, the dispute resolution process will be terminated.
+        A party to a dispute will only be entitled to pursue other remedies available to it at law or
+        otherwise, after receipt of Mediation Termination Notice. All communications concerning
+        negotiations made by the Disputants arising out of and in connection with this dispute
+        resolution clause are confidential and to the extent possible, must be treated as “without
+        prejudice” negotiations for the purpose of applicable law of evidence.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>13. THIRD PARTY SITES </h4>
+      <p>The Platform may contain links and other pointers to other websites or applications operated
+        by third parties. We do not control these linked websites and are not responsible for the
+        contents of any linked website. The links are provided solely for your convenience and do
+        not indicate, expressly or impliedly, any endorsement by us of the website or the products
+        or services provided at those websites. Your access to any such advertisement or link is
+        entirely at your own risk. You should contact the relevant third-party directly to enquire on
+        that information prior to entering into a transaction in relation to the third-party products and
+        services</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>14. PRIVACY </h4>
+      <p>In these Terms, Personal Information has the meaning as defined in any applicable Privacy
+        Laws. Please refer to our <a (click)="clickPrivacy = true">Privacy Policy</a> which is made a part of these
+        Terms.
+        If a
+        Subscriber obtains Personal Information in the course of using our Platform or Services, the
+        Subscriber must comply with its obligations under the Privacy Laws and not do any act or
+        engage in any practice which would be a breach of Privacy Laws.
+      </p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>15. NO WAIVER</h4>
+      <p>Any failure on our part to enforce any right or provision of these Terms will not constitute a
+        waiver of future enforcement of that right or provision.
+      </p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>16. ASSIGNMENT</h4>
+      <p>You hereby agree that we may assign, transfer, sub-contract or otherwise deal with our
+        rights and/or obligations under these Terms. You may not without our prior written consent
+        assign, transfer, sub-contract or otherwise deal with any of your rights and/or obligations
+        under these Terms.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>17. SEVERABILITY</h4>
+      <p>If a provision of these Terms is determined by any court or other competent authority to be
+        unlawful or unenforceable, the other provisions will continue in effect. If any unlawful or
+        unenforceable provision of these Terms would be lawful or enforceable if part of it were
+        deleted, that part will be deemed to be deleted, and the rest of the provision will continue in
+        effect.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>18. ENTIRE AGREEMENT</h4>
+      <p>These Terms shall constitute the entire agreement between you and us in relation to your
+        use of our Platform.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>19. LAW AND JURISDICTION</h4>
+      <p>The Terms are governed by and construed in accordance with the laws of the State of New
+        South Wales. You submit to the non-exclusive jurisdiction of the Courts of New South
+        Wales for determining any dispute concerning these Terms.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>20. FORCE MAJEURE</h4>
+      <p>Notwithstanding any other provision of these Terms, Marketplace Operator need not act if
+        it is impossible to act due to force majeure, meaning any cause beyond our control
+        (including war, riot, natural disaster or law taking effect after the date of these Terms). You
+        agree that Marketplace Operator have no responsibility or liability for any loss or expense
+        suffered or incurred by you because of not acting for so long as the force majeure continues.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>21. FEEDBACK AND AUTHORISATIONS</h4>
+      <p>Your feedback is important to us and our Community. Marketplace Operator welcome and
+        encourage you to provide feedback, reviews, comments and suggestions for improvements
+        to the Platform and our Services ("<strong>Feedback</strong>"). You may submit Feedback by contacting
+        us using the contact details provided below.
+      </p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>22. HOW TO CONTACT US</h4>
+      <ol type="a">
+        <li>using our support page provided on our website located at <a href="https://www.ownly.com.au" target="_blank"
+            style="font-weight:normal; text-decoration: none !important;">https://www.ownly.com.au</a>;</li>
+        <li>by telephone, on the contact number published on the Platform Operator Platform or
+          website; or</li>
+        <li>by email, using the email address published on the Platform Operator Platform or
+          website (from time to time).</li>
+      </ol>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>© 2019 Ownly Pty Ltd. All Rights Reserved.</h4>
+      <p>Terms last updated 5 October 2019.</p>
+    </div>
+
+  </p-dialog>
+</ng-container>
+
+<ng-container>
+  <p-dialog class="term-condition" header="TRADES MARKETPLACE PRIVACY POLICY" [(visible)]="clickPrivacy" [modal]="true"
+    [responsive]="true" [maximizable]="true">
+
+    <div class="marketplace-boxs">
+      <h4>1. WE RESPECT YOUR PRIVACY</h4>
+      <p>Thank you for using our website located at www.ownly.com.au (“<strong>Platform</strong>”). This
+        Platform is operated by Ownly Pty Ltd (ACN 613 813 219) (“<strong>Platform Operator</strong>”).</p>
+      <p>Ownly Pty Ltd is an online marketplace that connects trades people (“<strong>Contractors</strong>”)
+        with customers (“<strong>Customers</strong>”) in their local area (our “<strong>Services</strong>”).</p>
+      <p>Platform Operator values transparency and privacy. We are committed to maintaining
+        the security of personal information (“<strong>Personal Information</strong>”) provided to us.</p>
+      <p>Our Privacy Policy is intended to clearly explain what Personal Information we collect
+        about you, how we collect your Personal Information, how we share your Personal
+        Information, how we store your Personal Information, how we transfer Personal
+        Information and other information about how we manage your Personal Information.
+      </p>
+      <p>We adhere to the Australian Privacy Principles contained in the Privacy Act 1988 (Cth).
+        This Privacy Policy sets out how we collect and treat your Personal Information. We
+        are fully committed to transparency and using technology responsibly to protect your
+        Personal Information.</p>
+      <p>Please read this Privacy Policy carefully as it explains how we collect, store and use
+        your Personal Information in accordance with the applicable Privacy Laws.
+      </p>
+      <p>Any reference to “Ownly”, “we”, “our”, or “us” means Ownly Pty Ltd (ACN 613 813 219).
+        Any reference to “you, or “your” or “Subscriber” means you as a user of our Platform
+        or Services.</p>
+      <p>By using our Platform , you consent to our collection, use, storage and disclosure of
+        your Personal Information in accordance with this Privacy Policy.
+      </p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>2. DEFINITIONS</h4>
+      <p>“<strong>Subscriber Account</strong>” means a registered account of a Subscriber.</p>
+      <p>“<strong>Personal Information</strong>” means information about an individual or busines whose
+        identity is apparent or can reasonably be ascertained from that information.
+      </p>
+      <p>“<strong>Privacy Laws</strong>” means the Privacy Act 1988 (Cth) and the Privacy Amendment
+        (Notifiable Data Breaches) Act 2017 (Cth).
+      </p>
+      <p>“<strong>Services</strong>” means the services we offer as described on our Platform.</p>
+      <p>“<strong>Platform</strong>” means the Platform located at <a href="https://www.ownly.com.au" target="_blank"
+          style="font-weight:normal; text-decoration: none !important;">https://www.ownly.com.au</a> through which
+        the Services are made available.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>3. PURPOSE OF THIS PRIVACY POLICY</h4>
+      <p>This Privacy Policy details how we safeguard your Personal Information and our
+        privacy obligations to you in compliance with the Privacy Laws. It will give you an
+        understanding of:</p>
+      <ol type="a">
+        <li>the types of Personal Information that Platform Operator collects and holds;</li>
+        <li>how and when Platform Operator collects, discloses, uses, stores and otherwise
+          handles personal information;</li>
+        <li>the purposes for which Platform Operator collects, holds, uses and discloses
+          Personal Information;</li>
+        <li>how you may access your Personal Information and seek correction of your
+          Personal Information; </li>
+        <li>how we store your Personal Information and keep it secure; </li>
+        <li>how to make a complaint and how Platform Operator will deal with your
+          complaint.</li>
+      </ol>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>4. WHAT PERSONAL INFORMATION WE COLLECT</h4>
+      <p>We collect Personal Information for the primary purpose of supplying our Services,
+        providing information to Subscribers, and marketing. Platform Operator collects the
+        following types of Personal Information:</p>
+      <ol type="a">
+        <li>Personal Information such as your name, the name of your business or company,
+          your address, phone number, email address, payment details such as your credit
+          or debit card details and any other Personal Information required for us to provide
+          you with our Services, communicate with you and to keep a record of your
+          transactions, and</li>
+        <li>Marketing Personal Information so that we can market our Platform and Services
+          or that of third parties to you in accordance with your preferences. Before we
+          share your Personal Information with any third party for marketing purposes, we
+          will obtain your consent as required by the Privacy Laws. You can unsubscribe
+          from our mailing list at any time by following the opt-out link on any message sent
+          to you. In all cases, we will respect your preferences for how you would like us to
+          manage marketing activity with you.
+        </li>
+      </ol>
+      <p>We may also collect Personal Information from you:</p>
+      <ol type="a">
+        <li>when you fill out forms on our Platform for registration, promotional purposes and
+          opt-in with your full name and email address to confirm your subscription to
+          emails and updates from Platform Operator;</li>
+        <li>when you provide feedback or information relating to your business, change your
+          content or email preference, respond to surveys or promotions, or communicate
+          with our customer support team.</li>
+      </ol>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>5. HOW WE COLLECT YOUR PERSONAL INFORMATION</h4>
+      <p>Platform Operator collects Personal Information from you in a variety of ways, including
+        when you interact with us electronically or in person, when you access our Platform
+        and when we provide our Services to you.</p>
+      <p>We will collect your Personal Information when you register with us to become a
+        Subscriber or when you give us Personal Information in person, via social media,
+        through other means of online communication, or on the telephone, or through email or
+        other correspondence.</p>
+      <p>We may also receive Personal Information from third parties. If we do, we will protect
+        your Personal Information in accordance with this Privacy Policy. We may also use
+        third parties to administer and deliver services and communications such as
+        newsletters, weekly updates and online surveys by email, phone or mail.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>6. HOW WE USE YOUR PERSONAL INFORMATION</h4>
+      <p>We use your Personal Information and you consent to us using your Personal
+        Information to:</p>
+      <ol type="a">
+        <li>provide you with our Services;</li>
+        <li>administer our business activities;</li>
+        <li>process transactions involving our business and through our Platform where you
+          have purchased our Services.</li>
+        <li>manage, research and develop our Services including through data analytics;</li>
+        <li>provide you with information about our Platform and Services;</li>
+        <li>communicate with you by a variety of measures including, but not limited to, by
+          telephone, email, SMS or mail;</li>
+        <li>meet legal, regulatory and compliance obligations; and</li>
+        <li>investigate any complaints.</li>
+      </ol>
+      <p>If you choose to withhold your Personal Information, it may not be possible for us to
+        provide you with our Services or for you to access certain parts of our Platform or for
+        us to respond to your query.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>7. DISCLOSURE OF YOUR PERSONAL INFORMATION AND THIRD PARTIES WITH
+        ACCESS TO IT</h4>
+      <p>We will only share your Personal Information with third parties where you have given
+        us your consent, and only for the purposes described in this Privacy Policy.</p>
+      <p>We may disclose your Personal Information to any of our employees, officers, insurers,
+        professional advisers, agents, suppliers or subcontractors insofar as reasonably
+        necessary for the purposes set out in this Policy.</p>
+      <p>We may share your Personal Information with other Subscribers to facilitate the
+        delivery of our Services.</p>
+      <p>We may share your Personal Information with third-party service providers to help us
+        supply our Services and to give you access to and use of our payment gateway
+        providers.</p>
+      <p>When we disclose your data to third-party service providers, we do so on the basis that
+        your data is treated with confidence, and only used for the limited purpose of supplying
+        our Services or Platform support, and in a manner consistent with this Privacy Policy.
+      </p>
+      <p>If there is a change of control in our business or a sale or transfer of business assets,
+        we reserve the right to transfer to the extent permissible at law our user databases,together with any Personal
+        Information and non-Personal Information contained in
+        those databases.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>8. SECURITY OF YOUR PERSONAL INFORMATION</h4>
+      <p>Platform Operator is committed to ensuring that the Personal Information you provide
+        to us is secure.</p>
+      <p>To prevent unauthorised access or disclosure, we have put in place suitable physical,
+        electronic and managerial procedures to safeguard and secure Personal Information.</p>
+      <p>It is important that you keep your Personal Information secure. You must notify us
+        immediately if you are aware, or believe, that someone other than yourself without
+        authorisation has access to your Subscriber Account with Platform Operator. You must
+        not give your login and password details to any other person. You should also take
+        measures, such as changing your login and password details regularly, so that your
+        account is secure.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>9. ACCESS TO YOUR PERSONAL INFORMATION</h4>
+      <p>You may request details of the Personal Information that we hold about you in
+        accordance with the Privacy Laws.</p>
+      <p>If you would like a copy of your Personal Information or believe that your Personal
+        Information is inaccurate, out of date, or incomplete, please <a [routerLink]="['/contact_us']"
+          target="_blank">Contact us</a> via
+        the
+        Contact us page on our Platform or by using the contact details provided below.</p>
+      <p>We will require you to verify your identity and to specify what information you require or
+        need to update.</p>
+      <p>We request that you keep your information as current as possible so that we may
+        continue to improve our supply of Services to you.</p>
+      <p>We reserve the right not to provide you with data, as set out in certain circumstances
+        under the Privacy Act 1988 (Cth)</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>10. THIRD-PARTY TOOLS AND COOKIES</h4>
+      <p>When you use or access our Platform or any third-party platform including third party
+        service providers, such as Google Analytics, third-party payment gateway providers or
+        other third-party advertising and links, there may be cookies and similar technologies
+        that store log files to collect information about your use of the
+      </p>
+      <p>Cookies are small text files (often including a unique identifier) that can be stored on
+        your computer, tablet or mobile device when you visit a website. A cookie stores a
+        small amount of data on your device about your visit to a website.</p>
+      <p>These small files contain information about your browsing activity. Cookies are also
+        used to identify you when you come back to the Platform and store details about your
+        use of the Platform. They are widely used to make websites work more efficiently, to
+        improve user experience and to provide information to website operators.</p>
+      <p>In addition, cookies can be used to analyse traffic and may be used to serve relevant
+        ads to Platform visitors through third party services such as Google AdWords.</p>
+      <p>To understand more about cookies and how they are set, visit <a href="www.aboutcookies.org"
+          target="_blank">www.aboutcookies.org</a>
+        or <a href="www.allaboutcookies.org" target="_blank">www.allaboutcookies.org</a>.</p>
+      <p>We may use the following cookies to help the functioning of the Platform and to
+        improve user experience:
+      </p>
+      <ol type="a">
+        <li>Strictly necessary cookies: These cookies are necessary for the functioning of
+          the Platform and help to improve the efficiency of the Platform for users.</li>
+        <li>Analytical/performance cookies: These cookies monitor your use of the Platform.
+          For example, they collect information about website traffic and use, unique users,
+          unique sessions and store information about users’ sessions and website
+          campaigns. </li>
+        <li>Targeting/advertising cookies: These cookies help us to provide useful and more
+          targeted advertising. </li>
+        <li>Preference cookies: These cookies help us to identify Users, so that we
+          remember your preferences on the Platform.</li>
+      </ol>
+      <p>You may accept or refuse cookies from our Platform or any other website by managing
+        the settings on your browser. You can opt-out from accepting our cookies by editing
+        your browser options, but certain features of our Platform will not function if you disable
+        cookies. You can find out how to manage and opt-out from cookies on popular
+        browsers by visiting the specific browser developer’s website.
+      </p>
+      <p>We may also use web beacons, action tags, and tracking devices to provide analytical
+        and user data that can help us monitor usage and improve the Platform.
+      </p>
+      <p>Non-Personal Information is information about you or your activities which cannot be
+        used to personally identify you. We may collect non-Personal Information through your
+        browser, through text files (cookies), applications (e.g. mobile applications), and your
+        IP address. We use non-Personal Information to compile statistical information about
+        the use of our Platform (or for maintenance purposes) which may include (but is not
+        limited to) recording your server address, your top-level domain name, the date and
+        time of your visit to the Platform, the pages you accessed and downloaded, the
+        previous site you visited and the types of browser you are using.</p>
+      <p>Any third-party advertisements and links that are provided to you on the Platform may
+        also use cookies and other similar technologies to gather your information. When you
+        leave the Platform to visit a link or advertisement provided to you via the Platform, any
+        information you provide to such advertisements or links, whether voluntarily or
+        involuntarily, will not be governed by this Privacy Policy. You should visit the relevant
+        third-party privacy policy to find out how they use your information.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>11. GENERAL DISCLAIMER</h4>
+      <p>Your use of our Platform is at your own risk. You agree that the information contained
+        on this Platform is provided for general informative purposes only.</p>
+      <p>Platform Operator makes no representation or warranty as to the accuracy or
+        completeness of any such information.</p>
+      <p>We do not warrant that the Platform will be uninterrupted or free from error or that any
+        defects on the Platform will be corrected or that the Platform or servers are free of
+        viruses or other harmful conditions or components.</p>
+      <p>Although we take all appropriate security measures to protect your information, we
+        cannot guarantee the security of information transmitted over the Internet. Please do
+        not send sensitive or confidential information to us by email. We assume no
+        responsibility for any loss of confidentiality or for the security of any information that
+        you transmit to us electronically.</p>
+      <p>This Privacy Policy is part of and subject to our Terms. If there is a conflict between our
+        Terms and this Privacy Policy, our Terms shall prevail to the extent of such
+        inconsistency.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>12. THIRD PARTY INFORMATION AND LINKS</h4>
+      <p>Our Platform may from time to time have links to other websites not owned or
+        controlled by us or otherwise we may refer to third-party information on our Platform .</p>
+      <p>We are not responsible for the privacy practices of other websites. It is the
+        responsibility of the individual Internet user to make decisions regarding the relevance,
+        accuracy, currency or reliability of information found on other websites.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>13. CHANGES TO PRIVACY POLICY</h4>
+      <p>We will update our Privacy Policy from time to time to reflect changes in our practices.
+        The effective date of these updates will be reflected at the bottom of this Privacy
+        Policy.</p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>14. COMPLAINTS ABOUT PRIVACY</h4>
+      <p>If you have any questions or concerns about our collection, use or disclosure of your
+        Personal Information, or if you would like to seek access to your Personal Information
+        that we hold, please <a [routerLink]="['/contact_us']" target="_blank">Contact Us</a> using the details provided
+        below.
+      </p>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>15. OUR CONTACT DETAILS</h4>
+      <ol type="a">
+        <li>using our support page provided on our website located at <a href="https://www.ownly.com.au" target="_blank"
+            style="font-weight:normal; text-decoration: none !important;">https://www.ownly.com.au</a>;</li>
+        <li>by telephone, on the contact number published on the Platform Operator
+          Platform or website; or</li>
+        <li>by email, using the email address published on the Platform Operator Platform or
+          website (from time to time).
+        </li>
+      </ol>
+    </div>
+
+    <div class="marketplace-boxs">
+      <h4>© 2019 Ownly Pty Ltd. All Rights Reserved.</h4>
+      <p>Privacy Policy last updated 5 October 2019.</p>
+    </div>
+
+  </p-dialog>
+</ng-container>
+
+<app-login #loginRef></app-login>

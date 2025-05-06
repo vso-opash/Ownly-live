@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29.381" height="29.381" viewBox="0 0 29.381 29.381">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="29.381" height="29.381" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="tick" clip-path="url(#clip-path)">
+    <path id="Path_2342" data-name="Path 2342" d="M32.18,216.448A14.248,14.248,0,1,0,46.72,230.692,14.394,14.394,0,0,0,32.18,216.448Zm.174,17.468-1.676,1.639-1.673-1.639-3.581-3.511,1.673-1.639,3.581,3.511,6.584-6.449,1.673,1.639Z" transform="translate(-17.34 -216.186)" fill="#fff"/>
+  </g>
+</svg>

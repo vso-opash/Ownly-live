@@ -1,0 +1,74 @@
+<section class="contact-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Contact US</h2>
+        <h3>No matter who you are, we would love to hear from you.<br />Drop us a line today.</h3>
+        <p><b>Phone:</b> 02 7911 3115</p>
+        <p><b>Address:</b> Suite 4, 134 Military Road Neutral Bay NSW 2089</p>
+        <p><b>Mail:</b> team@ownly.com.au</p>
+      </div>
+      <div class="col-md-6">
+        <form class="row trade-hub-form" [formGroup]="form">
+          <div class="col-md-6 col-sm-12">
+            <label>First Name</label>
+            <input type="text" placeholder="First Name" formControlName="firstname" [(ngModel)]="data.firstname">
+            <div class="error" *ngIf="form_validation && !form.controls['firstname'].valid">
+              <span *ngIf="form.controls['firstname'].errors['required']" class="text-danger">
+                This field is required.</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last Name" formControlName="lastname" [(ngModel)]="data.lastname">
+            <div class="error" *ngIf="form_validation && !form.controls['lastname'].valid">
+              <span *ngIf="form.controls['lastname'].errors['required']" class="text-danger">
+                This field is required.</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Email Address</label>
+            <input type="text" placeholder="Enter your email here" formControlName="email" [(ngModel)]="data.email">
+            <div class="error" *ngIf="form_validation && !form.controls['email'].valid">
+              <span *ngIf="form.controls['email'].errors['required']" class="text-danger">
+                This field is required.</span>
+              <span *ngIf="!form.controls['email'].errors['required'] && form.controls['email'].errors['pattern'] "
+                class="text-danger">
+                Please enter valid email.</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Mobile</label>
+            <input type="text" placeholder="Mobile Number" formControlName="mobile_no" [(ngModel)]="data.mobile_no">
+            <div class="error" *ngIf="form_validation && !form.controls['mobile_no'].valid">
+              <span *ngIf="form.controls['mobile_no'].errors['required']" class="text-danger">
+                This field is required.</span>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <label>Which one best describe you</label>
+            <select [(ngModel)]="selectedRole" formControlName="role">
+              <ng-container *ngFor="let obj of roleArray">
+                <option value="{{obj.value}}">{{ obj.label }}</option>
+              </ng-container>
+            </select>
+            <div class="error" *ngIf="form_validation && !form.controls['role'].valid">
+              <span *ngIf="form.controls['role'].errors['required']" class="text-danger">
+                This field is required.</span>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <label>Comments</label>
+            <!-- <input type="text" placeholder="Please enter your message here" formControlName="comment"
+                [(ngModel)]="data.comment"> -->
+            <textarea class="form-control" name="comment" formControlName="comment" [(ngModel)]="data.comment"
+              placeholder="Please enter your message here"></textarea>
+          </div>
+          <div class="col-md-12 form-send">
+            <button type="button" (click)="onSubmit(form.valid)" [disabled]="show_spinner">SEND</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

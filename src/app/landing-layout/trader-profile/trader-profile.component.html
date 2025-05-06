@@ -1,0 +1,265 @@
+<section class="profile-carousel-img" *ngIf="traderData['ProfileData']">
+  <img src="{{imageUrl}}user_image/{{traderData['ProfileData'].bannerImage}}"
+    onerror="this.onerror=null;this.src='assets/images/banner.png'" alt="" />
+</section>
+
+<section class="profile-head">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="d-flex">
+          <div class="profile-img" *ngIf="traderData['ProfileData']">
+            <img src="{{imageUrl}}user_image/{{traderData['ProfileData'].image}}"
+              onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+            <span [ngStyle]="{'background-color': traderData['ProfileData'].is_online ? 'green' : 'red' }"></span>
+          </div>
+          <div class="profile-info">
+            <h3>
+              {{traderData['ProfileData'] && traderData['ProfileData'].name ? traderData['ProfileData'].name : 
+              traderData['ProfileData'] && (traderData['ProfileData'].firstname || traderData['ProfileData'].lastname) ? traderData['ProfileData'].firstname + ' ' + traderData['ProfileData'].lastname  : ''}}
+            </h3>
+            <small>{{traderData['ProfileData'] && traderData['ProfileData'].business_name ? traderData['ProfileData'].business_name : ''}}</small>
+            <div class="profile-review" *ngIf="traderData['UserReview']">
+              <star-rating value=" {{traderData['UserReview'].data}}" checkedcolor="gold" uncheckedcolor="gray"
+                size="20px" readonly="true">
+              </star-rating>
+            </div>
+            <p *ngIf="traderData['UserReview']">{{traderData['UserReview'].data}} from
+              {{traderData['UserReview'].total_review}} reviews</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="d-flex ">
+          <div class="profile-head-info">
+            <p><strong>LOCATION</strong>
+              <span>{{traderData['ProfileData'] && traderData['ProfileData'].address ? traderData['ProfileData'].address : '-'}}</span>
+            </p>
+            <p><strong>MOBILE NUMBER</strong>
+              <span
+                *ngIf="!showNumber && traderData['ProfileData']">******{{(traderData['ProfileData'].mobile_no | slice:6)}}</span>
+              <span
+                *ngIf="showNumber && traderData['ProfileData']">{{traderData['ProfileData'] && traderData['ProfileData'].mobile_no ? traderData['ProfileData'].mobile_no : '-'}}</span>
+              <a href="javascript:void(0)"
+                *ngIf="!showNumber && traderData['ProfileData'] && traderData['ProfileData'].mobile_no"
+                (click)="clickOnShowNumber()">SHOW NUMBER</a></p>
+            <p><strong>ABN</strong>
+              <span>{{traderData['ProfileData'] && traderData['ProfileData'].abn_number ? traderData['ProfileData'].abn_number : '-'}}</span>
+            </p>
+          </div>
+          <div class="profile-head-btn">
+            <a href="javascript:void(0)" (click)="requestClickHandler()" class="maintenance">REQUEST MAINTENANCE</a>
+            <a href="javascript:void(0)" (click)="showDialog()" class="send-message">SEND MESSAGE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="profile-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 profile-body-l">
+        <!-- <div class="white-box">
+          <h2>About
+            {{traderData['ProfileData'] && traderData['ProfileData'].name ? traderData['ProfileData'].name : ''}}</h2>
+          <p *ngIf="toggelText === 'SHOW MORE'">
+            {{traderData['ProfileData'] && traderData['ProfileData'].about_user ? (traderData['ProfileData'].about_user | slice : 0:300) : ''}}
+          </p>
+          <p *ngIf="toggelText === 'SHOW LESS'">
+            {{traderData['ProfileData'] && traderData['ProfileData'].about_user ? traderData['ProfileData'].about_user : ''}}
+          </p>
+          <a href="javascript:void(0)" (click)="toggle(toggelText,'about_user')">{{ toggelText }}</a>
+        </div> -->
+        <div class="white-box">
+          <h2>Availability</h2>
+          <p-calendar [(ngModel)]="selectedMoment" [inline]="true" [showOtherMonths]="false" [selectOtherMonths]="false"
+            [showWeek]="false" id="calender" *ngIf="traderData['ProfileData']">
+          </p-calendar>
+
+        </div>
+        <div class="available-days">
+          <ul>
+            <li>AVAILABLE DAYS</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="white-box">
+          <h2>Overview</h2>
+          <p>
+            {{traderData['ProfileData'] && traderData['ProfileData'].groups.about_user ? traderData['ProfileData'].groups.about_user : ''}}
+          </p>
+
+          <div class="servcies-skills">
+            <h2>Services / Skills</h2>
+            <ul *ngIf="traderData['ProfileData']">
+              <ng-container *ngIf="traderData['ProfileData'].categoriesDetails?.length > 0">
+                <ng-container *ngIf="traderData['ProfileData'].categoriesDetails?.length < 4">
+                  <li *ngFor="let category of traderData['ProfileData'].categoriesDetails">
+                    <a href="javascript:void(0)">{{ category.name }}</a>
+                  </li>
+                </ng-container>
+                <ng-container *ngIf="traderData['ProfileData'].categoriesDetails?.length > 3">
+                  <ng-container *ngFor="let category of traderData['ProfileData'].categoriesDetails">
+                    <li>
+                      <a href="javascript:void(0)">{{ category.name }}</a>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="traderData['ProfileData'].categoriesDetails?.length <= 0">
+                <li>No Service / Skills found to display!</li>
+              </ng-container>
+            </ul>
+          </div>
+          <div class="profile-portfolio" *ngIf="traderData['ProfileData']">
+            <h2>Portfolio</h2>
+            <ul>
+              <ng-container *ngIf="traderData['ProfileData'].images?.length > 0">
+                <li *ngFor="let image of portfolioImages;let i=index"><a href="javascript:void(0)"><img
+                      src="{{image.src}}" onerror="this.onerror=null;this.src='assets/images/default_user.png'"
+                      (click)="open(i)" alt="" /></a></li>
+              </ng-container>
+              <ng-container *ngIf="traderData['ProfileData'].images?.length <= 0">
+                <li style="width: 100%;">No portfolio found to display!</li>
+              </ng-container>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job-history">
+          <h2>Job History</h2>
+          <div class="job-history-table">
+            <ul *ngIf="traderData['JobHistory'] && traderData['JobHistory']?.length > 0">
+              <li *ngFor="let history of traderData['JobHistory'] | paginate: { itemsPerPage: 5, currentPage: p }">
+                <div class="job-history-info">
+                  <h3>{{history.request_overview ? history.request_overview : ''}}</h3>
+                  <p>{{history.request_detail ? history.request_detail : ''}}</p>
+                </div>
+                <div class="job-history-rating profile-review" *ngIf="history.reviews?.length > 0">
+                  <ng-container *ngFor="let review of history.reviews">
+                    <star-rating value="{{review.avg_total}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                      readonly="true">
+                    </star-rating>
+                  </ng-container>
+                </div>
+                <div class="job-history-price">
+                  <h5>${{history.budget ? history.budget : '0'}}</h5>
+                  <h6>{{history.completed_date ? (history.completed_date | date) : ''}}</h6>
+                </div>
+              </li>
+            </ul>
+
+            <ul *ngIf="traderData['JobHistory']?.length <= 0 || !traderData['JobHistory']">
+              <li>
+                <div class="job-history-info">
+                  No Job history found to display!
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="pagination" *ngIf="traderData['JobHistory'] && traderData['JobHistory']?.length > 0">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+
+        <div class="reviews-div">
+          <h2>Reviews</h2>
+          <div class="reviews-innr-div">
+            <div class="total-reviews profile-review" *ngIf="traderData['UserReview']">
+              <star-rating value="{{traderData['UserReview'].data}}" checkedcolor="gold" uncheckedcolor="gray"
+                size="20px" readonly="true">
+              </star-rating>
+              <p *ngIf="traderData['UserReview']">{{traderData['UserReview'].data}} from
+                {{traderData['UserReview'].total_review}} reviews</p>
+            </div>
+
+            <div class="all-reviews">
+              <a class="active" href="#All" data-toggle="tab">All</a>
+            </div>
+            <ul class="reviews-comment" id="All" *ngIf="traderData['AllReview'] && traderData['AllReview']?.length > 0">
+              <li *ngFor="let review of traderData['AllReview'] | slice : startReview : endReview">
+                <div class="reviews-comment-div">
+                  <div class="reviews-comment-img">
+                    <img src="{{imageUrl}}user_image/{{review.review_by.image}}"
+                      onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                  </div>
+                  <div class="reviews-comment-info">
+                    <h3>{{review.review_by.firstname}}&nbsp;{{review.review_by.lastname}}</h3>
+                    <div class="profile-review">
+                      <star-rating value="{{review.avg_total}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                        readonly="true">
+                      </star-rating>
+                      <h6>{{review.createdAt | date}}</h6>
+                    </div>
+                    <p>{{review.comments}}</p>
+                  </div>
+                </div>
+                <ul class="reply-comments" *ngIf="review.response?.length > 0">
+                  <li *ngFor="let reply of review.response">
+                    <div class="reviews-comment-div" *ngIf="reply.response_by">
+                      <div class="reviews-comment-img">
+                        <img src="{{imageUrl}}user_image/{{reply.response_by.image}}"
+                          onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                      </div>
+                      <div class="reviews-comment-info">
+                        <h3>{{reply.response_by.firstname}}&nbsp;{{reply.response_by.lastname}}</h3>
+                        <div>
+                          <h6 class="pl-0">{{reply.createdDate | date}}</h6>
+                        </div>
+                        <p>{{reply.response}}</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li *ngIf="traderData['AllReview']?.length > 5">
+                <div class="load-more-reviews">
+                  <a href="javascript:void(0)" (click)="toggle(reviewtoggelText,'review')">{{reviewtoggelText}}</a>
+                </div>
+              </li>
+            </ul>
+            <ul class="reviews-comment" id="All"
+              *ngIf="!traderData['AllReview'] || traderData['AllReview']?.length <= 0">
+              <li>
+                <div class="reviews-comment-div">
+                  No review found to display!
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<ng-container *ngIf="traderData['ProfileData']" class="sendMessage">
+  <p-dialog header="Send {{ traderData['ProfileData'].firstname}} a message" [(visible)]="display" [modal]="true"
+    [responsive]="true" [style]="{width: '500px', minWidth: '400px'}" [maximizable]="true" class="sendMessage">
+    <form [formGroup]="sendMessage">
+      <div class="form-group text-left">
+        <label class="control-label" for="message"> Your Message<font color="Red">*</font></label>
+        <textarea rows="8" cols="550" type="text" formControlName="message" id="message" [(ngModel)]="message"
+          class="form-control" placeholder="Message" required=""></textarea>
+      </div>
+      <div *ngIf="form_validation && !sendMessage.controls['message'].valid">
+        <span class="error-span" *ngIf="sendMessage.controls['message'].errors['required']">
+          <font color="Red">Message is required</font>
+        </span>
+        <span class="error-span"
+          *ngIf="!sendMessage.controls['message'].errors['required'] && sendMessage.controls['message'].errors['maxlength']">
+          <font color="Red">Max 500 characters allowed</font>
+        </span>
+      </div>
+      <p-footer>
+        <button type="button" class="btn btn-send-message" [disabled]="disableSubmit"
+          (click)="send_Message(sendMessage.valid)">
+          Send
+        </button>
+      </p-footer>
+    </form>
+  </p-dialog>
+</ng-container>

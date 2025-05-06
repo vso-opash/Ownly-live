@@ -1,0 +1,43 @@
+
+.coockie .no-script-wrapper {
+    padding-top: 160px;
+}
+
+#loader {
+    display: none;
+}
+
+.coockie h1 {
+    color: #756f6f;
+    margin: 0;
+    font-size: 45px;
+    font-size: 4em;
+}
+
+.coockie h6 {
+    font-size: 28px;
+    margin: 0;
+    color: #756f6f;
+    padding-left: 86px;
+    color: #756f6f
+}
+
+.coockie p {
+    padding-left: 165px;
+    color: #756f6f
+}
+
+.coockie body {
+    background-color: #1b1717;
+    position: relative;
+    min-height: 100%;
+    font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.5384616;
+    color: #333333;
+}
+
+.coockie a:-webkit-any-link {
+    font-size: 23px;
+    padding-left: 220px;
+}

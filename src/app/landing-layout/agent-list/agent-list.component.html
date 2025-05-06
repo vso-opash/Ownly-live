@@ -1,0 +1,54 @@
+<section class="AgentListWrap">
+  <div class="row">
+    <div class="col-md-7">
+      <div infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollUpDistance]="scrollUpDistance"
+        [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown()">
+        <div class="AgentList">
+          <ul class="agents-exchange-ul d-flex">
+            <li *ngFor="let agent of lazyLoadArray">
+              <!-- <li *ngFor="let agent of agentsList"> -->
+              <div class="agents-exchange-box">
+                <div class="agents-exchange-img">
+                  <img *ngIf="agent.image" [routerLink]="['/agent_profile',agent._id]"
+                    src="{{imageUrl}}user_image/{{agent.image}}"
+                    onerror="this.onerror=null;this.src='assets/images/default_user.png'" />
+                  <img *ngIf="!agent.image" [routerLink]="['/agent_profile',agent._id]"
+                    src="assets/images/default_user.png"
+                    onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+                </div>
+                <div class="agents-exchange-info">
+                  <!-- <h4>AGENCY NAME</h4> -->
+                  <h4> {{ agent.agency_id  ? agent.agency_id.name : ''}} </h4>
+                  <h3> {{agent.firstname}} {{agent.lastname}} </h3>
+                  <em>Agent</em>
+                  <p> {{agent.city}} {{agent.state}} </p>
+                </div>
+                <div class="agents-exchange-review">
+                  <div class="star-review">
+                    <star-rating value="{{agent.averageRate}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                      readonly="true">
+                    </star-rating>
+                  </div>
+                  <h6>{{agent.averageRate ? agent.averageRate : 0}} from
+                    {{agent.totalReviewLength ? agent.totalReviewLength : 0 }} reviews</h6>
+                  <a [routerLink]="['/agent_profile',agent._id]">Contact</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 AgentMap">
+      <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="10">        
+        <agm-marker *ngFor="let m of markers; let i = index" [latitude]="m.lat" [longitude]="m.lng">
+          <agm-info-window>
+            <div class="info-wrapper">
+              <div><strong>{{m.label}}</strong> </div>
+            </div>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map> -->
+    </div>
+  </div>
+</section>

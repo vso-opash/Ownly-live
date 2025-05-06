@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" viewBox="0 0 90 90">
+  <defs>
+    <filter id="Oval_2" x="0" y="0" width="90" height="90" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#b3b3b3" flood-opacity="0.839"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.854" y1="0.854" x2="0.154" y2="0.154" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.647"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_3290" data-name="Group 3290" transform="translate(-1189 -530.5)">
+    <g id="Oval_2-2" data-name="Oval 2" transform="translate(1084 539.5)">
+      <g transform="matrix(1, 0, 0, 1, 105, -9)" filter="url(#Oval_2)">
+        <path id="Oval_2-3" data-name="Oval 2" d="M36,72A36.009,36.009,0,0,1,21.987,2.829,36.009,36.009,0,0,1,50.013,69.171,35.774,35.774,0,0,1,36,72ZM36,4.8A31.209,31.209,0,0,0,23.855,64.748a31.208,31.208,0,0,0,24.289-57.5A31,31,0,0,0,36,4.8Z" transform="translate(9 9)" fill="#fff"/>
+      </g>
+      <path id="Oval_2-4" data-name="Oval 2" d="M36,72A36.009,36.009,0,0,1,21.987,2.829,36.009,36.009,0,0,1,50.013,69.171,35.774,35.774,0,0,1,36,72ZM36,4.8A31.209,31.209,0,0,0,23.855,64.748a31.208,31.208,0,0,0,24.289-57.5A31,31,0,0,0,36,4.8Z" transform="translate(114)" fill="none"/>
+    </g>
+    <path id="Oval_4" data-name="Oval 4" d="M31.178,0A31.178,31.178,0,1,1,0,31.178,31.178,31.178,0,0,1,31.178,0Z" transform="translate(1203 544.5)" fill="#606382"/>
+    <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(1084 539.5)">
+      <path id="Rectangle_6-2" data-name="Rectangle 6" d="M0,32.414A32.415,32.415,0,0,1,54,8.232L8.232,54A32.3,32.3,0,0,1,0,32.414Z" transform="translate(118 4)" fill="none"/>
+      <path id="Rectangle_6-3" data-name="Rectangle 6" d="M0,32.414A32.415,32.415,0,0,1,54,8.232L8.232,54A32.3,32.3,0,0,1,0,32.414Z" transform="translate(118 4)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="logo" transform="translate(1149.424 558.527)">
+      <path id="Fill_1" data-name="Fill 1" d="M7.695,12.41a1.238,1.238,0,0,0-.548-1.057A6.491,6.491,0,0,0,5.8,10.626q-.806-.329-1.771-.675a6.6,6.6,0,0,1-1.768-.958A5.18,5.18,0,0,1,.9,7.442,4.759,4.759,0,0,1,.356,5.016,4.788,4.788,0,0,1,1.771,1.286,5.883,5.883,0,0,1,5.861,0,12.814,12.814,0,0,1,9.177.4a9.473,9.473,0,0,1,2.316.89l-.933,3.1c-.5-.2-1.116-.407-1.868-.627a8.075,8.075,0,0,0-2.284-.33q-1.866,0-1.868,1.485a1.1,1.1,0,0,0,.547.956,6.988,6.988,0,0,0,1.352.677q.806.314,1.771.677a7.714,7.714,0,0,1,1.771.94,4.927,4.927,0,0,1,1.352,1.5,4.621,4.621,0,0,1,.547,2.376A5.1,5.1,0,0,1,10.32,15.99a6.717,6.717,0,0,1-4.684,1.435,11.192,11.192,0,0,1-3.2-.446A9.712,9.712,0,0,1,0,15.941l1.16-3.2a11.04,11.04,0,0,0,1.963.842,7.816,7.816,0,0,0,2.512.412,2.73,2.73,0,0,0,1.5-.362,1.342,1.342,0,0,0,.564-1.221" transform="translate(77.373 8.158)" fill="#fff"/>
+      <path id="Combined_Shape" data-name="Combined Shape" d="M17.629,31.523A14.924,14.924,0,0,0,30.576,20.241h3.377A18.249,18.249,0,0,1,19.239,34.605ZM0,7.835l.008-.058a18.887,18.887,0,0,1,3.536-4.75A18.4,18.4,0,0,1,7.611,0l1.53,3.026A15.226,15.226,0,0,0,3.857,7.835Z" transform="translate(67.2)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

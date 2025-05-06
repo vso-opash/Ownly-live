@@ -1,0 +1,112 @@
+<!-- ,height:'60%',minHeight:'60%' -->
+<ng-container *ngIf="clickLogin">
+  <p-dialog header="Sign in to your Ownly account" [style]="{width:'575px',minWidth:'575px'}" [(visible)]="clickLogin"
+    [modal]="true" [responsive]="true" [maximizable]="true" class="login-regiter-form login-form">
+    <form [formGroup]="loginForm">
+      <!-- Email -->
+      <div class="col-md-12 form-group">
+        <label>Email Address<span class="required-feild-wrapper">*</span></label>
+        <div class="input-wrap">
+          <input type="text" class="form-control" placeholder="Enter Email" formControlName="email"
+            [(ngModel)]="loginData.email">
+
+          <div *ngIf="isSubmitted && !loginForm.controls['email'].valid">
+            <span class="text-danger" *ngIf="loginForm.controls['email'].errors['required']">Email is required
+            </span>
+            <span
+              *ngIf="!loginForm.controls['email'].errors['required'] && loginForm.controls['email'].errors['pattern']"
+              class="text-danger">Please enter valid email.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 form-group">
+        <label>Password<span class="required-feild-wrapper">*</span></label>
+        <div class="input-wrap">
+          <input type="password" name="password" class="form-control" placeholder="Enter Password"
+            formControlName="password" [(ngModel)]="loginData.password">
+
+          <div *ngIf="isSubmitted && !loginForm.controls['password'].valid">
+            <span class="text-danger" *ngIf="loginForm.controls['password'].errors['required']">Password is required
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- SUBMIT -->
+      <div class="keep-signed">
+        <div class="form-group">
+          <input type="checkbox" id="Keep-signed" name="remember_me" formControlName="remember_me"
+            [(ngModel)]="loginData.remember_me">
+          <label for="Keep-signed">Keep me signed in</label>
+        </div>
+        <a href="javascript:void(0)" (click)="forgotPassword()">FORGOTTEN PASSWORD?</a>
+      </div>
+      <div class="col-md-12 request-btm-btn">
+        <button type="submit" [disabled]="disableSubmitBtn" (click)="login(loginForm.valid)">Log
+          In</button>
+      </div>
+      <div class="or-div">
+        <span>Or</span>
+      </div>
+      <div class="login-other-option">
+        <a (click)="socialLogin('google')" class="google-login"> <i><img src="./assets/images/icon-google.png"
+              alt="" /></i>
+          LOG IN WITH GOOGLE
+        </a>
+        <a (click)="socialLogin('facebook')" class="facebook-login"> <i><img src="./assets/images/icon-facebook.png"
+              alt="" /></i>
+          LOG IN WITH FACEBOOK
+        </a>
+      </div>
+    </form>
+    <div class="dont-have">
+      Don’t have an account? <a href="javascript:void(0)" (click)="signup()">SIGN UP HERE</a>
+    </div>
+  </p-dialog>
+</ng-container>
+
+<ng-container *ngIf="isForgotPassword">
+  <p-dialog header="Forgot password ?" [style]="{width:'575px',minWidth:'575px'}" [(visible)]="isForgotPassword"
+    [modal]="true" [responsive]="true" [maximizable]="true" class="login-regiter-form login-form">
+    <div class="header-subtitle">
+      <small style="color: #fff;">Please enter the email address that you used to sign up so we can send you a
+        password reset link.</small>
+    </div>
+    <form [formGroup]="fpForm">
+      <!-- Email -->
+      <div class="col-md-12 form-group">
+        <label>Email Address<span class="required-feild-wrapper">*</span></label>
+        <div class="input-wrap">
+          <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
+
+          <div *ngIf="isSubmitted && !fpForm.controls['email'].valid">
+            <span class="text-danger" *ngIf="fpForm.controls['email'].errors['required']">Email is required
+            </span>
+            <span *ngIf="!fpForm.controls['email'].errors['required'] && fpForm.controls['email'].errors['pattern']"
+              class="text-danger">Please enter valid email.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="col-md-12 request-btm-btn">
+        <button type="submit" [disabled]="disableSubmitBtn" (click)="forgotPasswordSubmit(fpForm.valid)">Send</button>
+      </div>
+      <!-- <div class="or-div">
+        <span>Or</span>
+      </div> -->
+      <!-- <div class="login-other-option">
+        <a href="javascript:void(0)" class="google-login"> <i><img src="./assets/images/icon-google.png" alt="" /></i>
+          LOG IN WITH
+          GOOGLE</a>
+        <a href="javascript:void(0)" class="facebook-login"> <i><img src="./assets/images/icon-facebook.png"
+              alt="" /></i> LOG IN WITH
+          facebook</a>
+      </div> -->
+    </form>
+    <div class="dont-have">
+      Already have an account? <a href="javascript:void(0)" (click)="clickOnLogin()">SIGN IN HERE</a>
+    </div>
+  </p-dialog>
+</ng-container>

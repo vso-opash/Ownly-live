@@ -1,0 +1,16 @@
+<router-outlet>
+  <div *ngIf="!checkCoockie">
+    <div class="content-wrapper coockie">
+      <div class="content">
+        <div class="text-center content-group no-script-wrapper">
+          <h1>Opps! Something went wrong.</h1>
+          <h6>Please enable cookies in your browser.</h6>
+          <p>Go to Settings-> Site Settings -> Cookies -> Blocked toggle on.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</router-outlet>
+<!-- <ngx-spinner name="outer" [fullScreen]="true" bdOpacity=1 type="ball-clip-rotate-multiple" size="medium"></ngx-spinner> -->
+<ngx-spinner name="outer" [fullScreen]="true" type="square-loader" size="medium"></ngx-spinner>
+<p-toast [style]="{marginTop: '80px'}"></p-toast>

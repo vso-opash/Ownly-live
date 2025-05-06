@@ -1,0 +1,697 @@
+<section [attr.class]="(currentPage === '/trade' || currentPage === '/find') ?  'home-tabs trade' : 'home-tabs'">
+  <div class="container">
+    <h2 *ngIf="(currentPage === '/trade' || currentPage === '/find')">
+      <span> Search for your Ownly </span>
+      <small> Trade Professional </small>
+    </h2>
+    <h2 *ngIf="(currentPage === '/agent')">
+      <span>
+        <!-- Find & Compare Agents  -->
+        Find your Ownly agent
+      </span>
+    </h2>
+    <h2 *ngIf="(currentPage === '/buy')">
+      <span> Search for your Ownly </span>
+      <small> Property to Buy </small>
+    </h2>
+    <h2 *ngIf="(currentPage === '/rent')">
+      <span> Search for your Ownly </span>
+      <small> Property to Rent </small>
+    </h2>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li><a id="tradeHub-tab" [ngClass]="[((currentPage === '/trade') || (currentPage === '/find')) ? 'active' : '']"
+          data-toggle="tab" role="tab" aria-controls="contact"
+          [attr.aria-selected]="currentPage === '/trade' || currentPage === '/find'" [routerLink]="['/trade']">
+          OwnlyTrade
+        </a>
+      </li>
+      <li><a [ngClass]="{'active':currentPage === '/agent'}" id="aagent-tab" data-toggle="tab" role="tab"
+          aria-controls="home" [routerLink]="['/agent']" [attr.aria-selected]="currentPage === '/agent'">
+          Agent
+        </a></li>
+      <!-- <li><a [ngClass]="{'active':currentPage === '/buy'}" id="buy-tab" data-toggle="tab" role="tab"
+          aria-controls="home" [routerLink]="['/buy']" [attr.aria-selected]="currentPage === '/buy'">
+          Buy
+        </a></li>
+      <li><a id="rent-tab" [ngClass]="{'active':currentPage === '/rent'}" data-toggle="tab" role="tab"
+          aria-controls="profile" [attr.aria-selected]="currentPage === '/rent'" [routerLink]="['/rent']">
+          Rent
+        </a></li> -->
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div *ngIf="currentPage === '/buy' || currentPage === '/rent'" class="tab-pane fade show active" id="buy"
+        role="tabpanel" aria-labelledby="buy-tab">
+        <form class="home-search">
+          <div class="home-serach-div">
+            <ng4geo-autocomplete class="google-search" (componentCallback)="autoCompleteCallback1($event, 'global')"
+              [userSettings]="userSettings"></ng4geo-autocomplete>
+            <!-- <a href="javascript:void(0)" class="more-filtes">More Filters</a> -->
+          </div>
+          <button type="button" id="btnsearch" (click)="search()">Search</button>
+        </form>
+      </div>
+      <div *ngIf="currentPage === '/agent'" class="tab-pane fade show active" id="agent" role="tabpanel"
+        aria-labelledby="agent-tab">
+        <form class="home-search">
+          <div class="home-serach-div">
+            <ng4geo-autocomplete class="google-search" (componentCallback)="autoCompleteCallback1($event, 'agent')"
+              [userSettings]="userSettings"></ng4geo-autocomplete>
+          </div>
+          <button type="submit" id="btnsearch" (click)="searchAgent()">Search</button>
+        </form>
+      </div>
+      <div class="tab-pane fade show active" *ngIf="currentPage === '/trade' || currentPage === '/find'" id="tradehub"
+        role="tabpanel" aria-labelledby="tradeHub-tab">
+        <form class="home-search">
+          <div class="home-serach-div service-req-holder">
+            <ng-select [items]="projects" class="select-trade" bindLabel="title" [multiple]="false"
+              (input)="searchTradeHub($event.target.value)" bindValue="id" [clearable]="true" groupBy="subprojects"
+              placeholder="Search by Service Category or Business Names" [(ngModel)]="selectedProjects" name="project"
+              (focus)="onFocus($event)" (search)="onSearch()">
+              <ng-template ng-optgroup-tmp let-item="item">
+                {{item.title}}
+              </ng-template>
+              <ng-template ng-option-tmp let-item="item">
+                <span *ngIf="item.span">
+                  {{item.span}}
+                </span>
+                <span *ngIf="item.img">
+                  <img src="{{imageUrl}}user_image/{{item.img}}"
+                    onerror="this.onerror=null;this.src='assets/images/default_user.png'" height="20px" width="20px"
+                    alt="">
+                </span>
+                {{item.title }}
+              </ng-template>
+            </ng-select>
+            <ng4geo-autocomplete ngClass="suburb-postcode" (componentCallback)="autoCompleteCallback1($event, 'trade')"
+              [userSettings]="userSettings_traderHub">
+            </ng4geo-autocomplete>
+            <!-- <input type="text" name="" placeholder="Search by Service Category or Business Names"> -->
+            <!-- <input class="suburb-postcode" type="text" [(ngModel)]="selectedSuburbPostcode"
+              placeholder="Suburb and Postcode" name="suburb_postcode"
+              (change)="selectedSuburbPostalcode($event.target.value)"> -->
+          </div>
+          <button type="button" id="btnsearch" (click)="onSubmitTradHub()">Search</button>
+        </form>
+      </div>
+    </div>
+    <div class="help-tag-you">
+      <h3 *ngIf="displayBlock === 'request' || displayBlock === 'category'">{{tradePageHeading}}
+        <strong>{{inLocationName}}</strong>
+      </h3>
+    </div>
+  </div>
+</section>
+<ng-container *ngIf="displayBlock === 'home'">
+  <section class="properties-agents home-section" *ngIf="current_url != '/agent'">
+    <div class="container">
+      <div class="d-flex">
+        <div class="d-flex">
+          <div class="homee-section-l">
+            <!-- <p-lightbox type="content" id="video"> -->
+            <!-- (click)="open('../../../assets/images/ownly.mp4')" -->
+            <a class="group" href="javascript:void(0)"
+              (click)="open('../../../assets/images/Ownly-15-sec-consumer-vid.mp4')">
+              <img src="assets/images/propertise-img.png" alt="" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="189.094" height="97.742" viewBox="0 0 189.094 97.742">
+                <g id="play-button" transform="translate(47.999 6.999)">
+                  <g id="Group_3" data-name="Group 3" transform="translate(-22.001 -6.999)">
+                    <rect id="Rectangle_878" data-name="Rectangle 878" width="189.093" height="97.742" rx="12"
+                      transform="translate(-26)" fill="rgba(96,99,130,0.65)" />
+                    <path id="Path_2" data-name="Path 2"
+                      d="M236.135,173.981l-29.746-20.345a2.287,2.287,0,0,0-3.589,1.894v40.689a2.283,2.283,0,0,0,3.589,1.894l29.746-20.345A2.289,2.289,0,0,0,236.135,173.981Z"
+                      transform="translate(-148.714 -126.376)" fill="#fff" />
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <div id="id01" class="w3-modal video-hidden ownly-popup-video">
+              <div class="w3-container video-center">
+                <button class="btn btn-link close video-close-btn" (click)="close()">x</button>
+                <video id="vid" class="w-100" src="" autoplay controls controlsList="nodownload"></video>
+              </div>
+            </div>
+            <!-- <iframe src="http://localhost:4200/assets/images/video.mp4" frameborder="0" allowfullscreen></iframe> -->
+            <!-- <video src="assets/images/video.mp4" controls controlsList="nodownload"></video> -->
+            <!-- <video src="assets/images/video.mp4" autoplay controls controlsList="nodownload"></video> -->
+            <!-- </p-lightbox> -->
+          </div>
+          <div class="homee-section-r">
+            <h2>Ownly Property Fingerprint -<br /> attaching traders to your property address indefinitely</h2>
+            <p>The Ownly Trade and Property platform provides a single place for users to connect with trades and
+              properties.</p>
+            <ul>
+              <li>Search Ownly’s verified and rated trades</li>
+              <li>Communicate directly and transparently</li>
+              <li>Track the progress of your trade job</li>
+              <!-- <li>Connect with trades linked to sale and rental property</li> -->
+            </ul>
+            <!-- <h2>Properties, Agents & Trades <br /> All in One Place</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet augue a orci porttitor aliquet
+              vitae sed massa. Fusce volutpat dignissim dictum.</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <section class="property-listing home-section switch-section">
+    <div class="container">
+      <div class="d-flex">
+        <div class="homee-section-l"><img src="assets/images/property-listings.png" alt="" /></div>
+        <div class="homee-section-r">
+          <h2>Ownly Property</h2>
+          <p>Ownly has access to hundreds of thousands of listings through its unique data partnership. Search for sale
+            and rental property. Thinking about a renovation? Connect with Ownly Tradies to discuss.</p>
+          <ul>
+            <li>Search sale and rental listings</li>
+            <li>Connect with Ownly Tradies; pool builder, home builder and more </li>
+            <li>Connect with Agents</li>
+            <li>Find your dream home</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <section class="agents-exchange home-section">
+    <div class="container">
+      <div class="d-flex">
+        <div class="homee-section-l"><img src="assets/images/graph.png" alt="" /></div>
+        <div class="homee-section-r">
+          <h2>Agent Exchange</h2>
+          <p>Search for the right Agent for you in your area.</p>
+          <ul>
+            <li>Find agents</li>
+            <li>Read reviews and profiles</li>
+            <li>Compare agents</li>
+          </ul>
+        </div>
+      </div>
+      <ul class="agents-exchange-ul">
+        <li *ngFor="let agent of agentsList">
+          <div class="agents-exchange-box">
+            <div class="agents-exchange-img">
+              <img [routerLink]="['/agent_profile',agent._id]" *ngIf="agent.image"
+                src="{{imageUrl}}user_image/{{agent.image}}"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" />
+              <img [routerLink]="['/agent_profile',agent._id]" *ngIf="!agent.image" src="assets/images/default_user.png"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+            </div>
+            <div class="agents-exchange-info">
+              <h4> {{ agent.agency_id ? agent.agency_id.name : ''}} </h4>
+              <h3> {{agent.firstname}} {{agent.lastname}} </h3>
+              <em>Agent</em>
+              <p> {{agent.city}} {{agent.state}} </p>
+            </div>
+            <div class="agents-exchange-review">
+              <!-- <div class="star-review">
+                <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                  class="yellow-star-img"></i>
+                <i class="half-star-img"></i>
+              </div> -->
+              <div class="star-review">
+                <star-rating value="{{agent.averageRate}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                  readonly="true">
+                </star-rating>
+              </div>
+              <h6>{{agent.averageRate ? agent.averageRate : 0}} from
+                {{agent.totalReviewLength ? agent.totalReviewLength : 0 }} reviews</h6>
+              <a [routerLink]="['/agent_profile',agent._id]">Contact</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- <section class="agents-exchange home-section">
+    <div class="container">
+      <div class="d-flex">
+        <div class="homee-section-l"><img src="assets/images/graph.png" alt="" /></div>
+        <div class="homee-section-r">
+          <h2>Agent Exchange</h2>
+          <p>Search for the right Agent for you in your area.</p>
+          <ul>
+            <li>Find agents</li>
+            <li>Read reviews and profiles</li>
+            <li>Compare agents</li>
+          </ul>
+        </div>
+      </div>
+      <ul class="agents-exchange-ul">
+        <li>
+          <div class="agents-exchange-box">
+            <div class="agents-exchange-img">
+              <img src="assets/images/profile-1.png" alt="" />
+            </div>
+            <div class="agents-exchange-info">
+              <h4>AGENCY NAME</h4>
+              <h3>Matthew Oliver</h3>
+              <em>Property Manager</em>
+              <p>Preston — 3072</p>
+            </div>
+            <div class="agents-exchange-review">
+              <div class="star-review">
+                <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                  class="yellow-star-img"></i>
+                <i class="half-star-img"></i>
+              </div>
+              <h6>4.5 from 238 reviews</h6>
+              <a href="javascript:void(0)">Contact</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="agents-exchange-box">
+            <div class="agents-exchange-img">
+              <img src="assets/images/profile-1.png" alt="" />
+            </div>
+            <div class="agents-exchange-info">
+              <h4>AGENCY NAME</h4>
+              <h3>Matthew Oliver</h3>
+              <em>Property Manager</em>
+              <p>Preston — 3072</p>
+            </div>
+            <div class="agents-exchange-review">
+              <div class="star-review">
+                <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                  class="yellow-star-img"></i>
+                <i class="half-star-img"></i>
+              </div>
+              <h6>4.5 from 238 reviews</h6>
+              <a href="javascript:void(0)">Contact</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="agents-exchange-box">
+            <div class="agents-exchange-img">
+              <img src="assets/images/profile-1.png" alt="" />
+            </div>
+            <div class="agents-exchange-info">
+              <h4>AGENCY NAME</h4>
+              <h3>Matthew Oliver</h3>
+              <em>Property Manager</em>
+              <p>Preston — 3072</p>
+            </div>
+            <div class="agents-exchange-review">
+              <div class="star-review">
+                <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i class="yellow-star-img"></i> <i
+                  class="yellow-star-img"></i>
+                <i class="half-star-img"></i>
+              </div>
+              <h6>4.5 from 238 reviews</h6>
+              <a href="javascript:void(0)">Contact</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section> -->
+  <section class="home-tradehub home-section switch-section">
+    <div class="container">
+      <div class="d-flex">
+        <div class="homee-section-l"><img src="assets/images/home-tradehub.png" alt="" /></div>
+        <div class="homee-section-r">
+          <h2>Ownly Trade</h2>
+          <p>The Ownly platform where you can search a tradie that’s worked on your property previously*.</p>
+          <ul>
+            <li>Search verified trades</li>
+            <li>Chat directly and transparently on the platform </li>
+            <li>Track the progress of your work order</li>
+            <li>Rate, review and promote your tradie</li>
+          </ul>
+        </div>
+        <!-- <div class="homee-section-r">
+          <h2>TradeHub</h2>
+          <p>Find the perfect trade for your job</p>
+          <ul>
+            <li>See trader portfolio</li>
+            <li>Read their reviews </li>
+            <li>Choose from TradeHUB certified trades</li>
+          </ul>
+        </div> -->
+      </div>
+      <!-- Trader List -->
+      <!-- <ul class="perfect-trade">
+        <li *ngFor="let trader of tradersList">
+          <div class="perfect-trade-box">
+            <div class="perfect-trade-img" *ngIf="trader.image"><img src="{{imageUrl}}user_image/{{trader.image}}"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+            </div>
+            <div class="perfect-trade-img" *ngIf="!trader.image"><img src="assets/images/default_user.png"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" /></div>
+            <h3>{{trader.business_name ? trader.business_name : trader.firstname + ' ' + trader.lastname }} </h3>
+            <div class="star-review">
+              <star-rating value="{{trader.averageRate}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                readonly="true">
+              </star-rating>
+            </div>
+
+            <h6 *ngIf="trader.totalReviewLength === 1">({{ trader.totalReviewLength }}) Review</h6>
+            <h6 *ngIf="trader.totalReviewLength >1">({{ trader.totalReviewLength }}) Reviews</h6>
+            <div class="trade-list" *ngIf="trader.categories_id.length < 4">
+              <a *ngFor="let category of trader.categories_id" href="javascript:void(0)">{{ category.name }}</a>
+            </div>
+            <div class="trade-list" *ngIf="trader.categories_id.length > 3">
+              <a *ngFor="let category of trader.categories_id; let i = index" href="javascript:void(0)">
+                <ng-container *ngIf="i < 3">
+                  {{ category.name }}
+                </ng-container>
+              </a>
+              <a href="javascript:void(0)" class="counter"> + {{trader.categories_id.length - 3}}</a>
+            </div>
+            <div class="trade-btm">
+              <a [routerLink]="['/trader',trader._id]" class="bdr-btn">VIEW PROFILE</a>
+              <a (click)="getQuoteClick(trader._id, trader.categories_id)" class="bg-btn">GET A QUOTE</a>
+            </div>
+          </div>
+        </li>
+      </ul> -->
+      <!-- Trader List -->
+
+      <!-- Premium Traders List -->
+      <ul class="perfect-trade">
+        <li *ngFor="let trader of premiumTradersList">
+          <div class="perfect-trade-box premium-trade-box-cstm">
+            <div class="product-box-img">
+              <owl-carousel-o [options]="customOptions">
+                <ng-container *ngIf="trader.data.images">
+                  <ng-container *ngFor="let slideImg of trader.data.images">
+                    <ng-template carouselSlide>
+                      <ng-container>
+                        <img class="shimmer_effect" [defaultImage]="traderImageURL+slideImg.ur"
+                          onerror="this.onerror=null;this.src='assets/images/default_property.png'"
+                          [lazyLoad]="traderImageURL+slideImg.url" alt="">
+                      </ng-container>
+                    </ng-template>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngIf="!trader.data.images || (trader.data.images && trader.data.images.length == 0) ">
+                  <ng-template carouselSlide>
+                    <img class="shimmer_effect" src="assets/images/default_property.png" alt="">
+                  </ng-template>
+                </ng-container>
+              </owl-carousel-o>
+            </div>
+
+
+            <div class="premium-prfl-inner">
+              <div class="perfect-trade-img" *ngIf="trader.data.image"><img
+                  src="{{imageUrl}}user_image/{{trader.data.image}}"
+                  onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" />
+              </div>
+              <div class="perfect-trade-img" *ngIf="!trader.data.image"><img src="assets/images/default_user.png"
+                  onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" /></div>
+
+              <div class="premium-prfl-dtl">
+                <h3>
+                  {{trader.data.business_name ? trader.data.business_name : trader.data.firstname + ' ' +
+                  trader.data.lastname }}
+                </h3>
+                <div class="star-review">
+                  <star-rating value="{{trader.data.averageRate}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                    readonly="true">
+                  </star-rating>
+                </div>
+
+                <!-- <h6 *ngIf="trader.data.totalReviewLength === 1">({{ trader.data.totalReviewLength }}) Review</h6>
+                              <h6 *ngIf="trader.data.totalReviewLength >1">({{ trader.data.totalReviewLength }}) Reviews</h6> -->
+                <h6> {{trader.data.averageRate}} from {{ trader.data.totalReviewLength }} reviews </h6>
+                <div class="trade-list" *ngIf="trader.category.length < 4">
+                  <a *ngFor="let category of trader.category" href="javascript:void(0)">{{ category.name }}</a>
+                </div>
+                <div class="trade-list" *ngIf="trader.category.length > 3">
+                  <a *ngFor="let category of trader.category; let i = index" href="javascript:void(0)">
+                    <ng-container *ngIf="i < 3">
+                      {{ category.name }}
+                    </ng-container>
+                  </a>
+                  <a href="javascript:void(0)" class="counter"> + {{trader.category.length - 3}}</a>
+                </div>
+                <div class="trade-btm">
+                  <a [routerLink]="['/trader',trader.data._id]" class="bdr-btn">VIEW PROFILE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- Premium Traders List -->
+    </div>
+  </section>
+</ng-container>
+
+<ng-container *ngIf="displayBlock === 'request'">
+  <section class="service-request">
+    <div class="container">
+      <div class="d-flex">
+        <div class="service-request-l">
+          <h2>
+            <small>Search</small>
+            <strong>Service Request</strong>
+          </h2>
+          <form class="row" [formGroup]="form" (ngSubmit)="submit(form)">
+            <div class="col-md-12 form-group">
+              <label>What do you need? (Service category)<span class="required-feild-wrapper">*</span></label>
+              <div class="custom-input-group">
+                <!-- <input type="text" name="categories_name" formControlName="categories_name"
+                  [(ngModel)]="selectedCategory" class="form-control" placeholder="{{selectedCategory}}" readonly> -->
+                <input type="hidden" [(ngModel)]="selectedCategoryId" formControlName="category_id" />
+                <ng-select placeholder="Select Service" class="service-req-form-select" [searchable]="true"
+                  [items]="serviceCategories" [clearable]="false" bindLabel="name" bindValue="_id" name="category_id"
+                  [(ngModel)]="selectedCategoryId" formControlName="category_id">
+                </ng-select>
+                <i class="search-icon"></i>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>When</label>
+              <div class="calendar-wrap">
+                <p-calendar [(ngModel)]="req_selected_dueDate" [monthNavigator]="true" formControlName="due_date"
+                  placeholder="Select Date" [minDate]="currentDate" dateFormat="dd/mm/yy" [showIcon]="true">
+                </p-calendar>
+              </div>
+              <div class="error" *ngIf="!form.controls['due_date'].valid && req_isFormSubmited">
+                <span>Date is required</span>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Budget ($)</label>
+              <div class="input-wrap">
+                <input type="text" name="budget" formControlName="budget" class="form-control"
+                  placeholder="Enter Budget" (keypress)="restrictAlphabets($event)">
+              </div>
+              <div class="error" *ngIf="!form.controls['budget'].valid && req_isFormSubmited">
+                <span *ngIf="form.controls['budget'].errors['pattern']">Please Enter valid budget</span>
+              </div>
+            </div>
+            <div class="col-md-12 form-group">
+              <label>Subject<span class="required-feild-wrapper">*</span></label>
+              <div class="custom-input-group">
+                <div class="input-wrap">
+                  <input type="text" name="request_overview" formControlName="request_overview" class="form-control"
+                    placeholder="Enter Subject">
+                  <i class="search-icon"></i>
+                </div>
+                <div class="error" *ngIf="!form.controls['request_overview'].valid && req_isFormSubmited">
+                  <span>Subject is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 form-group description-field">
+              <label>Description<span class="required-feild-wrapper">*</span></label>
+              <div class="input-wrap">
+                <textarea class="form-control" name="request_detail" formControlName="request_detail"
+                  placeholder="Enter Description here.."></textarea>
+              </div>
+              <div class="error" *ngIf="!form.controls['request_detail'].valid && req_isFormSubmited">
+                <span>Description is required</span>
+              </div>
+            </div>
+            <div class="col-md-12 form-group">
+              <label>Name<span class="required-feild-wrapper">*</span></label>
+              <div class="input-wrap">
+                <input type="text" formControlName="firstname" class="form-control" placeholder="Enter Name" />
+              </div>
+              <div class="error" *ngIf="!form.controls['firstname'].valid && req_isFormSubmited">
+                <span>Name is required</span>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Email<span class="required-feild-wrapper">*</span></label>
+              <div class="input-wrap">
+                <input type="text" formControlName="email" class="form-control" placeholder="Enter Email" />
+              </div>
+              <div class="error" *ngIf="!form.controls['email'].valid && req_isFormSubmited">
+                <span *ngIf="form.controls['email'].errors['required']">Email is required</span>
+                <span *ngIf="form.controls['email'].errors['pattern']">Email format is wrong</span>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Phone Number<span class="required-feild-wrapper">*</span></label>
+              <div class="input-wrap">
+                <input type="text" maxlength="10" minlength="10" formControlName="mobile_no" class="form-control"
+                  placeholder="Enter Phone" (keypress)="restrictAlphabets($event)">
+              </div>
+              <div class="error" *ngIf="!(form.controls['mobile_no'].valid) && req_isFormSubmited">
+                <span *ngIf="form.controls['mobile_no'].errors['pattern']">Please enter valid phone number.</span>
+                <span *ngIf="form.controls['mobile_no'].errors['required']">Phone Number is required</span>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Address<span class="required-feild-wrapper">*</span></label>
+              <div class="input-wrap request-address">
+                <ng4geo-autocomplete class="google-search form-control"
+                  (componentCallback)="autoCompleteCallback1($event, 'sr_address')" [userSettings]="userSettings1">
+                </ng4geo-autocomplete>
+                <!-- <input type="text" name="" class="form-control" placeholder="Enter Address"> -->
+              </div>
+              <div class="error" *ngIf="!req_address.address && req_isFormSubmited">
+                <span>Address is required</span>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>Referral Code</label>
+              <div class="input-wrap">
+                <input type="text" formControlName="referralCode" class="form-control"
+                  placeholder="Enter referral code" />
+              </div>
+            </div>
+            <div class="col-md-12 custom-input-file">
+              <input type="file" (change)="onfileSelect($event)" accept="image/*,application/pdf" maxFileSize="2000000"
+                id="file-5" class="inputfile inputfile-4" multiple />
+              <label for="file-5">
+                <span>Choose a file</span>
+              </label>
+              <div class="file-note">File can be less than 2MB and maximum 3 files can upload. and extension should be
+                .jpg, .png, .jpeg, and .pdf</div>
+              <ng-container *ngFor='let msg of msgs'>
+                <p-messages [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" [(value)]="msg">
+                </p-messages>
+              </ng-container>
+              <div class="ui-fileupload-row" *ngFor="let image of req_selected_files; let i = index">
+                <div><img [src]="image.url" width="50" alt="" /></div>
+                <div>{{image.name}}</div>
+                <div>{{formatBytes(image.size)}}</div>
+                <div><button icon="pi pi-times" pbutton="" (click)="remove(i)" type="button"
+                    ng-reflect-icon="pi pi-times"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only"><span
+                      aria-hidden="true" class="ui-button-icon-left ui-clickable pi pi-times"></span><span
+                      class="ui-button-text ui-clickable">ui-btn</span></button></div>
+              </div>
+            </div>
+
+
+            <!-- <div>
+              <img *ngFor='let url of urls' [src]="url" height="200"> <br />
+            </div> -->
+            <div class="col-md-12 request-btm-btn">
+              <button type="submit">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+        <div class="service-request-r">
+          <div class="step-box">
+            <h2>Step 1</h2>
+            <p>Complete this request form, upload any relevant files, SUBMIT.</p>
+          </div>
+          <div class="step-box">
+            <h2>Step 2</h2>
+            <p>Check the link in your email. </p>
+          </div>
+          <div class="step-box">
+            <h2>Step 3</h2>
+            <p>Review public quotes, invite trades to quote directly, HIRE your trader.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>
+
+<!-- Display Category block where select category from TradeHub -->
+<ng-container *ngIf="displayBlock === 'category'">
+  <section class="home-tradehub home-section switch-section">
+    <div class="container">
+      <ngx-spinner name="traderList" [fullScreen]="false" type="ball-beat" size="medium">test</ngx-spinner>
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          SORT BY
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="javascript:void(0);">Highest Rating</a>
+          <a class="dropdown-item" href="javascript:void(0);">Number of Reviews</a>
+        </div>
+      </div>
+      <ul class="perfect-trade category">
+        <li *ngFor="let trader of tradersListData | paginate: { itemsPerPage: 8, currentPage: p }">
+          <div class="perfect-trade-box">
+            <!-- <div class="heart-like">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22.084" height="20.5" viewBox="0 0 22.084 20.5">
+                <path id="Stroke_460" data-name="Stroke 460"
+                  d="M18.96,9.46a5.541,5.541,0,0,0-7.837-7.836l-.832.751L9.46,1.624A5.541,5.541,0,0,0,1.623,9.46L10.292,19,18.96,9.46Z"
+                  transform="translate(0.75 0.75)" fill="#fff" stroke="#7f829e" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" />
+              </svg>
+            </div> -->
+            <div class="perfect-trade-img" *ngIf="trader.data.image"><img
+                src="{{imageUrl}}user_image/{{trader.data.image}}"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" /><span
+                [ngStyle]="{'background-color': trader.is_online ? 'green' : 'red' }"></span></div>
+            <div class="perfect-trade-img" *ngIf="!trader.data.image"><img src="assets/images/default_user.png"
+                onerror="this.onerror=null;this.src='assets/images/default_user.png'" alt="" /><span
+                [ngStyle]="{'background-color': trader.is_online ? 'green' : 'red' }"></span></div>
+            <!-- <h3>{{trader.firstname}} {{trader.lastname}}</h3> -->
+            <h3>{{trader.data.business_name}}</h3>
+            <div class="star-review">
+              <star-rating value="{{trader.data.averageRate}}" checkedcolor="gold" uncheckedcolor="gray" size="20px"
+                readonly="true">
+              </star-rating>
+            </div>
+
+            <h6>({{ trader.data.totalReviewLength ? trader.data.totalReviewLength : 0 }}) Reviews</h6>
+            <div class="trade-list" *ngIf="trader.data.categories_id.length < 4">
+              <a *ngFor="let category of trader.data.categories_id" href="JavaScript:void(0)">{{ category.name }}</a>
+            </div>
+            <div class="trade-list" *ngIf="trader.data.categories_id.length > 3">
+              <a *ngFor="let category of trader.data.categories_id | slice:0:3; let i = index"
+                href="JavaScript:void(0)">
+                {{ category.name }}
+              </a>
+              <a href="JavaScript:void(0)" class="counter"> + {{trader.data.categories_id.length - 3}}</a>
+            </div>
+            <div class="trade-btm">
+              <a [routerLink]="['/trader',trader.data._id]" class="bdr-btn">VIEW PROFILE</a>
+              <a (click)="getQuoteClick(trader.data._id, trader.data.categories_id)" class="bg-btn">GET A QUOTE</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="no-data-wrapper" *ngIf="tradersListData.length === 0">
+        <div class="no-data-text">No Traders Found</div>
+      </div>
+      <div class="pagination" *ngIf="tradersListData?.length > search_obj.pageSize">
+        <pagination-controls class="pagination-controls" responsive="true" (pageChange)="p = $event">
+        </pagination-controls>
+      </div>
+    </div>
+  </section>
+</ng-container>
+
+<!-- Display Ownly Partners -->
+<ng-container>
+  <section class="property-listing home-section switch-section our-partner-section" style="background: none;">
+    <div class="container">
+      <div class="partner-logo">
+        <h2>Our Partners</h2>
+        <div class="partner-logo-col">
+          <!-- <img src="assets/images/partner-logo-1.png" alt="" /> -->
+          <!-- <img src="assets/images/partner-logo-2.png" alt="" /> -->
+          <img src="assets/images/partner-logo-3.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-container>

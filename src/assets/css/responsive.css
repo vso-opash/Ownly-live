@@ -1,0 +1,421 @@
+@media(max-width:1500px){
+	.container {padding: 0 100px;}
+	.footer .container {padding:0 100px;}
+	.home-tabs h2 {font-size: 70px;}
+	.home-section h2 { margin:0 0 30px; font-size:40px;}
+	.home-section h2 br{ display:none;}
+	.properties-agents.home-section .homee-section-r { width:44%;}
+	.product-box-body { padding:10px;}
+	.profile-head-btn a.send-message {min-width: 134px;}
+	.profile-head-btn a + a {margin-left: 10px;}
+	.profile-head-btn a.maintenance {min-width: 174px;}
+}
+
+@media (min-width:1201px) and (max-width:1350px){
+	.AgentList ul li {padding: 15px 5px;}
+	.agents-exchange-box {padding: 10px;}
+}
+
+@media(max-width:1299px){
+	.container {padding:0 30px;}
+	.footer .container {padding:0 30px;}
+	.home-tabs h2 {font-size:56px; padding: 0; margin: 0 0 50px;}
+	.home-section h2 { margin:0 0 20px; font-size:34px;}
+	.agents-exchange .homee-section-r {width:36%;}
+	.home-tradehub .homee-section-r {padding-left:100px;}
+	.trade-btm a {line-height:24px; font-weight:700; font-size:10px; letter-spacing:0;}
+	.agents-exchange .homee-section-l img {max-width: 80%;}
+	.footer-link ul {justify-content:center;}
+	ul.listing-ul>li {width: calc(25% - 26px);}
+	.service-request-r {padding: 126px 0 0 40px;}
+	.trade-hub .trade-hub-r {padding-right:50px;}
+	.trade-hub .trade-hub-l { padding-left:50px;}
+	.good-hands-div p {line-height: 22px; font-size: 15px; min-height: 160px;}
+	.footer-get-app a + a { margin-left:15px;}
+	.competitors-option,
+	.contrast-trade {width: 260px; padding:20px; height: 280px;}
+	.contrast-comparison p {margin: 0 0 15px; max-width: 90%;}
+	.more-contrast {padding:60px 0; margin:0;}
+	.contrast-comparison h2 { margin: 0 0 15px; font-size:30px;}
+	.you-good-hands {padding: 40px 0 50px 0;}
+	.you-good-hands-div p {margin: 0 0 10px; line-height: 22px; font-size: 15px; height: 150px;}
+	.profile-head-btn a.send-message {min-width: 134px;}
+	.profile-head-btn a.maintenance {min-width: 174px; margin:5px;}
+	.profile-img { margin:-82px 20px 0 0;}
+	.ownly-popup-video .video-center {max-width: 90%;}
+	.ownly-popup-video {padding: 50% 0;}
+}
+
+@media(min-width:992px){
+	.navbar-toggler{ display:none; }
+}
+
+@media(max-width:1024px){
+	.home-tabs {min-height:600px;}
+	.home-tradehub { padding:25px;}
+	.footer { padding:25px;}
+	.footer-logo p,
+	.footer-get-app p {line-height:normal;}
+	.home-serach-div {padding: 10px 160px 10px 15px; width:100%; margin:0 0 10px;}
+	.home-tabs h2 {font-size:46px; margin:0 0 30px;}	
+	.home-tabs small {font-size: 34px;}
+	.home-tabs .container{ padding-top:50px;}
+	.home-section {margin-bottom: 30px;	}
+	.agents-exchange-box {padding: 10px;}
+	.agents-exchange-info h3 {font-size: 14px;}
+	.perfect-trade-box h3 {margin: 0 0 10px; font-size: 16px;}
+	.perfect-trade-box h6 { margin:0;}
+	.perfect-trade-box {padding:15px;}
+	.footer-top {padding:0 0 30px;}
+	ul.listing-ul>li {width: calc(33.33% - 26px);}
+	.google-search div.custom-autocomplete ul.custom-autocomplete__dropdown{ left:-20px;}
+	.tab-content form button {padding:0 10px 0 25px; background-position:20px 50%; background-size:18px; width:130px; position:relative;}
+	.home-tradehub.home-section .pagination ul li {width: auto; margin: 0;}
+	.agents-exchange-info {width: calc(100% - 175px);}
+	.agents-exchange-img img {width: 60px;}
+	header nav.navbar.navbar-expand-lg a.navbar-brand {margin:0 20px 0 0;}
+	header nav.navbar ul.navbar-nav li {margin: 0 10px;}
+}
+@media (min-width:992px) and (max-width:1200px){
+ul.perfect-trade li {width: calc(33.33% - 16px);}
+}
+
+
+@media(max-width:991px){
+	.d-flex{ flex-wrap:wrap;}
+	header.fixed nav.navbar.navbar-expand-lg {padding:10px 15px;}
+	.home-tabs h2 {font-size:40px; letter-spacing:0; line-height:100%; margin:0 0 30px;}
+	.home-tabs small {font-size: 24px;}
+	.tab-content, .home-tabs ul.nav.nav-tabs {padding:0;}
+	.home-tabs { min-height:500px;}
+	.home-section .d-flex{ flex-wrap:wrap;}
+	.properties-agents.home-section .homee-section-l{ width:100%; margin:0 0 25px;}
+	.properties-agents.home-section .homee-section-r{ width:100%; padding:0;}
+	.home-section h2:before{ display:none;}
+	.home-section { margin:0; padding:30px 0;}
+	.properties-agents .homee-section-l svg {width:150px;}
+	.agents-exchange .homee-section-l { padding-left:0; width:50%;}
+	.agents-exchange .homee-section-r{ width:50%; padding-left:0;}
+	.home-section ul li { font-size: 15px;line-height:26px; width:calc(100% - 16px); margin:3px 8px;}
+	.agents-exchange-review, .agents-exchange-info {width: 100%;text-align: center;margin: 0 0 10px;}
+	.agents-exchange-img {margin: 0 0 10px 0; max-width: 80px;}
+	.home-tradehub .homee-section-r {padding-left:10px; width: 50%;}
+	ul.perfect-trade{ flex-wrap:wrap; padding:10px 0 0 0; }
+	button.navbar-toggler{ border:0; padding:0; margin-left:auto; background:transparent;}
+	.home-page button.navbar-toggler svg{ fill:#fff; }
+	button.navbar-toggler svg {fill: #606382; width:30px; height:30px; background:transparent; }
+	.sticky button.navbar-toggler svg{ fill:#333; }
+	header .navbar-collapse {border:1px solid #eee; width:180px; position:absolute; top:50px; right:10px; background:#fff; z-index:100;}
+	header nav.navbar ul.navbar-nav {list-style:none; margin:0;}
+	header nav.navbar ul.navbar-nav li.nav-item a{ border-bottom:1px solid #eee; font-weight:500; text-align:left;  border-radius:0;}
+	header nav.navbar ul.navbar-nav.mr-auto {border-left: 0;margin: 0;padding: 0;}
+	header nav.navbar ul.navbar-nav.mr-auto li.get-app a { border:1px solid transparent;}
+	.header-search {max-width: 550px;}
+	.header-search form{ margin:0 10px 0 0;}
+	header nav.navbar.navbar-expand-lg a.navbar-brand {margin:0 20px 0 0;}
+	.filter {padding: 10px 15px; margin:0 0 20px;}
+	header nav.navbar.navbar-expand-lg {padding: 10px 15px;}
+	header nav.navbar.navbar-expand-lg a.navbar-brand svg{fill:#00CBEF; vertical-align:top; max-height:40px;}
+	.open #nav-icon2{ z-index:10; display:block; position:absolute; top:20px; left:220px;}
+	#nav-icon2{ display:block; }
+	.filter-r .showmap-view { margin-left:15px;}
+	.filter .filter-r ul li a {width: 50px;}
+	.filter .filter-r ul li + li {margin-left:5px;}
+	.filter .filter-l>ul{ display:none; left:-100%; transition:ease-in-out .5s;}
+	.filter-l.open:before{ background:rgba(0,0,0,.5); content:''; width:100%; height:100%; position:fixed; top:0; left:0;}
+	.filter-l.open ul.filter-l-ul{ background:#fff; width:260px; position:fixed; top:0; left:0; height:100%; display:block; padding:60px 0 0;    overflow: auto;}
+	.filter .filter-l>ul>li {margin:0;}
+	.filter .filter-l>ul>li>a { border:0; padding: 5px 15px; font-size: 13px; border-radius: 0; position:relative; border-top:1px solid #EDEEF6;}
+	.filter .filter-l>ul>li>a:before{content: ''; display:block; width:0; height:0; border-style:solid; border-width:5px 5px 0 5px; border-color:#333 transparent transparent transparent; position:absolute; top:50%; right:15px; transform:translateY(-50%);}
+	.filter .filter-l>ul li:hover .filter-l-dropdown { position:relative; padding-top:0; top:0; box-shadow:none; border:0; 
+		min-width:100%; border-top:1px solid #f5f5f5;}
+	.flat-slider {width: 100%; padding: 10px 0 20px 0; margin:10px 0 0;}
+	ul.listing-ul>li {width: calc(33.33% - 26px);}
+	.service-request-l {width:100%; padding: 30px;}
+	.service-request-r {width:100%; padding:50px 40px;}
+	header nav.navbar ul.navbar-nav li.nav-item a:hover{ border:1px solid transparent; border-bottom:1px solid #eee; text-decoration:none; color:#fff; background:#00CBEF;}
+	header nav.navbar ul.navbar-nav.mr-auto li.get-app a:hover{    background: #00CBEF;}
+	header.home-page nav.navbar ul.navbar-nav li.nav-item a:hover {color:#fff;}
+	header.home-page nav.navbar ul.navbar-nav li.nav-item a { color:#606382;}
+	.home-page.fixed button.navbar-toggler svg{fill: #00cbef;}
+	.landsize-input {width: 100%; margin:0 0 10px;}
+	.landsize-input + .landsize-input { margin-left:0;}
+	.filter .filter-l>ul li .filter-l-dropdown ul ul li {width: 100%;} 
+	.landsize {margin: 0;}
+	.properties-agents.home-section .homee-section-l img {max-width:60%; display:block; margin:0 auto;}
+	.home-section h2 {margin: 0 0 10px; font-size: 30px;}
+	.property-listing .homee-section-r {padding-left: 5%;}
+	.property-listing .homee-section-l {margin-right:0;}
+	.agents-exchange .homee-section-l img {max-width:100%;}
+	.agents-exchange-box {padding: 15px; flex-wrap:wrap; justify-content: center;}
+	.footer-btm-l {line-height:24px; margin-right:15px;}
+	.step-box + .step-box { margin-top:50px;}
+	.service-request {padding:0; margin:-45px 0 10px;}
+
+	body .ui-lightbox iframe {width: calc(100% - 50px); height:450px; border:6px solid #fff; margin:0 auto; display: block;}
+	body .ui-lightbox .ui-lightbox-content-wrapper {border:0; width:auto;}
+	.search-result-left { width:100%; margin:0 0 15px;}
+	.search-result-right {width:100%; margin:0 0 40px;}
+	.two-btm {max-width: 300px;	}
+	.similar-propertise ul.listing-ul>li {width:calc(50% - 20px); margin: 0 10px 20px;}
+	.property-price-box {margin: 0 0 20px;}
+	.property-price-option {margin:0;}
+	.property-price-div {margin: 0 0 30px;}
+	.property-description {padding:0 0 30px;}
+	.trade-hub-l h2 {margin: 0 0 10px; font-size: 32px;}
+	.trade-hub .trade-hub-r {padding-right:20px;}
+	.trade-hub-r h4 {margin: 0 0 25px; font-size: 18px;}
+	.trade-hub-r h3 {font-size:27px;}
+	.trade-hub {background: url(../images/trade-hub-1600.png) no-repeat center 100% / cover; padding: 100px 0 70px; margin:0; min-height: 600px;}
+	.trade-hub-content {padding:40px 0;}
+	.trade-hub-content-l {padding: 0 10px;}
+	.trade-hub-content-r {padding: 0 20px;}
+	.trade-hub-content h2 {margin: 0 0 10px; font-size: 30px;}
+	.trade-hub-content p {font-size: 15px; line-height: 22px;}
+	.trade-hub-content ul li {font-size: 15px; line-height: 24px;}
+	.choose-trader:before{ display:none;}
+	.good-hands {padding: 50px 0;}
+	.good-hands h2 {margin: 0 0 20px; font-size: 32px;}
+	.contrast-comparison-box {margin: auto;}
+	.contrast-comparison{ width:100%; margin-bottom:15px;}
+	.what-you-get {padding: 50px 0;}
+	.what-get-div h2 {margin: 0 0 10px; font-size: 30px;}
+	.join-community {padding: 50px 0;}
+	.join-community-div h2 {margin: 0 0 10px; font-size: 30px;}
+	ul.perfect-trade li { margin:0 8px 15px; width:calc(50% - 16px); padding:0;}
+	.profile-head-info { padding:0 0 15px;}
+	.profile-body { padding:20px 0;}
+	.white-box {padding: 20px; margin: 0 0 20px;}
+	.white-box p { margin: 0 0 15px; line-height: 20px;}
+	.servcies-skills ul li a {width: auto;}
+	.job-history-table ul li {padding: 20px;flex-wrap: wrap;}
+	.job-history-info { width:100%;margin: 0 0 15px;}
+	.job-history-rating {padding:0; width:100%; margin:0 0 10px;}
+	.reviews-comment-info .profile-review h6{ padding:0; width:100%;}
+	.profile-portfolio ul li { width:calc(33.33% - 20px); margin:10px;}
+	.property-images a:nth-child(1) img {min-height: 400px;}
+	.property-images a + a{ height:200px; overflow:hidden;}
+	.property-images a + a + a + a {margin-top: -200px;	}
+	.agency-name {width: calc(50% - 40px);}
+}
+
+@media(max-width:767px){
+	.container {padding:0 20px;}
+	.footer .container {padding:0 20px;}
+	header { padding:0;}
+	.home-tabs h2 {font-size: 30px;}
+	.home-tabs small {font-size: 24px;}
+	.home-tabs ul.nav.nav-tabs li { margin: 0 10px 0 0;}
+	.home-serach-div {padding:0; width: 100%;margin: 0 0 25px;background: transparent;}
+	.home-serach-div input{ background:#fff; padding:10px; border-radius:4px; margin-bottom:15px; }
+	.home-serach-div a{ background-color:#fff; padding:10px 10px 10px 40px; border-radius: 4px; position:relative; top:0; transform:initial; 
+	background-repeat:no-repeat; background-position:10px 50%; line-height:30px; width:100%; display:inline-block; margin: 15px 0 0; max-width:100%;}
+	.home-section { margin-bottom:0; padding:15px 0;}
+	.home-section h2 {font-size: 28px; line-height: normal; letter-spacing: 0;}
+	.home-section.switch-section .d-flex {flex-direction:row;}
+	.property-listing .homee-section-r{ width:100%; padding:0; max-width:450px; margin:-50px auto 0;}
+	.home-section ul li {font-size: 15px; line-height: 20px; width: calc(100% - 16px); margin:0 0 10px;}
+	.property-listing .homee-section-l{ width:100%; margin-bottom:15px;}
+	.home-tradehub .homee-section-l,
+	.agents-exchange .homee-section-l{ width:100%; margin-bottom:15px;}
+	.home-tradehub .homee-section-r,
+	.agents-exchange .homee-section-r{ width:100%; padding:0; max-width:450px; margin:0 auto 30px;}
+	.home-section .agents-exchange-ul {margin: 0;padding:0; flex-wrap:wrap; border:0;}
+	.perfect-trade-box{ max-width:320px; margin:0 auto;}
+	.home-section .agents-exchange-ul li {margin:0 auto 15px; width: 100%; padding:0; max-width:320px;}
+	ul.perfect-trade{ margin:0;}
+	ul.perfect-trade li{ margin:0 0 20px; width:100%; }
+	.footer-link{ padding:0 0 20px;}
+	.footer-link ul li {padding: 0 15px;}
+	.footer-link ul { justify-content:left;}
+	.footer-btm-r a {letter-spacing:0;vertical-align: top; line-height: 24px;}
+	.footer-btm {flex-wrap: wrap;}
+	.footer-btm-r a + a {margin-left: 15px;}
+	.footer {padding:15px 0;}
+	.footer-btm-r {margin: 0;}
+	#tradehub .home-serach-div {padding:0}
+	#tradehub .home-serach-div input.suburb-postcode{ background-color: #fff; position: relative; top: 0; transform: initial; padding: 14px 14px 14px 39px; background-size: 16px auto; background-position: 12px 50%; width: 100%;}
+	ul.listing-ul>li {width: calc(50% - 26px);}
+	.service-request-l {width:100%;}
+	.service-request-r {width:100%; padding:50px 40px;}
+	.service-request-page .home-tabs h3 { margin:0; font-size: 30px; letter-spacing:0; line-height:normal; text-align:center;}
+	.service-request {padding: 0 15px;}
+	.service-request-l { width: 100%; padding:20px;}
+	.service-request-r {width: 100%; padding:40px 0 0;}
+	.step-box { margin:25px 0;}
+	.service-request {padding:0; margin:-80px 0 20px;}
+	ul.listing-ul { margin:0;}
+	.properties-agents.home-section .homee-section-l img {max-width:100%;}
+	.custom-autocomplete__input input#search_places {position:relative; padding:10px; border:0; height:auto;}
+	.google-search div.custom-autocomplete ul.custom-autocomplete__dropdown {top:53px; width:100%; left:0; padding:15px 0;}
+	.agents-exchange .homee-section-l img {max-width:80%;}
+	.home-tradehub .homee-section-l img{ max-width:80%; }
+	.google-search div.custom-autocomplete ul.custom-autocomplete__dropdown li a { padding:0 0 0 34px; line-height:20px; margin:0; min-height:20px;}
+	.google-search div.custom-autocomplete ul.custom-autocomplete__dropdown .custom-icon { top:2px; left:5px;}
+	ul.listing-ul>li {width: calc(50% - 26px);}
+	.header-search .custom-autocomplete__input input#search_places{ padding:0;}
+	header.header .navbar-toggler{position:absolute; top: 30px; right: 19px;}
+	.header-search {margin-top:10px;}
+	#tradehub .home-search .home-serach-div .ng-input { position:absolute; top:0; left:0; right:auto; bottom:auto; padding:0 15px;}
+	#tradehub .home-search .home-serach-div .ng-select-container {height: 50px; position: relative; padding: 0 15px; border-radius:4px; margin:0 0 10px;}
+	#tradehub .home-search .home-serach-div .ng-input input{ margin:0; padding: 10px 0;}
+	#tradehub .home-search .service-req-holder .ng-dropdown-panel {left: 0px;right: 0px;top: 56px;border-radius:4px;}
+	
+	/* #tradehub .home-search .service-req-holder .ng-dropdown-panel .ng-dropdown-panel-items .ng-option { padding:0;} */
+	body .ui-lightbox iframe {width: calc(100% - 50px); height:250px; border:6px solid #fff; margin:0 auto; display: block;}
+	body .ui-lightbox .ui-lightbox-content-wrapper {border:0; width:auto;}
+	.ui-lightbox-content,
+	body .ui-lightbox .ui-lightbox-content-wrapper {background-color: transparent;}
+	body .ui-lightbox {box-shadow: none; width: 100%; margin: 0 auto; max-width: 500px; transform: translateX(-50%);top: 50px;}
+	.similar-propertise ul.listing-ul{ margin:0 -10px;}
+	.similar-propertise ul.listing-ul>li {margin: 0 10px 20px; max-width: 300px;}
+	.trade-hub .trade-hub-l { padding-left:15px; padding-bottom:20px;}
+	.trade-hub-l ul {margin: 0 0 20px;}
+	.trade-hub-r h3 { font-size:23px;}
+	.trade-hub-r h4 { margin:0 0 15px; font-size: 16px;}
+	.trade-play a img {max-width:100px;}
+	.trade-hub-content .d-flex {align-items:center; flex-wrap:wrap;}
+	.trade-hub-content-l {padding: 0; width:100%; max-width:350px; margin:0 auto 20px;}
+	.trade-hub-content-r { padding:0; width:100%;}
+	.trade-hub-content h2 {font-size: 26px;}
+	.good-hands-ul li {width: 100%; margin: 0 0 20px;}
+	ul.good-hands-ul{ flex-wrap:wrap;}
+	.good-hands-div p {min-height: inherit; height: auto;}
+	.trade-hub {background: url(../images/trade-hub-1600.png) no-repeat 25% 0 / cover;}
+	.post-job .trade-hub-content-l:before,
+	ul.good-hands-ul:before{ display:none;}
+	.contrast-comparison h2 {font-size:26px; line-height:normal;}
+	.contrast-comparison-box>ul li{ margin:15px 0;}
+	.more-contrast {padding:40px 0; margin:0;}
+	.you-good-hands h2 {margin: 0 0 20px; font-size: 24px;} 
+	ul.you-good-hands-ul:before{ display:none;}
+	ul.you-good-hands-ul{ flex-wrap:wrap;}
+	ul.you-good-hands-ul li{ width:100%;  margin:0 0 15px;}
+	.you-good-hands-div p {height: auto;}
+	.subscription-btn button{padding:15px; font-size:18px;}
+	.join-community-div h2 {font-size: 26px;}
+	.join-community-div h5 {margin: 0 auto 20px; line-height: 22px; font-size: 15px; max-width: 100%;}
+	.white-box {padding:15px; margin:0 0 15px;}
+	.profile-head-info p strong {width: 100%; padding:0;}
+	.profile-head-btn,
+	.profile-head-info p{ flex-wrap:wrap;justify-content: center; margin:0 auto}
+	.profile-head-btn a.send-message{ min-width:175px; margin:0 5px 5px; }
+	.profile-head-btn a.maintenance{ min-width:175px;  margin:0 5px 5px;}
+	.job-history-table ul li {padding: 15px;}
+	ul.reviews-comment li {padding: 20px;}
+	.reviews-comment-div{flex-wrap:wrap;}
+	.reviews-comment-img { margin: 0 0 5px 0; display: block;}
+	.reviews-comment-info{ width:100%; }
+	.reviews-comment-img img { width:70px;}
+	ul.reply-comments {padding-left: 0;}
+	ul.reply-comments li{padding:10px 0;}
+	.total-reviews {padding: 15px;}
+	.total-reviews p { margin:0; padding:10px 0 0;}
+	.profile-img { margin:-50px auto 15px;}
+	.profile-img img{ width: 160px;height: 160px;}
+	.profile-img span {width:14px; height:14px; bottom:40px; right:0;}
+	.job-history-rating { padding:0;}
+	.job-history-price { margin:0; text-align:left;}
+	.reviews-comment-info .profile-review h6{ padding:10px 0 0; width:100%;}
+	.suburb-postcode { position:relative; right:auto; top:auto; transform:initial; max-width:100%; padding:0; width:calc(100% - 45px); border-radius:4px; background: #fff url(../images/maps.svg) no-repeat 18px 50% / 16px auto; border-radius: 4px; display: inline-block; vertical-align: top; height:51px;}
+	.suburb-postcode div.custom-autocomplete ul.custom-autocomplete__dropdown {width:calc(100% + 45px); top:52px; left:0;}
+	.suburb-postcode div.custom-autocomplete .custom-autocomplete__input input#search_places {margin-left: 45px;}
+	.open #nav-icon2:before {content: ''; background: #fff; width: 260px; height: 60px;  display: block; position: absolute; top: -20px; right: -10px;}
+	.ngx-pagination.responsive li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {display: block !important;}
+	body .login-regiter-form.signup-form .ui-dialog,
+	body .login-regiter-form.signup-form .ui-dialog .ui-widget-content .form-group { padding: 0 15px;}
+	body .login-regiter-form .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {top: -20px !important;right: -10px !important;	}
+	.profile-portfolio ul{margin: 0; padding: 0; list-style: none; display: flex; justify-content: center; flex-wrap: wrap;}
+	.profile-portfolio ul li {    width: 100%;margin: 10px auto;text-align: center;}
+	.suburb-postcode div.custom-autocomplete ul.custom-autocomplete__dropdown li a {padding: 0 0 0 26px;margin: 7px 0;flex-wrap: wrap;}
+	.suburb-postcode div.custom-autocomplete ul.custom-autocomplete__dropdown li + li + li {padding-top: 0;	}
+	.service-req-holder .ng-dropdown-panel .ng-dropdown-panel-items {border:0;max-height:250px;}
+	.tab-content form button{ display:block; margin:0 auto; width:230px;}
+	.help-tag-you h3.ng-star-inserted {font-size: 30px;margin: 0;}
+	.help-tag-you {margin-top:50px;}
+	.file-note {height: auto;}
+	.step-box h2 {margin: 0; font-size: 20px;}
+	.home-tradehub.switch-section>.container>.dropdown>button#dropdownMenuButton{width: 138px; line-height:36px; border:1px solid #EDEEF6; font-size:12px; font-weight:700;color:#B1B3C5;    padding: 0 10px;}
+	.home-tradehub.switch-section>.container>.dropdown>.dropdown-menu>a.dropdown-item{font-size:12px; font-weight:600;color:#B1B3C5;}
+	.profile-head { margin:0 auto 0; width: auto; display: block; border-bottom: 1px solid #EDEEF6}
+	.profile-head .col-md-4 .d-flex{ flex-wrap:wrap;}
+	.profile-info {width: 100%;text-align: center;}
+	.profile-info .profile-review {margin:0; justify-content: center;}
+	section.profile-carousel-img.ng-star-inserted img {height: 190px;}
+	.profile-head-info {padding:0 0 15px; text-align:center; width:100%;}
+	.profile-head-info p span {display: block; text-align: center;width: 100%;}
+	.custom-input-file .ui-fileupload-row {flex-wrap: wrap;}
+	.custom-input-file .ui-fileupload-row div:nth-child(1) {width: 100%;}
+	.custom-input-file .ui-fileupload-row div:nth-child(2) {width: 100%;word-break: break-all;}
+	.custom-input-file .ui-fileupload-row div:nth-child(3) {width: auto;}
+	.custom-input-file .ui-fileupload-row div:nth-child(4) {width: auto;padding: 0;}
+	.ui-lightbox-content video{ width:94%; margin:0 3%;}
+	.property-images {margin: 0 0 30px;}
+	.property-images a {width: 50%;}
+	.property-images a + a{height: 100px; overflow: hidden;}
+	.property-images a:nth-child(1) img {min-height:200px; max-height:200px; width:100%;}
+	.property-images a + a img { min-height:100px;}
+	.property-images a + a + a + a {margin-top: -100px;	}
+	.login-form > div.ui-dialog , body .login-regiter-form.signup-form .ui-dialog, 
+	.signup-form  > div.ui-dialog{min-width: inherit !important; margin:0 20px;padding: 30px 20px;max-width: calc(100% - 40px);overflow: auto;    max-height: calc(100% - 40px);}
+	body .ui-dialog .dialog-wrapper.agent-email-popup form .left-content , body .ui-dialog .dialog-wrapper.agent-email-popup form .right-content{width: 100%;}
+	body .ui-dialog .dialog-wrapper.agent-email-popup form .left-content{margin-bottom: 20px;}
+	body .ui-dialog .dialog-wrapper.agent-email-popup form .left-content .popup-label > p-checkbox {display: flex;}
+	body .login-regiter-form .ui-dialog .ui-dialog-titlebar {margin:0 0 20px; padding:0;}
+	body .login-regiter-form .request-btm-btn {margin: 0;}
+	body .ui-dialog .agent-email-popup .ask-about-popup .request-submit-btn{width: 190px;}
+	body .signup-form .keep-signed {margin: 10px 0;}
+	body .signup-form .form-group {margin-bottom: 15px !important;}
+	body .login-regiter-form.signup-form .ui-dialog .ui-widget-content .keep-signed .form-group a,
+	body .login-regiter-form.signup-form .ui-dialog .ui-widget-content .keep-signed .form-group label {line-height: normal;}
+	body .signup-form .ui-dialog-content .dont-have {bottom: 0;position: relative; margin: 20px 0;}
+	.dont-have {position: relative;bottom: 0;margin: 20px 0 0;}
+	body .login-regiter-form.signup-form .ui-dialog .ui-dialog-content {max-height: calc(100% + 57px);}
+	body .login-regiter-form .keep-signed {margin: 0 0 20px;}
+	.home-tradehub.home-section .pagination-controls {border: 0;padding: 0;border-radius: 0;background-color: transparent;box-shadow: none;margin: 0 auto;width: auto;}
+	/* .home-section ul {margin: 0;padding: 0;display: flex;flex-wrap: wrap;background: #fff;border: 1px solid #eee;border-radius: 2px;text-align: center;justify-content: center;} */
+	.home-tradehub.home-section .pagination ul li.pagination-previous { width: 100%;text-align: center; border-bottom: 1px solid #eee; border-radius: 0; padding: 10px 0;}
+	.home-tradehub.home-section .pagination ul li {letter-spacing:0; border-radius: 0; padding:10px 17px; vertical-align: top;}
+	.home-tradehub.home-section .pagination ul li.pagination-next {width: 100%; text-align: center; border-top: 1px solid #eee; border-radius: 0; padding: 10px 0;}
+	.home-tradehub.home-section .pagination ul.ngx-pagination li a, 
+	.home-tradehub.home-section .pagination ul.ngx-pagination li button { padding:0;}
+	.home-tradehub.home-section .pagination ul li.ellipsis { padding:10px 5px;}
+	.home-section ul,.agents-exchange.home-section ul,
+	.home-tradehub.home-section ul, 
+	.property-listing.home-section ul{text-align:left; background:transparent; border:0; margin-top:15px;}
+	.contact-page .trade-hub-form .col-md-6,
+	.contact-page .trade-hub-form .col-md-6 {flex:0 0 100%; max-width:100%;}
+	section.about-section, .contact-page {padding:50px 0;}	
+	.about-section .d-flex{ flex-wrap:wrap;}
+	.about-text{ margin-bottom:40px;}
+	.about-text, .about-img{ width:100%; ;} 
+	.AgentMap {padding-right: 15px;padding-left: 15px;padding-top: 10px;}
+	.AgentMap agm-map {height: 250px;}
+	.agents-exchange-box {padding: 10px;}
+	.agents-exchange-img {max-width: 100%;}
+	.agents-exchange-img img {width: auto;}
+	.thankyou {
+    text-align: center;
+    padding-left: 15px !important;
+}
+
+}
+@media(max-width:670px){
+	.similar-propertise ul.listing-ul{ margin:0;}
+	.agency-name {width: 100%;}
+	.similar-propertise ul.listing-ul>li {margin: 0 auto 20px; max-width: 300px;}
+}
+
+@media(max-width:499px){
+	ul.listing-ul>li {width:100%; margin:0 0 25px;}
+	.agents-exchange .homee-section-l img, .properties-agents.home-section .homee-section-l img,
+	.home-tradehub .homee-section-l img{ max-width:100%; }
+	.property-listing .homee-section-r {margin:-25px auto 0;}
+	ul.listing-ul>li {width: 100%;}
+	body .ui-datepicker{padding:10px;}
+	body .ui-datepicker table td{padding: 0;}
+	.similar-propertise ul.listing-ul>li{width:100%; margin:0 0 15px;}
+	body .ui-dialog {padding: 15px;}
+	.contact-page>.container>.row>.col-md-6{ margin:0 0 30px;}
+
+}

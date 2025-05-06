@@ -1,0 +1,300 @@
+<!-- <section class="carousel-img"> -->
+<!-- <div class="property-images"> -->
+<!-- <p-lightbox [images]="propertyImages" [styleClass]="'property-images shimmer_effect'">
+</p-lightbox> -->
+<!-- <div class="property-images shimmer_effect">
+  <a href="javascript:void(0)"><img src="{{propertyImages[0].src}}"
+      onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(0)" alt="" /></a>
+  <a href="javascript:void(0)"><img src="{{propertyImages[1].src}}"
+      onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(1)" alt="" /></a>
+  <a href="javascript:void(0)"><img src="{{propertyImages[2].src}}"
+      onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(2)" alt="" /></a>
+  <a href="javascript:void(0)"><img src="{{propertyImages[3].src}}"
+      onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(3)" alt="" /></a>
+  <a href="javascript:void(0)"><img src="{{propertyImages[4].src}}"
+      onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(4)" alt="" /></a>
+</div> -->
+
+<div class="main shimmer_effect">
+
+  <div class="left">
+    <div class="inner">
+      <a href="javascript:void(0)"><img src="{{propertyImages[0].src}}"
+          onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(0)" alt="" /></a>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="inner-wrap">
+      <div class="inner">
+        <a href="javascript:void(0)"><img src="{{propertyImages[1].src}}"
+            onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(1)" alt="" /></a>
+      </div>
+      <div class="inner">
+        <a href="javascript:void(0)"><img src="{{propertyImages[2].src}}"
+            onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(2)" alt="" /></a>
+      </div>
+    </div>
+    <div class="inner-wrap">
+      <div class="inner">
+        <a href="javascript:void(0)"><img src="{{propertyImages[3].src}}"
+            onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(3)" alt="" /></a>
+      </div>
+      <div class="inner">
+        <a href="javascript:void(0)"><img src="{{propertyImages[4].src}}"
+            onerror="this.onerror=null;this.src='assets/images/default_property.png'" (click)="open(4)" alt="" /></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- </div> -->
+<!-- <img src="assets/images/carosel-img-01.jpg" alt="" /> -->
+<!-- </section> -->
+
+<section class="search-result-content">
+  <div class="container">
+    <div class="d-flex">
+      <div class="search-result-left">
+        <div class="property-price-div d-flex">
+          <div class="property-price-box">
+            <h2>{{ propertyDetails.priceDetails.displayPrice ? propertyDetails.priceDetails.displayPrice : ''}}</h2>
+            <p>{{ propertyDetails.addressParts ? propertyDetails.addressParts.displayAddress : ''}}</p>
+          </div>
+          <div class="property-price-option">
+            <ul>
+              <li>
+                <span><img src="assets/images/bed-icon.svg" alt="" /></span>
+                <p>{{ propertyDetails.bedrooms }} BEDS</p>
+              </li>
+              <li>
+                <span><img src="assets/images/room-icon.svg" alt="" /></span>
+                <p>{{ propertyDetails.bathrooms }} Baths</p>
+              </li>
+              <li>
+                <span><img src="assets/images/car-icon.svg" alt="" /></span>
+                <p>{{ propertyDetails.carspaces }} Parking</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="property-description">
+          <h2>Property Description</h2>
+          <small>{{ propertyDetails.headline }}</small>
+          <p class="less" *ngIf="toggelText === 'READ MORE'">{{ propertyDetails.description | slice : 0:300 }}</p>
+          <p class="more" *ngIf="toggelText === 'READ LESS'">{{ propertyDetails.description }}</p>
+          <a class="read-more-btn" (click)="toggle(toggelText)">{{ toggelText }}</a>
+        </div>
+        <div class="result-map">
+          <!-- <agm-map [latitude]="lat" [longitude]="long" [zoom]="15" [zoomControl]="false" [streetViewControl]="false">
+            <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
+          </agm-map> -->
+          <!-- <img src="assets/images/map.jpg" alt=""> -->
+        </div>
+        <div class="similar-propertise">
+          <h2>Similar Properties</h2>
+          <ul class="listing-ul">
+            <li *ngFor="let property of similarProperties">
+              <div class="product-box">
+                <div class="product-box-img">
+                  <owl-carousel-o [options]="customOptions">
+                    <ng-container *ngFor="let slideImg of property.media">
+                      <ng-template carouselSlide>
+                        <!-- <img class="shimmer_effect" [src]="slideImg.url+'/800x600'" alt=""> -->
+                        <img class="shimmer_effect" [defaultImage]="slideImg.url+'/300x200'"
+                          [lazyLoad]="slideImg.url+'/800x600'">
+                      </ng-template>
+                    </ng-container>
+                  </owl-carousel-o>
+                </div>
+                <div class="product-box-body">
+                  <div class="product-box-title">
+                    <a [routerLink]="['/property',property.id]">
+                      <h2>{{ property.priceDetails ? property.priceDetails.displayPrice : ''}}</h2>
+                    </a>
+                  </div>
+                  <p>
+                    {{ property.propertyDetails.displayableAddress ? property.propertyDetails.displayableAddress : ''  }}
+                  </p>
+                  <ul class="hotel-option">
+                    <li pTooltip="bedrooms" tooltipPosition="bottom">
+                      <i class="bad-icon"></i> <span>{{ property.propertyDetails.bedrooms }}</span>
+                    </li>
+                    <li pTooltip="bathrooms" tooltipPosition="bottom">
+                      <i class="room-icon"></i> <span>{{ property.propertyDetails.bathrooms }}</span>
+                    </li>
+                    <li pTooltip="carspaces" tooltipPosition="bottom">
+                      <i class="car-icon"></i>
+                      <span>{{ property.propertyDetails.carspaces? property.propertyDetails.carspaces: '0' }}</span>
+                    </li>
+                    <li pTooltip="property types" tooltipPosition="bottom">
+                      <i class="house-icon"></i> <span>{{ property.propertyDetails.propertyType }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-result-right">
+        <div class="agency-name advert" *ngIf="adData">
+          <a href={{adData.url}} target="_blank" (click)="clickedAd(adData._id)">
+            <img [src]="imageUrl + 'advertise_image/' + adData.file" alt="Advertise">
+          </a>
+        </div>
+        <div *ngIf="propertyDetails.agentDetails">
+          <div class="agency-name" *ngFor="let agent of propertyDetails.agentDetails">
+            <div class="agency-name-head">
+              <div class="agency-name-head-img">
+                <img src="{{agent.photo}}" alt="">
+                <span class="blue"></span>
+              </div>
+              <h2>
+                <small>AGENCY NAME</small>
+                <h6>{{ propertyDetails.agencyDetails ? propertyDetails.agencyDetails.name : '' }}</h6>
+              </h2>
+            </div>
+            <div class="agency-name-footer two-btm">
+              <a href="tel:{{ agent.phone ? agent.phone : ''}}" class="bdr-btn">CALL</a>
+              <a (click)="showDialog(agent)" class="bg-btn">EMAIL AGENT</a>
+            </div>
+          </div>
+        </div>
+        <div class="search-result-right-list">
+          <ul>
+            <li>
+              <strong>PROPERTY TYPE</strong>
+              <small *ngIf="propertyDetails.propertyTypes">
+                {{ propertyDetails.propertyTypes[0] === 'ApartmentUnitFlat' || propertyDetails.propertyTypes[0] === 'NewApartments' ? 'Apartments' : propertyDetails.propertyTypes[0] }}</small>
+            </li>
+            <li>
+              <strong>INTERNAL AREA</strong>
+              <small>Unknown</small>
+            </li>
+            <li>
+              <strong>LAND AREA</strong>
+              <small>Unknown</small>
+            </li>
+          </ul>
+        </div>
+        <div class="search-result-social-icons">
+          <ul>
+            <li><a href="javascript:void(0)"><img src="assets/images/facebook.jpg" alt="" /></a></li>
+            <li><a href="javascript:void(0)"><img src="assets/images/google-plus.jpg" alt="" /></a></li>
+            <li><a href="javascript:void(0)"><img src="assets/images/twitter.jpg" alt="" /></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p-dialog [(visible)]="display" [modal]="true" [responsive]="true" [baseZIndex]="10000">
+  <div class="dialog-wrapper agent-email-popup">
+    <h2>
+      <small>{{ formData.recivername ? formData.recivername : '' }}</small>
+      <!-- <small>MATTHEW OLIVER</small> -->
+      <strong>Ask About this property</strong>
+    </h2>
+    <form [formGroup]="form" (ngSubmit)="submit(form)">
+      <div>
+        <div class="ui-g-6 left-content">
+          <h3>My Enquiries</h3>
+          <div class="error" *ngIf="enquiriesErr">
+            <span>Please select any Enquiry</span>
+          </div>
+          <div class="popup-label">
+            <p-checkbox name="enquiries" value="Could I have a price guide?" label="Could I have a price guide?"
+              [(ngModel)]="selectedEnquries" (onChange)="changeEnquiry()" formControlName="enquiries"
+              inputId="priceGuide"></p-checkbox>
+          </div>
+          <div class="popup-label">
+            <p-checkbox name="enquiries" value="What is the property size?" label="What is the property size?"
+              [(ngModel)]="selectedEnquries" (onChange)="changeEnquiry()" formControlName="enquiries"
+              inputId="propertySize"></p-checkbox>
+          </div>
+          <div class="popup-label">
+            <p-checkbox name="enquiries" value="When are the inspection times?" label="When are the inspection times?"
+              [(ngModel)]="selectedEnquries" (onChange)="changeEnquiry()" formControlName="enquiries"
+              inputId="inspectionTimes"></p-checkbox>
+          </div>
+          <div class="popup-label">
+            <p-checkbox name="enquiries" value="What are the strata fees/levies/rates?"
+              label="What are the strata fees/levies/rates?" [(ngModel)]="selectedEnquries" (onChange)="changeEnquiry()"
+              formControlName="enquiries" inputId="fees"></p-checkbox>
+          </div>
+          <div class="textarea-information">
+            <textarea placeholder='Hi,&#x0a;&#x0a;Please send me more information about the property.'
+              [(ngModel)]="formData.property_query" name='property_query' formControlName="property_query"></textarea>
+          </div>
+        </div>
+        <div class="ui-g-6 right-content">
+          <h3>My Contact Details</h3>
+          <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <div class="input-wrap">
+              <input type="text" class="form-control" id="first_name" Placeholder="Enter First Name" name='first_name'
+                formControlName="first_name">
+            </div>
+            <div class="error" *ngIf="!form.controls['first_name'].valid && isFormSubmited">
+              <span *ngIf="form.controls['first_name'].errors['required']">First Name is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <div class="input-wrap">
+              <input type="text" class="form-control" id="last_name" Placeholder="Enter Last Name"
+                [(ngModel)]="formData.last_name" name='last_name' formControlName="last_name">
+            </div>
+            <div class="error" *ngIf="!form.controls['last_name'].valid && isFormSubmited">
+              <span *ngIf="form.controls['last_name'].errors['required']">Last Name is required</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <div class="input-wrap">
+              <input type="email" class="form-control" id="email" Placeholder="Enter Email" [(ngModel)]="formData.email"
+                name='email' formControlName="email">
+            </div>
+            <div class="error" *ngIf="!form.controls['email'].valid && isFormSubmited">
+              <span *ngIf="form.controls['email'].errors['required']">Email is required</span>
+              <span *ngIf="form.controls['email'].errors['pattern']">Email format is wrong</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <div class="input-wrap">
+              <input type="text" class="form-control" id="phone" Placeholder="Enter Phone Number" maxlength="10"
+                minlength="10" (keypress)="restrictAlphabets($event)" [(ngModel)]="formData.phone" name='phone'
+                formControlName="phone">
+            </div>
+            <div class="error" *ngIf="!form.controls['phone'].valid && isFormSubmited">
+              <span *ngIf="form.controls['phone'].errors['pattern']">Please Enter Numbers.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="post_code">Post Code:</label>
+            <div class="input-wrap">
+              <input type="text" class="form-control" id="post_code" Placeholder="Enter Postal Code" maxlength="4"
+                minlength="4" (keypress)="restrictAlphabets($event)" [(ngModel)]="formData.post_code" name='post_code'
+                formControlName="post_code">
+            </div>
+            <div class="error" *ngIf="!form.controls['post_code'].valid && isFormSubmited">
+              <span *ngIf="form.controls['post_code'].errors['pattern']">Post Code must be 4 digit.</span>
+            </div>
+          </div>
+          <!-- <p-footer>
+            <button type="submit" icon="pi pi-check" label="Yes">Request Details</button>
+          </p-footer> -->
+        </div>
+      </div>
+      <div class="form-group ask-about-popup">
+        <div class="input-wrap">
+          <button type="submit" class="request-submit-btn">Request Details</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</p-dialog>
