@@ -843,6 +843,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.req_isFormSubmited = true;
     this.formData = form.value;
     if (form.valid) {
+      if (!this.req_address['address']) {
+        this.toastr.error('Please select an address before submitting.', 'Address Required');
+        return;
+      }
       this.spinner.show('outer');
       (this.formData.budget) ? this.formData.budget = parseInt(this.formData.budget) : this.formData.budget = parseInt('00');
       if (this.formData.due_date) {
