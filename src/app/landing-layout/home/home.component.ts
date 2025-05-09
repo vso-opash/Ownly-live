@@ -843,7 +843,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.req_isFormSubmited = true;
     this.formData = form.value;
     if (form.valid) {
-      if (!this.req_address['address']) {
+      if (!this.req_address['address'] && !(this.req_address['lng'] || this.req_address['lat'])) {
         this.toastr.error('Please select an address before submitting.', 'Address Required');
         return;
       }

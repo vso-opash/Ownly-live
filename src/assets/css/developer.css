@@ -218,6 +218,7 @@ header.header .google-search div.custom-autocomplete ul.custom-autocomplete__dro
   border: 0;
   width: 100%;
   color: #606382;
+  background: #fff;
   font-size: 13px;
   font-weight: 700;
   font-family: 'Open Sans';
@@ -598,6 +599,7 @@ body .ui-lightbox .ui-lightbox-caption .ui-lightbox-close {
   position: relative;
   padding: 10px;
   border: 1px solid #DBDDEE;
+  background: #fff !important;
   height: 38px;
   border-radius: 4px;
   color: #7F829F;
@@ -1144,18 +1146,22 @@ body .ui-lightbox {
 
 .custom-autocomplete__input input#search_places::-webkit-input-placeholder, .home-serach-div input::-webkit-input-placeholder {
   color: #B1B3C5;
+  background: #fff;
 }
 
 .custom-autocomplete__input input#search_places:-moz-placeholder, .home-serach-div input::-moz-placeholder {
   color: #B1B3C5;
+  background: #fff;
 }
 
 .custom-autocomplete__input input#search_places:-ms-input-placeholder, .home-serach-div input:-ms-input-placeholder {
   color: #B1B3C5;
+  background: #fff;
 }
 
 .custom-autocomplete__input input#search_places:-moz-placeholder, .home-serach-div input:-moz-placeholder {
   color: #B1B3C5;
+  background: #fff;
 }
 
 .ng-select .ng-select-container .ng-value-container .ng-placeholder {
