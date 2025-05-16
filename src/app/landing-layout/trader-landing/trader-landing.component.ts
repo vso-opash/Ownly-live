@@ -284,7 +284,7 @@ export class TraderLandingComponent implements OnInit {
                 } else {
                   let loginData = {
                     data: response["data"]["data"],
-                    token: response[`token`],
+                    token: response['data'][`token`],
                   };
                   this.router.navigate(["/thank-you"]);
                   // this.router.navigate(["/trade"]);

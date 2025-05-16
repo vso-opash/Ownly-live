@@ -913,7 +913,7 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
                   this.clickSignup = false;
                   let loginData = {
                     data: response['data']['data'],
-                    token: response[`token`],
+                    token: response['data'][`token`],
                   };
                   localStorage.setItem('user', this.EncrDecr.setEncrypt(loginData));
                   this.datashare.getLoginUser(JSON.stringify(loginData));
