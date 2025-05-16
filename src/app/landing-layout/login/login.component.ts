@@ -224,7 +224,7 @@ export class LoginComponent implements OnInit {
                   this.clickLogin = false;
                   this.loginData = {
                     data: response['data']['data'],
-                    token: response[`token`],
+                    token: response['data'][`token`],
                   };
                   localStorage.setItem('user', this.EncrDecr.setEncrypt(this.loginData));
                   this.datashare.getLoginUser(JSON.stringify(this.loginData));
