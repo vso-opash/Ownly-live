@@ -27,6 +27,6 @@ export class FeatureComponent implements OnInit {
   }
 
   portalSignUp() {
-    window.open(this.portalSignUpURL, '_blank');
+    window.open(this.dashboardURL, '_blank');
   }
 }
