@@ -798,7 +798,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       for (let i = 0; i < filesLength; i++) {
         if (this.req_selected_files.length < this.req_fileLimit) {
           const obj = {};
-          if (imgArray[i].size <= 2000000 && (((imgArray[i].type).substr(0, 5) === 'image') || imgArray[i].type === 'application/pdf')) {
+          if (imgArray[i].size <= 12000000 && (((imgArray[i].type).substr(0, 5) === 'image') || imgArray[i].type === 'application/pdf')) {
             this.req_imgForm.push(imgArray[i]);
             obj['size'] = imgArray[i].size;
             obj['name'] = imgArray[i].name;
@@ -808,7 +808,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               this.req_selected_files.push(obj);
             }
             reader.readAsDataURL(event.target.files[i]);
-          } else if (imgArray[i].size > 2000000) {
+          } else if (imgArray[i].size > 12000000) {
             this.msgs.push([{ severity: 'error', summary: '', detail: `${imgArray[i].name} has exceding file size.` }]);
           } else if ((imgArray[i].type).substr(0, 5) !== 'image' || imgArray[i].type !== 'application/pdf') {
             this.msgs.push([{ severity: 'error', summary: '', detail: `${imgArray[i].name} has not proper file format. ` }]);
