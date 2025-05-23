@@ -558,12 +558,12 @@
               </div>
             </div>
             <div class="col-md-12 custom-input-file">
-              <input type="file" (change)="onfileSelect($event)" accept="image/*,application/pdf" maxFileSize="2000000"
+              <input type="file" (change)="onfileSelect($event)" accept="image/*,application/pdf" maxFileSize="12000000"
                 id="file-5" class="inputfile inputfile-4" multiple />
               <label for="file-5">
                 <span>Choose a file</span>
               </label>
-              <div class="file-note">File can be less than 2MB and maximum 3 files can upload. and extension should be
+              <div class="file-note">File can be less than 12MB and maximum 3 files can upload. and extension should be
                 .jpg, .png, .jpeg, and .pdf</div>
               <ng-container *ngFor='let msg of msgs'>
                 <p-messages [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'" [(value)]="msg">
